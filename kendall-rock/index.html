@@ -1,1 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kendall Rock · Seattle Wedding, Elopement &amp; Music Tour Photographer</title>
+<meta name="description" content="Visual storytelling from the Pacific Northwest. Wedding, elopement and music tour photography, based in Seattle but always on the road. Washington, Alaska, the greater PNW and beyond.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   KENDALL ROCK — editorial redesign
+   A luxury photography-publication register: warm ivory, a
+   single restrained oxblood accent, and a high-contrast serif
+   (Cormorant Garamond) against a quiet geometric sans (Jost).
+   Generous negative space, immersive full-bleed imagery, flat
+   surfaces (no cards / shadows / gradients-as-decoration), and
+   minimal UI. The photographs carry the emotion.
+   ============================================================ */
+:root{
+  --paper:#F4F1E8; --paper-2:#EBE6DA;
+  --ink:#1C1813; --ink-2:#4A443B; --ink-soft:#635C51;
+  --line:#DAD3C4;
+  --accent:#7A3B34; --accent-soft:#C4A198;
+  --deep:#1A160F; --deep-2:#141109; --deep-line:rgba(244,241,232,.16);
+  --maxw:1280px; --gutter:clamp(24px,6vw,88px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Jost",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:16.5px;font-weight:400;line-height:1.8;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;margin:0;line-height:1.04;letter-spacing:0}
+p{margin:0}
+::selection{background:var(--ink);color:var(--paper)}
+.eyebrow{font-family:"Jost";font-weight:500;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--ink-soft)}
+.eyebrow.on-dark{color:var(--accent-soft)}
+.lede{font-size:clamp(1.14rem,1.6vw,1.4rem);color:var(--ink-2);line-height:1.72;font-weight:300}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(84px,12vw,188px)}
+.section--tight{padding-block:clamp(38px,5vw,72px)}
 
+/* ---- buttons: understated ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;font-family:"Jost";
+  font-weight:500;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;padding:1.15em 2.2em;
+  cursor:pointer;border:1px solid var(--ink);background:transparent;color:var(--ink);line-height:1;white-space:nowrap;
+  transition:background .4s var(--ease),color .4s var(--ease),border-color .4s}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+.btn--wine,.btn--ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.btn--wine:hover,.btn--ink:hover{background:transparent;color:var(--ink)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper)}
+.btn--ghost-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn--ghost-dark:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.alink{display:inline-flex;align-items:center;gap:.6em;font-family:"Jost";font-weight:500;font-size:.7rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:5px;transition:gap .3s,opacity .3s}
+.alink:hover{gap:.95em;opacity:.58}
+.alink.on-dark{color:#fff;border-color:rgba(255,255,255,.6)}
+.alink.on-dark:hover{opacity:.75}
+
+/* ---- header ---- */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:60;padding-block:22px;transition:background .4s,padding .4s,border-color .4s;border-bottom:1px solid transparent}
+.hdr.solid{background:var(--paper);border-bottom-color:var(--line);padding-block:15px}
+.hdr-in{max-width:1400px;margin:0 auto;padding-inline:clamp(20px,4vw,44px);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;flex-direction:column;gap:3px;line-height:1;z-index:2}
+.brand b{font-family:"Cormorant Garamond";font-weight:500;font-size:1.72rem;letter-spacing:.02em;color:#fff;transition:color .4s}
+.brand span{font-family:"Jost";font-weight:500;font-size:.5rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:color .4s}
+.hdr.solid .brand b{color:var(--ink)}
+.hdr.solid .brand span{color:var(--ink-soft)}
+.nav{display:flex;align-items:center;gap:16px;list-style:none;margin:0;padding:0}
+.nav>li{position:relative}
+.nav a,.nav .top{display:inline-flex;align-items:center;gap:.4em;font-family:"Jost";font-weight:400;font-size:.71rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.92);padding:.6em .8em;background:none;border:0;cursor:pointer;transition:opacity .3s,color .3s}
+.hdr.solid .nav a,.hdr.solid .nav .top{color:var(--ink-2)}
+.nav a:hover,.nav .top:hover,.nav li:hover>.top{opacity:.6}
+.caret{width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translate(-1px,-1px);opacity:.6}
+.submenu{position:absolute;top:100%;left:0;min-width:238px;background:var(--paper);border:1px solid var(--line);padding:10px;opacity:0;visibility:hidden;transform:translateY(8px);list-style:none;margin:10px 0 0;transition:opacity .25s,transform .25s,visibility .25s}
+.nav li:hover>.submenu,.nav li:focus-within>.submenu{opacity:1;visibility:visible;transform:translateY(0)}
+.submenu a{display:block;color:var(--ink-2);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;padding:.65em .8em}
+.submenu a:hover{background:var(--paper-2);color:var(--ink)}
+.hdr .btn{padding:.9em 1.5em;font-size:.64rem}
+.hdr:not(.solid) .btn--wine,.hdr:not(.solid) .btn--ink{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.hdr:not(.solid) .btn--wine:hover,.hdr:not(.solid) .btn--ink:hover{background:#fff;color:var(--accent);border-color:#fff}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:0;cursor:pointer;padding:8px;z-index:2}
+.burger span{width:26px;height:1.5px;background:#fff;transition:background .4s,transform .35s,opacity .3s}
+.hdr.solid .burger span{background:var(--ink)}
+.mnav{position:fixed;inset:0;z-index:55;background:var(--paper);transform:translateX(100%);transition:transform .5s var(--ease);display:flex;flex-direction:column;padding:100px 30px 44px;overflow-y:auto}
+.mnav.open{transform:translateX(0)}
+.mnav a:not(.m-cta){font-family:"Cormorant Garamond";font-weight:400;font-size:2.1rem;color:var(--ink);padding:.26em 0;border-bottom:1px solid var(--line);letter-spacing:0}
+.mnav .sub a{font-family:"Jost";font-weight:400;font-size:.76rem;color:var(--ink-soft);padding:.42em 0 .42em 16px;border:0;letter-spacing:.16em;text-transform:uppercase}
+.mnav .m-cta{margin-top:30px;display:flex;justify-content:center;font-size:.8rem;padding:1.05em 1.7em}
+body.lock{overflow:hidden}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--deep-2)}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,17,9,.34) 0%,rgba(20,17,9,0) 32%,rgba(20,17,9,.62) 100%)}
+.hero-c{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);padding-bottom:clamp(52px,9vh,120px);color:#fff}
+.hero-eye{display:inline-flex;align-items:center;gap:.9em;font-family:"Jost";font-weight:500;font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-bottom:28px}
+.hero-eye .d{width:26px;height:1px;background:rgba(255,255,255,.72)}
+.hero h1{font-size:clamp(3.4rem,11vw,9.5rem);line-height:.98;letter-spacing:0;color:#fff;max-width:14ch;font-weight:400}
+.hero h1 em{font-style:italic;font-weight:400;color:#fff}
+.hero-p{max-width:46ch;margin-top:28px;font-size:clamp(1.04rem,1.4vw,1.26rem);color:rgba(255,255,255,.9);line-height:1.7;font-weight:300}
+.hero-anchor{margin-top:18px;font-family:"Jost";font-weight:400;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.hero-anchor b{color:#fff;font-weight:500}
+.hero-act{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+
+/* ---- trust (light) ---- */
+.trust{background:var(--paper);border-block:1px solid var(--line)}
+.trust-g{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px)}
+.ti{display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center}
+.ti .k{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(1.9rem,3vw,2.7rem);line-height:1;letter-spacing:0;display:flex;align-items:center;gap:.35em;color:var(--ink)}
+.ti .l{font-family:"Jost";font-weight:400;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);line-height:1.6}
+.stars{display:flex;gap:3px}
+.stars svg{width:14px;height:14px;fill:var(--accent)}
+
+/* ---- promise ---- */
+.prom-g{display:grid;grid-template-columns:.42fr .58fr;gap:clamp(40px,7vw,110px);align-items:start}
+.prom-g h2{font-size:clamp(2.4rem,5.4vw,4.7rem);max-width:15ch;font-weight:400}
+.prom-g h2 em{font-style:italic;font-weight:400;color:var(--ink)}
+.prom-body{font-size:clamp(1.04rem,1.3vw,1.2rem);line-height:1.86;font-weight:300;color:var(--ink-2)}
+.prom-body p+p{margin-top:1.3em}
+.favs{margin-top:44px;padding-top:34px;border-top:1px solid var(--line)}
+.favs .h{font-family:"Jost";font-weight:500;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:22px}
+.favs ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 30px}
+.favs li{font-size:1.04rem;color:var(--ink-2);display:flex;gap:.7em;align-items:baseline;line-height:1.5;font-weight:300}
+.favs li::before{content:"\2014";color:var(--accent);flex:none}
+
+/* ---- signature: my job / your job (dark, immersive) ---- */
+.jobs{position:relative;overflow:hidden;background:var(--deep-2);color:#fff}
+.jobs-bg{position:absolute;inset:0}
+.jobs-bg img{width:100%;height:100%;object-fit:cover;opacity:.2}
+.jobs-bg::after{content:"";position:absolute;inset:0;background:rgba(20,17,9,.74)}
+.jobs-in{position:relative;z-index:2}
+.jobs-head{text-align:center;margin-bottom:clamp(48px,6vw,88px)}
+.jobs-head .eyebrow{display:block;margin-bottom:24px}
+.jobs-head h2{font-size:clamp(2.8rem,7.5vw,6rem);color:#fff;letter-spacing:0;font-weight:400}
+.jobs-head h2 em{font-style:italic;font-weight:400;color:#fff}
+.jobs-split{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--deep-line);border-bottom:1px solid var(--deep-line)}
+.job{padding:clamp(34px,4vw,58px) clamp(26px,3vw,52px)}
+.job+.job{border-left:1px solid var(--deep-line)}
+.job .tag{font-family:"Jost";font-weight:500;font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:28px;display:block}
+.job p{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(1.4rem,2.2vw,1.95rem);line-height:1.34;letter-spacing:0;color:#fff}
+.job.mine p{color:rgba(255,255,255,.96)}
+.job.yours{background:transparent}
+.jobs-foot{margin-top:clamp(44px,5vw,74px);text-align:center}
+.jobs-foot .q{font-family:"Cormorant Garamond";font-weight:400;font-style:italic;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.36;max-width:32ch;margin:0 auto;color:#fff;letter-spacing:0}
+.jobs-foot .who{margin-top:24px;font-family:"Jost";font-weight:400;font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+
+/* ---- work (light) ---- */
+.work{background:var(--paper)}
+.work-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(40px,5vw,74px)}
+.work-head h2{font-size:clamp(2.4rem,5.4vw,4.7rem);max-width:16ch;font-weight:400}
+.work-head .eyebrow{display:block;margin-bottom:22px}
+.mos{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,1.9vw,30px)}
+.tile{position:relative;overflow:hidden;background:var(--paper-2)}
+.tile img{width:100%;height:100%;object-fit:cover}
+.cap{display:none}
+.m-a{grid-column:span 5;aspect-ratio:17/16}
+.m-b{grid-column:span 7;aspect-ratio:3/2}
+.m-c{grid-column:span 4;aspect-ratio:1/1}
+.m-d{grid-column:span 4;aspect-ratio:1/1}
+.m-e{grid-column:span 4;aspect-ratio:1/1}
+.m-f{grid-column:span 7;aspect-ratio:3/2}
+.m-g{grid-column:span 5;aspect-ratio:17/16}
+.work-foot{margin-top:clamp(42px,5vw,66px);display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:center}
+
+/* ---- anywhere (light) ---- */
+.any{background:var(--paper-2);overflow:hidden}
+.any h2{font-size:clamp(2.2rem,4.8vw,3.9rem);color:var(--ink);max-width:20ch;margin-bottom:.5em;font-weight:400}
+.any h2 em{font-style:italic;font-weight:400;color:var(--ink)}
+.any p{color:var(--ink-2);max-width:52ch;line-height:1.86;font-weight:300}
+.places{margin-top:clamp(36px,4vw,58px);display:flex;flex-wrap:wrap;gap:12px 0;align-items:baseline}
+.places span{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(1.4rem,2.8vw,2.5rem);letter-spacing:0;color:var(--ink);padding-right:.6em}
+.places .s{color:var(--accent);font-weight:400;padding-right:.6em}
+.places .far{color:var(--ink-soft);font-weight:400;font-style:italic}
+
+/* ---- beyond (de-boxed) ---- */
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px)}
+.card{background:transparent;border:0;display:flex;flex-direction:column}
+.card .im{aspect-ratio:4/3;overflow:hidden;background:var(--paper-2)}
+.card .im img{width:100%;height:100%;object-fit:cover}
+.card .bd{padding:26px 0 0;display:flex;flex-direction:column;flex:1}
+.card .kicker{font-family:"Jost";font-weight:500;font-size:.63rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+.card h3{font-size:clamp(1.7rem,2.6vw,2.3rem);margin-bottom:14px;font-weight:400}
+.card p{color:var(--ink-2);font-size:1.02rem;line-height:1.72;margin-bottom:24px;font-weight:300}
+.card .alink{margin-top:auto;align-self:flex-start}
+
+/* ---- me ---- */
+.me-g{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(40px,6vw,92px);align-items:center}
+.ph{aspect-ratio:4/5;border:1px solid var(--line);background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:34px;text-align:center;color:var(--ink-soft)}
+.ph svg{width:32px;height:32px;stroke:var(--ink-soft);fill:none;opacity:.55}
+.ph .t{font-family:"Cormorant Garamond";font-weight:400;font-size:1.55rem;color:var(--ink);letter-spacing:0}
+.ph .s{font-size:.82rem;max-width:26ch;line-height:1.6;font-weight:300;letter-spacing:.03em}
+.me-copy .eyebrow{display:block;margin-bottom:24px}
+.me-copy h2{font-size:clamp(2.4rem,5.4vw,4.7rem);margin-bottom:.4em;font-weight:400}
+.me-copy h2 em{font-style:italic;font-weight:400;color:var(--ink)}
+.me-copy p{color:var(--ink-2);font-size:1.1rem;line-height:1.86;max-width:54ch;font-weight:300}
+.me-copy p+p{margin-top:1.1em}
+.me-facts{margin-top:42px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-top:34px;border-top:1px solid var(--line)}
+.mf .k{font-family:"Cormorant Garamond";font-weight:400;font-size:2rem;letter-spacing:0;color:var(--ink)}
+.mf .l{font-family:"Jost";font-weight:400;font-size:.61rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px;line-height:1.5}
+.me-act{margin-top:42px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+
+/* ---- reviews (de-boxed pull-quotes) ---- */
+.rev{background:var(--paper-2)}
+.rev-head{text-align:center;margin-bottom:clamp(48px,6vw,84px)}
+.rev-head .eyebrow{display:block;margin-bottom:22px}
+.rev-head h2{font-size:clamp(2.4rem,5.4vw,4.7rem);font-weight:400}
+.rgrid{columns:2;column-gap:clamp(44px,5vw,84px)}
+.rc{break-inside:avoid;margin-bottom:clamp(40px,4vw,64px);background:transparent;border:0;padding:32px 0 0;border-top:1px solid var(--line)}
+.rc.feat{background:transparent;border-top:1px solid var(--line);color:var(--ink)}
+.rq{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(1.4rem,1.9vw,1.78rem);line-height:1.44;letter-spacing:0;color:var(--ink)}
+.rc.feat .rq{color:var(--ink)}
+.rq .lead{font-style:italic;color:var(--ink)}
+.rc.feat .rq .lead{color:var(--ink)}
+.rwho{margin-top:22px;font-family:"Jost";font-weight:500;font-size:.61rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.rc.feat .rwho{color:var(--ink-soft)}
+.rwho b{color:var(--ink);font-weight:500}
+.rc.feat .rwho b{color:var(--ink)}
+.rev-foot{text-align:center;margin-top:clamp(40px,4vw,64px)}
+
+/* ---- pricing ---- */
+.inv-g{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(44px,6vw,100px);align-items:start}
+.inv-l .eyebrow{display:block;margin-bottom:24px}
+.inv-l h2{font-size:clamp(2.4rem,5.4vw,4.7rem);margin-bottom:.35em;font-weight:400}
+.inv-l h2 em{font-style:italic;font-weight:400;color:var(--ink)}
+.big-price{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(3.6rem,8vw,6.4rem);line-height:1;letter-spacing:0;margin:14px 0 16px}
+.big-price small{font-family:"Jost";font-weight:400;font-size:.15em;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-top:22px}
+.inv-l p{color:var(--ink-2);max-width:38ch;line-height:1.8;font-weight:300}
+.terms{display:flex;flex-direction:column}
+.term{display:grid;grid-template-columns:auto 1fr;gap:28px;padding:28px 0;border-top:1px solid var(--line)}
+.term:first-child{border-top:0;padding-top:0}
+.term .n{font-family:"Jost";font-weight:500;font-size:.61rem;letter-spacing:.2em;color:var(--ink-soft);padding-top:8px;text-transform:uppercase}
+.term h3{font-size:clamp(1.4rem,2vw,1.7rem);margin-bottom:.3em;font-weight:400}
+.term p{color:var(--ink-soft);font-size:1rem;line-height:1.66;font-weight:300}
+.inv-act{margin-top:42px;display:flex;flex-wrap:wrap;gap:16px}
+
+/* ---- close (dark, immersive) ---- */
+.close{position:relative;overflow:hidden;background:var(--deep-2)}
+.close-bg{position:absolute;inset:0}
+.close-bg img{width:100%;height:100%;object-fit:cover;object-position:center 36%;opacity:.38}
+.close-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,17,9,.9) 0%,rgba(20,17,9,.66) 55%,rgba(20,17,9,.42) 100%)}
+.close-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:center}
+.close-c{color:#fff}
+.close-c .eyebrow{display:block;margin-bottom:26px}
+.close-c h2{font-size:clamp(2.8rem,6vw,5rem);color:#fff;max-width:14ch;letter-spacing:0;font-weight:400}
+.close-c h2 em{font-style:italic;font-weight:400;color:#fff}
+.close-c p{color:rgba(255,255,255,.88);font-size:1.1rem;line-height:1.76;max-width:40ch;margin-top:26px;font-weight:300}
+.close-mini{margin-top:32px;display:flex;flex-direction:column;gap:10px;font-family:"Jost";font-weight:400;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.close-mini a{color:#fff;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px}
+.fcard{background:var(--paper);padding:clamp(28px,3.4vw,44px);border:0}
+.fcard h3{font-size:clamp(1.6rem,2.2vw,2rem);margin-bottom:8px;font-weight:400}
+.fsub{color:var(--ink-soft);font-size:.95rem;margin-bottom:28px;font-weight:300}
+.field{margin-bottom:20px}
+.field label{display:block;font-family:"Jost";font-weight:500;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:10px}
+.field input,.field textarea,.field select{width:100%;font-family:"Jost";font-size:.95rem;font-weight:400;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:.65em 0;transition:border-color .25s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--ink)}
+.field textarea{resize:vertical;min-height:82px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.fcard .btn{width:100%;margin-top:14px}
+.fmsg{display:none;text-align:center;padding:32px 8px}
+.fmsg.show{display:block}
+.fmsg .em{font-family:"Cormorant Garamond";font-weight:400;font-size:2rem;color:var(--ink);margin-bottom:12px;letter-spacing:0}
+.fmsg p{color:var(--ink-soft);font-size:.98rem;font-weight:300}
+
+/* ---- footer (dark) ---- */
+.foot{background:var(--deep-2);color:rgba(255,255,255,.7);padding-top:clamp(64px,7vw,100px)}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.1fr;gap:clamp(30px,4vw,56px);padding-bottom:48px;border-bottom:1px solid var(--deep-line)}
+.fb b{font-family:"Cormorant Garamond";font-weight:500;font-size:2.1rem;letter-spacing:.02em;color:#fff;display:block}
+.fb .tag{font-family:"Jost";font-weight:400;font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--accent-soft);margin-top:12px;display:block}
+.fb p{margin-top:20px;font-size:.92rem;line-height:1.7;max-width:34ch;color:rgba(255,255,255,.56);font-weight:300}
+.fcol h4{font-family:"Jost";font-weight:500;font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--accent-soft);margin:0 0 18px}
+.fcol a,.fcol span{display:block;font-size:.9rem;color:rgba(255,255,255,.72);padding:5px 0;transition:opacity .25s;font-weight:300}
+.fcol a:hover{opacity:.58}
+.news{margin-top:18px}
+.news .r{display:flex;gap:0;border-bottom:1px solid var(--deep-line)}
+.news input{flex:1;min-width:0;font-family:"Jost";font-size:.86rem;font-weight:300;color:#fff;background:transparent;border:0;padding:.6em 0}
+.news input::placeholder{color:rgba(255,255,255,.4)}
+.news input:focus{outline:none}
+.news .btn{padding:.6em 0 .6em 1em;font-size:.6rem;border:0;background:transparent;color:#fff;letter-spacing:.2em}
+.news .btn:hover{background:transparent;color:var(--accent-soft)}
+.fsoc{display:flex;gap:16px;margin-top:20px}
+.fsoc svg{width:18px;height:18px;fill:rgba(255,255,255,.65);transition:fill .25s,transform .25s}
+.fsoc a:hover svg{fill:#fff;transform:translateY(-2px)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding-block:28px;font-family:"Jost";font-weight:400;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.fbot a{color:var(--accent-soft)}
+
+.mcta{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;background:var(--ink);padding:12px 16px;align-items:center;justify-content:space-between;gap:12px;transform:translateY(150%);transition:transform .5s var(--ease)}
+.mcta.show{transform:translateY(0)}
+.mcta .t{font-family:"Jost";font-weight:400;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.mcta .btn{padding:.85em 1.4em;font-size:.6rem;border-color:rgba(255,255,255,.5);color:#fff}
+.mcta .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media (max-width:1100px){
+  .nav,.hdr-r .btn{display:none}
+  .burger{display:flex}
+  .mcta{display:flex}
+  .prom-g,.me-g,.inv-g,.close-in{grid-template-columns:1fr}
+  .me-g .ph{max-width:360px}
+  .trust-g{grid-template-columns:1fr 1fr;gap:38px 20px}
+}
+@media (max-width:819px){
+  .mos{grid-template-columns:repeat(2,1fr)}
+  .m-a{grid-column:span 2;aspect-ratio:16/10}
+  .m-b{grid-column:span 2;aspect-ratio:3/2}
+  .m-c,.m-d{grid-column:span 1;aspect-ratio:1/1}
+  .m-e{grid-column:span 2;aspect-ratio:3/2}
+  .m-f,.m-g{grid-column:span 2;aspect-ratio:3/2}
+  .jobs-split{grid-template-columns:1fr}
+  .job+.job{border-left:0;border-top:1px solid var(--deep-line)}
+  .two-up{grid-template-columns:1fr}
+  .rgrid{columns:1}
+  .favs ul{grid-template-columns:1fr}
+  .me-facts{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .fb{grid-column:span 2}
+  .frow{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .hero-act .btn{flex:1}
+  .foot-top{grid-template-columns:1fr}
+  .fb{grid-column:span 1}
+}
+
+/* logo */
+.brand{flex-direction:row;align-items:center;gap:13px}
+.brand-logo{height:44px;width:auto;filter:invert(1);transition:filter .4s;flex:none}
+.hdr.solid .brand-logo{filter:none}
+.brand-txt{display:flex;flex-direction:column;gap:3px}
+.foot-logo{height:56px;width:auto;filter:invert(1);margin-bottom:20px;display:block}
+
+/* full-bleed frames band + portrait frame */
+.frames{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--deep-2)}
+.frames .fr{margin:0;overflow:hidden}
+.frames .fr img{width:100%;height:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+.ph{padding:0}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width:819px){.frames{grid-template-columns:repeat(2,1fr)}}
+
+/* mobile-nav accordion */
+.mnav .macc{border-bottom:1px solid var(--line)}
+.mnav .macc-t{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;background:none;border:0;cursor:pointer;font-family:"Cormorant Garamond";font-weight:400;font-size:2.1rem;color:var(--ink);padding:.26em 0;letter-spacing:0;text-align:left;line-height:1.04}
+.mnav .macc-ic{position:relative;width:17px;height:17px;flex:none;margin-right:2px}
+.mnav .macc-ic::before,.mnav .macc-ic::after{content:"";position:absolute;background:var(--ink);transition:opacity .3s,transform .3s}
+.mnav .macc-ic::before{top:50%;left:0;right:0;height:1.5px;transform:translateY(-50%)}
+.mnav .macc-ic::after{left:50%;top:0;bottom:0;width:1.5px;transform:translateX(-50%)}
+.mnav .macc.open .macc-ic::after{opacity:0}
+.mnav .macc .sub{max-height:0;overflow:hidden;transition:max-height .45s var(--ease)}
+.mnav .macc.open .sub{max-height:660px;padding-bottom:10px}
+
+/* menu open: header contents go dark on the light overlay */
+body.lock .burger span{background:var(--ink)}
+body.lock .brand-logo{filter:none}
+body.lock .brand b{color:var(--ink)}
+body.lock .brand span{color:var(--ink-soft)}
+
+/* hero primary CTA hover: white fill, brown text */
+.hero-act .btn--wine:hover{background:#fff;color:var(--accent);border-color:#fff}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand" aria-label="Kendall Rock home">
+      <img class="brand-logo" src="images/img01.png" alt="">
+      <div class="brand-txt"><b>KENDALL ROCK</b><span>Seattle · PNW · Alaska</span></div>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li>
+          <button class="top" aria-haspopup="true">Galleries <i class="caret"></i></button>
+          <ul class="submenu">
+            <li><a href="https://www.kendall-rock.com/seattle-weddings">Seattle</a></li>
+            <li><a href="https://www.kendall-rock.com/pacific-northwest-weddings">Pacific Northwest</a></li>
+            <li><a href="https://www.kendall-rock.com/washignton-state-ferry-boat-photoshoots">Ferry Boat Photoshoots</a></li>
+            <li><a href="https://www.kendall-rock.com/alaska-weddings">Alaska</a></li>
+            <li><a href="https://www.kendall-rock.com/california-weddings">California</a></li>
+            <li><a href="https://www.kendall-rock.com/colorado-weddings">Colorado</a></li>
+            <li><a href="https://www.kendall-rock.com/everywhere-weddings">National + Global</a></li>
+          </ul>
+        </li>
+        <li><a href="#investment">Pricing</a></li>
+        <li><a href="#me">Me</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.kendall-rock.com/print-sale">Print Sale</a></li>
+        <li><a href="https://www.kendall-rock.com/blog">Blog</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-r"><a href="#contact" class="btn btn--wine">Get the full details</a></div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <div class="macc">
+    <button class="macc-t" type="button" aria-expanded="false" aria-controls="msub-gal">Galleries<span class="macc-ic" aria-hidden="true"></span></button>
+    <div class="sub" id="msub-gal">
+      <a href="https://www.kendall-rock.com/overview">All galleries</a>
+    <a href="https://www.kendall-rock.com/seattle-weddings">Seattle</a>
+    <a href="https://www.kendall-rock.com/pacific-northwest-weddings">Pacific Northwest</a>
+    <a href="https://www.kendall-rock.com/washignton-state-ferry-boat-photoshoots">Ferry Boat Photoshoots</a>
+    <a href="https://www.kendall-rock.com/alaska-weddings">Alaska</a>
+    <a href="https://www.kendall-rock.com/california-weddings">California</a>
+    <a href="https://www.kendall-rock.com/colorado-weddings">Colorado</a>
+    <a href="https://www.kendall-rock.com/everywhere-weddings">National + Global</a>
+  </div>
+  </div>
+  <a href="#investment" data-close>Pricing</a>
+  <a href="#me" data-close>Me</a>
+  <a href="#contact" data-close>Contact</a>
+  <a href="https://www.kendall-rock.com/print-sale">Print Sale</a>
+  <a href="https://www.kendall-rock.com/blog">Blog</a>
+  <a href="#contact" class="btn btn--wine m-cta" data-close>Get the full details</a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ J1 HERO ============ -->
+<section class="hero">
+  <div class="hero-img"><img class="kb" src="images/img02.jpg" alt="A bride on the rocky Pacific coast, her veil lifting in the sea wind"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-c">
+    <span class="hero-eye"><span class="d"></span>Seattle · Washington · Alaska · the greater PNW and beyond</span>
+    <h1>Your right hand, <em>ma'am.</em></h1>
+    <p class="hero-p">Wedding, elopement and music tour photography. A calming presence at your side all day, secretly keeping track of time, and capturing the things you aren't noticing.</p>
+    <p class="hero-anchor">Weddings from <b>$5,800</b> · 8-hour minimum in 2027 · booking a year out</p>
+    <div class="hero-act">
+      <a href="#contact" class="btn btn--wine">Get the full details</a>
+      <a href="#work" class="btn btn--ghost-dark">See the galleries</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="section--tight trust">
+  <div class="wrap trust-g reveal">
+    <div class="ti">
+      <div class="k">5.0
+        <span class="stars" aria-label="5 out of 5"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></span>
+      </div>
+      <div class="l">From 37 reviews</div>
+    </div>
+    <div class="ti"><div class="k">One a day</div><div class="l">One wedding per day,<br>never doubled up</div></div>
+    <div class="ti"><div class="k">A year out</div><div class="l">Dates confirmed twelve<br>months in advance</div></div>
+    <div class="ti"><div class="k">WA · AK · OR · CO · CA</div><div class="l">Plus Thailand, Ireland<br>and wherever you're going</div></div>
+  </div>
+</section>
+
+<!-- ============ J2 PROMISE ============ -->
+<section class="section">
+  <div class="wrap prom-g">
+    <div class="reveal">
+      <span class="eyebrow">Start from scratch with me</span>
+      <h2 style="margin-top:16px">Who are you, <em>together?</em></h2>
+    </div>
+    <div class="prom-body reveal">
+      <p class="lede">I love working from the ground up. Why are you getting married? What actually matters emotionally on the day, if you erase the list of traditions you were told to include? Then we slot the photo logistics into that vision, and use them to make the day flow better.</p>
+      <p class="lede">I am here to help manifest your dream, not to reproduce somebody else's.</p>
+      <div class="favs">
+        <div class="h">Some of my favourite things couples have done</div>
+        <ul>
+          <li>Dinner before the ceremony</li>
+          <li>Guest participation in the vows</li>
+          <li>Noise makers, so people cheer during the ceremony</li>
+          <li>A live karaoke band</li>
+          <li>A polar plunge with the team to start the day</li>
+          <li>Potluck dinner</li>
+          <li>Handmade everything</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE — MY JOB / YOUR JOB ============ -->
+<section class="section jobs">
+  <div class="jobs-bg"><img src="images/img03.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap jobs-in">
+    <div class="jobs-head reveal">
+      <span class="eyebrow on-dark">Your right hand ma'am</span>
+      <h2>There are only <em>two jobs</em> that day.</h2>
+    </div>
+    <div class="jobs-split reveal">
+      <div class="job mine">
+        <span class="tag">My job</span>
+        <p>Being a calming presence at your side all day while secretly keeping track of time, politely swatting away anyone sucking up your precious energy, turning treasured moments into images, creating space for stillness when I sense you need it, and capturing the things you aren't noticing.</p>
+      </div>
+      <div class="job yours">
+        <span class="tag">Your job</span>
+        <p>Be present, soak it in, and enjoy all the hard work you've put into planning the dang thing.</p>
+      </div>
+    </div>
+    <div class="jobs-foot reveal">
+      <p class="q">"We thought we were just hiring a photographer, but we got so much more — a wedding planner, a day-of coordinator, and an emotional hand-holder."</p>
+      <p class="who">Elenya · Sitka, Alaska</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J3 WORK ============ -->
+<section class="section work" id="work">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <div>
+        <span class="eyebrow">Selected work</span>
+        <h2>Mountain tops, trailer parks, and one very cold ocean.</h2>
+      </div>
+      <a href="https://www.kendall-rock.com/overview" class="alink">All galleries →</a>
+    </div>
+    <div class="mos reveal">
+      <div class="tile m-a"><img src="images/img04.jpg" alt="An Alaskan glacier elopement, the couple beside a pool of meltwater" loading="lazy"><div class="cap">Hicksville Trailer Palace · Joshua Tree, CA</div></div>
+      <div class="tile m-b"><img src="images/img05.jpg" alt="Couple portraits during a wedding day picnic" loading="lazy"><div class="cap">Portraits, and a picnic</div></div>
+      <div class="tile m-c"><img src="images/img06.jpg" alt="A bride in a white wedding jumpsuit with pearl sleeves hugging a man in a brown suit on the beach at sunset, Golden Gardens Park, Seattle" loading="lazy"><div class="cap">Golden Gardens Park · Seattle</div></div>
+      <div class="tile m-d"><img src="images/img07.jpg" alt="A bride and groom walking a forest trail on their wedding day, the bride holding a bouquet" loading="lazy"><div class="cap">A forest trail, PNW</div></div>
+      <div class="tile m-e"><img src="images/img08.jpg" alt="Family portraits during a wedding day" loading="lazy"><div class="cap">The family portraits, done fast</div></div>
+      <div class="tile m-f"><img src="images/img09.jpg" alt="Couple portraits on a wedding day" loading="lazy"><div class="cap">Late light</div></div>
+      <div class="tile m-g"><img src="images/img10.jpg" alt="Sunny, salty winter elopement on the California coast" loading="lazy"><div class="cap">Sea Ranch, CA · winter elopement</div></div>
+    </div>
+    <div class="work-foot reveal">
+      <a href="https://www.kendall-rock.com/overview" class="btn btn--ghost">Browse the galleries</a>
+      <span style="font-family:'Jost';font-weight:400;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)">Weddings · Elopements · Portraits · Music tours</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ANYWHERE ============ -->
+<section class="frames"><figure class="fr"><img src="images/img11.jpg" alt="A bride on the rocky Pacific coast, her veil lifting in the wind" loading="lazy"></figure><figure class="fr"><img src="images/img12.jpg" alt="An elopement on an Alaskan glacier beside a pool of meltwater" loading="lazy"></figure><figure class="fr"><img src="images/img13.jpg" alt="A couple embracing, seen through layered reflections" loading="lazy"></figure><figure class="fr"><img src="images/img14.jpg" alt="A couple beneath a windswept coastal pine" loading="lazy"></figure></section>
+<section class="section any">
+  <div class="wrap reveal">
+    <span class="eyebrow">I'll go anywhere</span>
+    <h2 style="margin-top:16px">Based in Seattle. <em>Almost never in Seattle.</em></h2>
+    <p>I am most often shooting in Washington, Alaska, Oregon, Colorado and California — but I have gone as far as Thailand and Ireland to make those mems.</p>
+    <div class="places">
+      <span>Washington</span><span class="s">/</span>
+      <span>Alaska</span><span class="s">/</span>
+      <span>Oregon</span><span class="s">/</span>
+      <span>Colorado</span><span class="s">/</span>
+      <span>California</span><span class="s">/</span>
+      <span class="far">Thailand</span><span class="s">/</span>
+      <span class="far">Ireland</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEYOND ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="two-up">
+      <div class="card reveal">
+        <div class="im"><img src="images/img15.jpg" alt="A couple on the Seattle waterfront waving to a passing Washington State ferry" loading="lazy"></div>
+        <div class="bd">
+          <div class="kicker">A Pacific Northwest speciality</div>
+          <h3>Ferry boat photoshoots</h3>
+          <p>Thirty-five minutes across Puget Sound, changing light the whole way, and a backdrop no studio can build. It has become one of my favourite ways to shoot a couple, and it costs the price of a walk-on ticket.</p>
+          <a href="https://www.kendall-rock.com/washignton-state-ferry-boat-photoshoots" class="alink">See the ferry gallery →</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="im"><img src="images/img16.jpg" alt="A band performing under stage lights with a full orchestra, shot on tour" loading="lazy"></div>
+        <div class="bd">
+          <div class="kicker">Not only weddings</div>
+          <h3>Portraits &amp; music tours</h3>
+          <p>I shoot on the road with musicians as well — green rooms, load-ins, the diner at 1am. It is the same instinct as a wedding day: stay close, stay out of the way, catch the thing nobody planned.</p>
+          <a href="https://www.kendall-rock.com/tour-photography" class="alink">See tour photography →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J4 ME ============ -->
+<section class="section" id="me">
+  <div class="wrap">
+    <div class="me-g">
+      <div class="ph reveal"><img src="images/img17.jpg" alt="Kendall Rock, photographer, on a Pacific Northwest beach"></div>
+      <div class="me-copy reveal">
+        <span class="eyebrow">Me</span>
+        <h2>Born and bred in the <em>Pacific Northwest.</em></h2>
+        <p>I am Kendall. Seattle-based wedding, elopement and music tour photographer, and I am almost always on the road — Washington, Alaska, the greater PNW and considerably beyond.</p>
+        <p>I book one year in advance. It keeps my sanity and gives me a little control over my schedule; my actual nightmare is being booked to photograph a wedding on the day my best friend schedules hers. You are welcome to reach out earlier and I will pencil you in, I just can't confirm until a year out.</p>
+        <div class="me-facts">
+          <div class="mf"><div class="k">One per day</div><div class="l">I only ever shoot one<br>wedding in a day</div></div>
+          <div class="mf"><div class="k">250+ guests</div><div class="l">When I'll recommend<br>a second shooter</div></div>
+          <div class="mf"><div class="k">No video</div><div class="l">I don't shoot it, but I<br>can recommend people</div></div>
+        </div>
+        <div class="me-act">
+          <a href="#contact" class="btn btn--ink">Get the full details</a>
+          <a href="https://www.kendall-rock.com/itme" class="alink">More about me →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J5 REVIEWS ============ -->
+<section class="section rev" id="reviews">
+  <div class="wrap">
+    <div class="rev-head reveal">
+      <span class="eyebrow">5.0 from 37 reviews</span>
+      <h2>What couples say afterwards</h2>
+    </div>
+    <div class="rgrid">
+      <div class="rc feat reveal">
+        <p class="rq"><span class="lead">"On the day of, she was the perfect blend of assertive</span> (okay that's enough forced posing, let's move on!) and invisible (seriously, where was she even when she got that shot?). She knew the timeline and when to move us forward or let us get lost in the moment. Not to mention, she brought her killer moves to the dance floor."</p>
+        <p class="rwho"><b>Elenya</b> · Sitka, Alaska</p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"Kendall is an amazing photographer,</span> was our personal champion on our big day, and is one of the coolest people around. You'd be an idiot to not have her capture your wedding. Absolute perfection."</p>
+        <p class="rwho"><b>Emily Prigmore</b></p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"We had some very unfortunate events happen the evening before our wedding.</span> Kendall was kind and comforting and totally able to pivot and make us feel at ease. I told her that morning we did not care about our things being photographed, we cared about her capturing our people. She did just that."</p>
+        <p class="rwho"><b>Candice Bancheri</b> · McKenzie River, Oregon</p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"Do yourself a freaking favour and hire Kendall.</span> Her photos speak for themselves, and the person behind the camera is even better. Direct yet warm, patient but keeps you on track."</p>
+        <p class="rwho"><b>Katy Dalton</b></p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"She did so much more than take amazing photos</span> — she wrangled guests, made sure we stayed hydrated, and generally kept things handled with such a calm presence."</p>
+        <p class="rwho"><b>Andrea Renfroe</b></p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"From our mountain engagement shoot to our industrial brewery wedding,</span> Kendall captured the best of each moment and made sure we had fun and were comfortable the whole time — checking in on us while being completely unobtrusive."</p>
+        <p class="rwho"><b>Kirby</b> · Denver, Colorado</p>
+      </div>
+    </div>
+    <div class="rev-foot reveal"><a href="https://www.kendall-rock.com/contact" class="btn btn--ghost">Read all 37 reviews</a></div>
+  </div>
+</section>
+
+<!-- ============ J8 INVESTMENT ============ -->
+<section class="section" id="investment">
+  <div class="wrap inv-g">
+    <div class="inv-l reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Weddings <em>start at</em></h2>
+      <div class="big-price">$5,800<small>Send an inquiry and I'll hit you with the full details</small></div>
+      <p>No packages under eight hours in 2027 — short coverage means I'm packing up right as the good part starts.</p>
+      <div class="inv-act">
+        <a href="#contact" class="btn btn--wine">Get the full details</a>
+        <a href="https://www.kendall-rock.com/pricing-1" class="btn btn--ghost">Pricing page</a>
+      </div>
+    </div>
+    <div class="terms reveal">
+      <div class="term"><div class="n">01</div><div><h3>Eight hours, minimum</h3><p>From 2027 I'm not offering anything shorter. Eight hours is where a day stops feeling rushed.</p></div></div>
+      <div class="term"><div class="n">02</div><div><h3>One wedding a day, booked a year out</h3><p>Your date is confirmed twelve months ahead. Reach out earlier and I'll pencil you in.</p></div></div>
+      <div class="term"><div class="n">03</div><div><h3>A second shooter over 250 guests</h3><p>I'm comfortable covering most weddings solo. Past 250 guests I'll recommend bringing someone in so nobody you love gets missed.</p></div></div>
+      <div class="term"><div class="n">04</div><div><h3>Travel is normal here</h3><p>Washington, Alaska, Oregon, Colorado, California — and further when the day calls for it.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J9 CLOSE ============ -->
+<section class="section close" id="contact">
+  <div class="close-bg"><img src="images/img18.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap close-in">
+    <div class="close-c reveal">
+      <span class="eyebrow on-dark">Let's chat</span>
+      <h2>Tell me what you're <em>actually</em> planning.</h2>
+      <p>Not the version you think a photographer wants to hear. The polar plunge, the potluck, the karaoke band. Send me an inquiry and I'll hit you with the full details.</p>
+      <div class="close-mini">
+        <span>Seattle, Washington</span>
+        <span>Booking a year in advance</span>
+        <span><a href="https://www.instagram.com/kendallrock/">@kendallrock</a></span>
+      </div>
+    </div>
+    <div class="fcard reveal">
+      <div id="fin">
+        <h3>Get the full details</h3>
+        <p class="fsub">A few lines is plenty. I answer everything myself.</p>
+        <div class="frow">
+          <div class="field"><label for="n">Your names</label><input id="n" type="text" placeholder="Elenya &amp; co."></div>
+          <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="d">Date</label><input id="d" type="text" placeholder="Aug 2027 (or a guess)"></div>
+          <div class="field"><label for="k">What for</label>
+            <select id="k"><option>Wedding</option><option>Elopement</option><option>Ferry boat photoshoot</option><option>Portraits</option><option>Music / tour</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="v">Where</label><input id="v" type="text" placeholder="Seattle / Sitka / no idea yet"></div>
+        <div class="field"><label for="m">The good stuff</label><textarea id="m" placeholder="What are you building? What matters most about it?"></textarea></div>
+        <button class="btn btn--wine" id="send" type="button">Send it over</button>
+      </div>
+      <div class="fmsg" id="fmsg">
+        <div class="em">Got it.</div>
+        <p>I'll check the date and come back to you with the full details.<br>Talk soon. — Kendall</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J10 FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="fb">
+        <img class="foot-logo" src="images/img01.png" alt="">
+        <b>KENDALL ROCK</b>
+        <span class="tag">Seattle · PNW · Alaska · beyond</span>
+        <p>Visual storytelling from the Pacific Northwest. Wedding, portrait and music photography, based in Seattle but always on the road.</p>
+      </div>
+      <div class="fcol">
+        <h4>Galleries</h4>
+        <a href="https://www.kendall-rock.com/seattle-weddings">Seattle</a>
+        <a href="https://www.kendall-rock.com/pacific-northwest-weddings">Pacific Northwest</a>
+        <a href="https://www.kendall-rock.com/washignton-state-ferry-boat-photoshoots">Ferry Boat Photoshoots</a>
+        <a href="https://www.kendall-rock.com/alaska-weddings">Alaska</a>
+        <a href="https://www.kendall-rock.com/everywhere-weddings">National + Global</a>
+      </div>
+      <div class="fcol">
+        <h4>More</h4>
+        <a href="#investment">Pricing</a>
+        <a href="#me">Me</a>
+        <a href="#contact">Contact</a>
+        <a href="https://www.kendall-rock.com/print-sale">Print Sale</a>
+        <a href="https://www.kendall-rock.com/blog">Blog</a>
+      </div>
+      <div class="fcol">
+        <h4>Want to passively keep in touch?</h4>
+        <span style="color:rgba(255,255,255,.6);font-size:.85rem;line-height:1.55">A very minimal newsletter — blog posts, updates, general happenings.</span>
+        <div class="news">
+          <div class="r">
+            <input type="email" id="nl" placeholder="Email address" aria-label="Email address">
+            <button class="btn btn--wine" type="button" id="nlb">Sign up</button>
+          </div>
+        </div>
+        <div class="fsoc">
+          <a href="https://www.instagram.com/kendallrock/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.9c2.95 0 3.3.01 4.47.06 1.08.05 1.66.23 2.05.38.51.2.88.44 1.27.82.38.39.63.76.82 1.27.15.39.33.97.38 2.05.05 1.17.06 1.52.06 4.47s-.01 3.3-.06 4.47c-.05 1.08-.23 1.66-.38 2.05-.2.51-.44.88-.82 1.27-.39.38-.76.63-1.27.82-.39.15-.97.33-2.05.38-1.17.05-1.52.06-4.47.06s-3.3-.01-4.47-.06c-1.08-.05-1.66-.23-2.05-.38a3.4 3.4 0 0 1-1.27-.82 3.4 3.4 0 0 1-.82-1.27c-.15-.39-.33-.97-.38-2.05-.05-1.17-.06-1.52-.06-4.47s.01-3.3.06-4.47c.05-1.08.23-1.66.38-2.05.2-.51.44-.88.82-1.27.39-.38.76-.63 1.27-.82.39-.15.97-.33 2.05-.38 1.17-.05 1.52-.06 4.47-.06m0-1.9C9 1 8.6 1.01 7.42 1.07c-1.18.05-1.99.24-2.69.52-.73.28-1.35.66-1.97 1.28-.62.62-1 1.24-1.28 1.97-.28.7-.47 1.51-.52 2.69C.99 8.6 1 9 1 12s-.01 3.4.05 4.58c.05 1.18.24 1.99.52 2.69.28.73.66 1.35 1.28 1.97.62.62 1.24 1 1.97 1.28.7.28 1.51.47 2.69.52C8.6 23.01 9 23 12 23s3.4.01 4.58-.05c1.18-.05 1.99-.24 2.69-.52a5.3 5.3 0 0 0 1.97-1.28 5.3 5.3 0 0 0 1.28-1.97c.28-.7.47-1.51.52-2.69.06-1.18.05-1.58.05-4.58s.01-3.4-.05-4.58c-.05-1.18-.24-1.99-.52-2.69a5.3 5.3 0 0 0-1.28-1.97 5.3 5.3 0 0 0-1.97-1.28c-.7-.28-1.51-.47-2.69-.52C15.4.99 15 1 12 1zm0 5.35A5.65 5.65 0 1 0 17.65 12 5.65 5.65 0 0 0 12 6.35zm0 9.32A3.67 3.67 0 1 1 15.67 12 3.67 3.67 0 0 1 12 15.67zm5.86-9.55a1.32 1.32 0 1 0 1.32 1.32 1.32 1.32 0 0 0-1.32-1.32z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Kendall Rock</span>
+      <span>Concept redesign by <a href="https://bgdwebdesign.com">Bouan</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta">
+  <span class="t">Booking a year out</span>
+  <a href="#contact" class="btn btn--wine">Get the details</a>
+</div>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr'),mcta=document.getElementById('mcta');
+  function onScroll(){var y=window.scrollY;hdr.classList.toggle('solid',y>60);mcta.classList.toggle('show',y>720);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
+  function toggle(open){
+    mnav.classList.toggle('open',open);document.body.classList.toggle('lock',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    var s=burger.querySelectorAll('span');
+    s[0].style.transform=open?'translateY(7px) rotate(45deg)':'';
+    s[1].style.opacity=open?'0':'1';
+    s[2].style.transform=open?'translateY(-7px) rotate(-45deg)':'';
+  }
+  burger.addEventListener('click',function(){toggle(!mnav.classList.contains('open'));});
+  mnav.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
+mnav.querySelectorAll('.macc-t').forEach(function(btn){btn.addEventListener('click',function(){var acc=btn.parentElement;var op=acc.classList.toggle('open');btn.setAttribute('aria-expanded',op?'true':'false');});});
+
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  function all(){els.forEach(function(e){e.classList.add('in');});}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    els.forEach(function(e){io.observe(e);});
+    window.addEventListener('load',function(){setTimeout(all,1800);});
+    setTimeout(all,3000);
+  } else { all(); }
+
+  var b=document.getElementById('send');
+  if(b){b.addEventListener('click',function(){
+    document.getElementById('fin').style.display='none';
+    document.getElementById('fmsg').classList.add('show');
+  });}
+  var nlb=document.getElementById('nlb');
+  if(nlb){nlb.addEventListener('click',function(){nlb.textContent='Thank you!';});}
+})();
+</script>
+</body>
+</html>
