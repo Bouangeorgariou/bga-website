@@ -1,1 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jenny GG · Seattle Wedding Photographer — i see you.</title>
+<meta name="description" content="Fun, inclusive, joyful Seattle wedding photography, documented with real emotion since 2008. Serving Seattle & the Pacific Northwest. i see you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Jenny GG — Homepage redesign concept
+   Palette derived from her real work (PNW foliage + golden light),
+   deliberately escaping both her current magenta/lime and the
+   cream/serif/terracotta AI default.
+   ============================================================ */
+:root{
+  --paper:#FAF5F3;        /* blush white — dominant */
+  --paper-2:#F1E4E0;      /* soft blush — alternating sections/cards */
+  --paper-3:#E9D8D2;      /* deeper blush */
+  --ink:#20242E;          /* deep slate-navy near-black (masculine) */
+  --ink-2:#3B4250;
+  --ink-soft:#565C6A;     /* muted slate secondary text */
+  --pine:#232B39;         /* deep slate-navy — primary anchor + CTAs (masculine) */
+  --pine-deep:#161B25;    /* darkest — signature band */
+  --pine-line:#3A4353;
+  --honey:#C15477;        /* rose pink — accent spark */
+  --honey-soft:#E093AC;   /* light pink — on-dark accent */
+  --honey-ink:#A23A5E;    /* deep rose for small text (AA on blush) */
+  --line:#EBD9D3;         /* hairline blush */
+  --teal:#2E8E92;         /* teal — second accent, balances the pink */
+  --teal-soft:#6FBEC2;    /* light teal — on dark */
+  --teal-ink:#1B6468;     /* deep teal — small text on light (AA) */
+  --rainbow:linear-gradient(90deg,#B65B41 0%,#C88A3B 26%,#7E9A54 52%,#3F7079 76%,#5A5F8C 100%);
+  --maxw:1180px;
+  --gutter:clamp(20px,5.2vw,68px);
+  --r:14px;
+  --shadow:0 18px 50px -22px rgba(30,22,10,.28);
+  --shadow-sm:0 8px 26px -14px rgba(30,22,10,.24);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Figtree",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:17px;line-height:1.7;font-weight:400;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:500;margin:0;line-height:1.06;
+  font-optical-sizing:auto;letter-spacing:-.01em}
+p{margin:0}
+::selection{background:var(--pine);color:#fff}
 
+/* --- shared type helpers --- */
+.eyebrow{font-family:"Figtree";font-weight:600;font-size:.74rem;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--teal-ink)}
+.eyebrow.on-dark{color:var(--teal-soft)}
+.serif-it{font-style:italic;font-weight:400}
+.lede{font-size:clamp(1.06rem,1.7vw,1.28rem);color:var(--ink-2);line-height:1.75}
+.muted{color:var(--ink-soft)}
+
+/* --- layout --- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(64px,9vw,132px)}
+.section--tight{padding-block:clamp(48px,6vw,84px)}
+
+/* --- buttons --- */
+.btn{display:inline-flex;align-items:center;gap:.55em;font-family:"Figtree";font-weight:600;
+  font-size:.95rem;letter-spacing:.01em;padding:.92em 1.5em;border-radius:0;cursor:pointer;
+  border:1.5px solid transparent;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s;
+  line-height:1;white-space:nowrap}
+.btn:focus-visible{outline:3px solid var(--honey);outline-offset:3px}
+.btn--primary{background:var(--pine);color:#FCFAF6}
+.btn--primary:hover{background:#223a2c;transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px)}
+.btn--on-dark{background:#FCFAF6;color:var(--pine-deep)}
+.btn--on-dark:hover{background:var(--honey-soft);color:var(--pine-deep);transform:translateY(-2px)}
+.btn--ghost-dark{background:transparent;color:#FCFAF6;border-color:rgba(252,250,246,.55)}
+.btn--ghost-dark:hover{background:rgba(252,250,246,.12);transform:translateY(-2px)}
+.btn--pink{background:var(--honey-ink);color:#fff}
+.btn--pink:hover{background:#8c3352;transform:translateY(-2px)}
+.arrow-link{display:inline-flex;align-items:center;gap:.5em;font-weight:600;font-size:.96rem;
+  color:var(--pine);transition:gap .3s}
+.arrow-link .al-t{border-bottom:1.5px solid transparent;padding-bottom:2px;transition:border-color .3s}
+.arrow-link:hover{gap:.85em}
+.arrow-link:hover .al-t{border-color:currentColor}
+.arrow-link .a{transition:transform .3s var(--ease)}
+.arrow-link:hover .a{transform:translateX(3px)}
+
+/* ============================================================
+   HEADER / NAV  (menu items + order replicate the live site 1:1)
+   ============================================================ */
+.hdr{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .4s,box-shadow .4s,padding .4s;
+  padding-block:18px}
+.hdr-inner{max-width:1280px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);
+  display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;flex-direction:column;line-height:1;gap:2px;z-index:2}
+.brand b{font-family:"Fraunces";font-weight:600;font-size:1.32rem;letter-spacing:.005em;color:#fff;transition:color .4s}
+.brand span{font-family:"Figtree";font-weight:600;font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;
+  color:rgba(255,255,255,.82);transition:color .4s}
+.brand img{height:34px;width:auto;display:block}
+.brand .logo-light{display:none}
+.hdr.solid{background:var(--paper);box-shadow:0 6px 26px -20px rgba(32,36,46,.55);padding-block:12px}
+.hdr.solid .brand .logo-light{display:none}
+.hdr.solid .brand .logo-dark{display:block}
+.hdr.solid .brand b{color:var(--ink)}
+.hdr.solid .brand span{color:var(--honey)}
+
+.nav{display:flex;align-items:center;gap:4px}
+.nav>li{position:relative;list-style:none}
+.nav a,.nav .top{display:inline-flex;align-items:center;gap:.3em;font-family:"Figtree";font-weight:500;
+  font-size:.86rem;letter-spacing:.04em;color:rgba(255,255,255,.92);padding:.6em .8em;border-radius:0;
+  transition:color .3s,background .3s;cursor:pointer;background:none;border:0;text-transform:uppercase}
+.hdr.solid .nav a,.hdr.solid .nav .top{color:var(--ink-2)}
+.nav a:hover,.nav .top:hover,.nav li:hover>.top,.nav li:focus-within>.top{color:var(--honey)}
+.hdr.solid .nav a:hover,.hdr.solid .nav .top:hover{color:var(--pine);background:var(--paper-2)}
+.hdr .nav a:not(:hover),.hdr .nav .top:not(:hover){color:var(--ink-2)}
+.caret{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(45deg) translate(-1px,-1px);opacity:.7}
+.submenu{position:absolute;top:100%;left:0;min-width:212px;background:var(--paper);border:1px solid var(--line);
+  border-radius:0;box-shadow:var(--shadow);padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .25s,transform .25s,visibility .25s;list-style:none;margin:6px 0 0}
+.nav li:hover>.submenu,.nav li:focus-within>.submenu{opacity:1;visibility:visible;transform:translateY(0)}
+.submenu a{display:block;color:var(--ink-2);padding:.6em .8em;border-radius:0;text-transform:none;
+  letter-spacing:.01em;font-size:.9rem}
+.submenu a:hover{background:var(--paper-2);color:var(--pine)}
+.hdr-cta{display:flex;align-items:center;gap:14px}
+.socials{display:flex;gap:12px;align-items:center}
+.socials a{color:var(--ink-soft);transition:color .3s,transform .3s}
+.hdr.solid .socials a{color:var(--ink-soft)}
+.socials a:hover{color:var(--honey);transform:translateY(-2px)}
+.socials svg{width:17px;height:17px;display:block;fill:currentColor}
+.hdr .btn{padding:.68em 1.15em;font-size:.82rem}
+.hdr:not(.solid) .btn--primary{background:#FCFAF6;color:var(--pine-deep)}
+.hdr:not(.solid) .btn--primary:hover{background:var(--honey-soft)}
+
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:2}
+.burger span{width:24px;height:2px;background:var(--ink);transition:background .4s,transform .35s,opacity .3s;border-radius:0}
+.hdr.solid .burger span{background:var(--ink)}
+
+/* mobile menu */
+.mnav{position:fixed;inset:0;z-index:55;background:var(--paper);transform:translateX(100%);
+  transition:transform .5s var(--ease);display:flex;flex-direction:column;padding:96px 30px 40px;overflow-y:auto}
+.mnav.open{transform:translateX(0)}
+.mnav a{display:block;font-family:"Fraunces";font-weight:500;font-size:1.5rem;color:var(--ink);
+  padding:.5em 0;border-bottom:1px solid var(--line)}
+.mnav .sub a{font-family:"Figtree";font-size:1rem;font-weight:500;color:var(--ink-soft);padding:.4em 0 .4em 18px;border:0}
+.mnav .macc{display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;text-align:left;font-family:"Fraunces";font-weight:500;font-size:1.5rem;color:var(--ink);padding:.5em 0;border:0;border-bottom:1px solid var(--line);background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.mnav .acc-ic{position:relative;width:18px;height:18px;flex:none}
+.mnav .acc-ic::before,.mnav .acc-ic::after{content:"";position:absolute;background:var(--teal-ink);transition:transform .3s var(--ease),opacity .3s}
+.mnav .acc-ic::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+.mnav .acc-ic::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%)}
+.mnav .macc[aria-expanded="true"] .acc-ic::after{transform:translateX(-50%) scaleY(0);opacity:0}
+.mnav .sub{max-height:0;overflow:hidden;opacity:0;transition:max-height .38s var(--ease),opacity .3s}
+.mnav .sub.open{max-height:400px;opacity:1}
+.mnav .m-cta{margin-top:28px;color:#fff;display:flex;align-items:center;justify-content:center;gap:.6em;padding:.95em 1.7em}
+.mnav .m-cta .cta-ic{width:1.1em;height:1.1em;flex:none}
+.mnav .m-social{margin-top:26px;display:flex;gap:20px}
+.mnav .m-social a{padding:0;border:0}
+.mnav .m-social svg{width:22px;height:22px;fill:var(--pine)}
+body.lock{overflow:hidden}
+
+/* ============================================================
+   J1 — HERO
+   ============================================================ */
+.hero{position:relative;min-height:100svh;overflow:hidden;background:var(--paper);padding-top:clamp(92px,12vh,168px);padding-bottom:clamp(70px,10vh,120px)}
+.hero-center{position:relative;z-index:3;max-width:min(480px,88vw);margin:0 auto;text-align:center;padding-inline:20px}
+.hero-kicker{font-family:"Figtree";font-weight:700;font-size:clamp(.64rem,1vw,.78rem);letter-spacing:.28em;text-transform:uppercase;color:var(--teal-ink);display:block;margin-bottom:clamp(16px,2.6vh,28px)}
+.hero h1{font-family:"Fraunces";font-weight:400;font-size:clamp(2.6rem,6vw,4.4rem);line-height:.94;letter-spacing:-.02em;color:var(--ink)}
+.hero h1 .see{font-style:italic;color:var(--honey)}
+.hero-tag{margin-top:clamp(30px,7vh,110px);display:flex;flex-direction:column;align-items:center;gap:3px}
+.hero-tag .pre{font-family:"Figtree";font-weight:700;font-size:clamp(.64rem,.95vw,.76rem);letter-spacing:.24em;text-transform:uppercase;color:var(--ink-soft)}
+.hero-tag .scr{font-family:"Fraunces";font-style:italic;font-weight:400;font-size:clamp(1.5rem,3.1vw,2.3rem);color:var(--honey);line-height:1.1}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(22px,3.4vh,34px)}
+.hero-scatter{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hp{position:absolute;margin:0;overflow:hidden;box-shadow:0 24px 50px -26px rgba(32,36,46,.4);pointer-events:auto}
+.hp img{width:100%;height:100%;object-fit:cover;display:block}
+.hp-4 img{object-position:center 22%}
+.hp-1{top:clamp(84px,13.5vh,200px);left:0;width:clamp(270px,29vw,480px);aspect-ratio:3/2}
+.hp-2{top:clamp(232px,38vh,548px);right:0;width:clamp(270px,29vw,480px);aspect-ratio:4/3}
+.hp-3{bottom:clamp(0px,8.5vh,120px);left:clamp(80px,17vw,300px);width:clamp(170px,15vw,262px);aspect-ratio:1/1}
+.hp-4{bottom:clamp(-150px,-10vh,-30px);left:50%;transform:translateX(-50%);width:clamp(230px,23vw,392px);aspect-ratio:3/4}
+@media (max-width:1199px),(max-height:759px){
+  .hero{min-height:auto;padding-top:clamp(104px,14vh,140px);padding-bottom:clamp(40px,6vh,60px)}
+  .hero-scatter{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:600px;margin:clamp(30px,5vh,48px) auto 0;padding-inline:20px}
+  .hero-scatter .hp{position:static;width:auto;transform:none;top:auto;left:auto;right:auto;bottom:auto;aspect-ratio:3/2}
+}
+@media (max-width:640px){
+  .hero-scatter{grid-template-columns:1fr;max-width:none;padding-inline:14px}
+  .hero-scatter .hp-2,.hero-scatter .hp-3,.hero-scatter .hp-4{display:none}
+  .hero-scatter .hp-1{aspect-ratio:5/4}
+}
+
+/* ============================================================
+   J2 — PROMISE
+   ============================================================ */
+.promise{background:var(--paper);text-align:center}
+.promise .eyebrow{margin-bottom:26px;display:block}
+.promise h2{font-size:clamp(2.1rem,5.2vw,3.9rem);font-weight:400;max-width:20ch;margin:0 auto .34em;letter-spacing:-.02em}
+.promise h2 em{font-style:italic;color:var(--honey)}
+.promise .lede{max-width:60ch;margin:0 auto}
+.promise .sig{margin-top:34px;font-family:"Fraunces";font-style:italic;font-size:1.5rem;color:var(--pine);font-weight:500}
+
+/* ============================================================
+   J3 — WORK  (asymmetric editorial mosaic, varied scale)
+   ============================================================ */
+.work{background:var(--paper-2)}
+.work-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:clamp(30px,4vw,52px)}
+.work-head h2{font-size:clamp(2rem,4.6vw,3.4rem);font-weight:400;letter-spacing:-.02em;max-width:14ch}
+.work-head .r{display:flex;gap:22px;flex-wrap:wrap;padding-bottom:6px}
+.mosaic{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.4vw,18px)}
+.tile{position:relative;overflow:hidden;background:var(--paper-3)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease)}
+.tile:hover img{transform:scale(1.045)}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 60%,rgba(20,30,22,.12));
+  opacity:0;transition:opacity .5s}
+.tile:hover::after{opacity:1}
+/* rows: 7+5 / 4+4+4 / 5+7. Secondary tiles use ~17/16 so their height
+   matches the 3/2 feature at the narrower span — equal-height rows, no gaps. */
+.t-a{grid-column:span 7;aspect-ratio:3/2}
+.t-b{grid-column:span 5;aspect-ratio:17/16}
+.t-c{grid-column:span 4;aspect-ratio:1/1}
+.t-d{grid-column:span 4;aspect-ratio:1/1}
+.t-e{grid-column:span 4;aspect-ratio:1/1}
+.t-f{grid-column:span 5;aspect-ratio:17/16}
+.t-g{grid-column:span 7;aspect-ratio:3/2}
+/* portraits sub-row */
+.beyond{margin-top:clamp(30px,4vw,54px);display:grid;grid-template-columns:1.15fr 1fr 1fr 1fr;gap:clamp(10px,1.4vw,18px);align-items:stretch}
+.beyond-copy{padding:6px 8px 6px 0;display:flex;flex-direction:column;justify-content:center}
+.beyond-copy h3{font-size:1.5rem;font-weight:500;margin-bottom:.4em}
+.beyond-copy p{font-size:.98rem;color:var(--ink-soft);margin-bottom:1em}
+.beyond .tile{aspect-ratio:4/5}
+
+/* ============================================================
+   PROOF — quiet trust weave
+   ============================================================ */
+.proof{background:#fff;border-block:1px solid var(--line)}
+.proof-in{text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(18px,2.6vw,26px)}
+.proof-in .eyebrow{display:block}
+.awards{width:100%;max-width:880px}
+.awards img{width:100%;height:auto;display:block}
+.proof-note{font-size:.85rem;color:var(--ink-soft);letter-spacing:.02em;max-width:74ch;line-height:1.65}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);text-align:center}
+.proof-item{padding:6px}
+.proof-item .k{font-family:"Fraunces";font-weight:500;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--pine);
+  line-height:1;margin-bottom:.35em;letter-spacing:-.01em}
+.proof-item .k em{font-style:italic}
+.proof-item .l{font-size:.82rem;color:var(--ink-soft);letter-spacing:.02em;line-height:1.4}
+.proof-sep{width:1px;background:var(--line)}
+
+/* ============================================================
+   SIGNATURE — "i see you" pine band  (the one bold moment)
+   ============================================================ */
+.seeyou{background:var(--pine-deep);color:#fff;position:relative;overflow:hidden}
+.seeyou::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(34% 42% at 13% 16%,rgba(224,88,140,.22),transparent 62%),
+  radial-gradient(38% 46% at 87% 13%,rgba(122,132,225,.18),transparent 64%),
+  radial-gradient(40% 48% at 84% 85%,rgba(66,164,174,.18),transparent 64%),
+  radial-gradient(32% 40% at 17% 87%,rgba(230,158,66,.15),transparent 64%),
+  radial-gradient(30% 40% at 49% 52%,rgba(158,96,196,.14),transparent 66%)}
+.seeyou-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center}
+.seeyou-copy .eyebrow{margin-bottom:28px;display:inline-flex;align-items:center;gap:.6em}
+.seeyou-copy h2{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:400;letter-spacing:-.02em;margin-bottom:.55em;color:#fff}
+.seeyou-copy h2 em{font-style:italic;color:var(--honey-soft)}
+.seeyou-copy p{color:rgba(255,255,255,.86);font-size:clamp(1.02rem,1.6vw,1.16rem);line-height:1.78;max-width:46ch}
+.seeyou-copy p+p{margin-top:1.1em}
+.seeyou-rule{height:4px;width:180px;border-radius:0;background:var(--rainbow);margin:30px 0 0}
+.seeyou-media{position:relative}
+.seeyou-media img{width:100%;box-shadow:0 30px 60px -24px rgba(0,0,0,.6);aspect-ratio:4/3;object-fit:cover}
+.seeyou-media .tag{position:absolute;bottom:-14px;left:-14px;background:var(--paper);color:var(--pine);
+  font-family:"Fraunces";font-style:italic;font-size:1.15rem;padding:.5em 1em;border-radius:0;box-shadow:var(--shadow-sm)}
+
+/* ============================================================
+   J4 — THE PERSON
+   ============================================================ */
+.about{background:var(--paper)}
+.portrait-photo{aspect-ratio:4/5;overflow:hidden;background:var(--paper-3)}
+.portrait-photo img{width:100%;height:100%;object-fit:cover;object-position:center 22%}
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,74px);align-items:center}
+.portrait-ph{aspect-ratio:4/5;border:1.5px dashed var(--pine-line);
+  background:
+    radial-gradient(120% 100% at 50% 0%,var(--paper-2),var(--paper-3));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:var(--ink-soft);padding:30px;gap:14px;position:relative}
+.portrait-ph svg{width:46px;height:46px;stroke:var(--pine);opacity:.55}
+.portrait-ph .ph-t{font-family:"Fraunces";font-style:italic;font-size:1.24rem;color:var(--pine)}
+.portrait-ph .ph-s{font-size:.82rem;max-width:24ch;line-height:1.5}
+.about-copy .eyebrow{display:block;margin-bottom:22px}
+.about-copy h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:400;margin-bottom:.4em;letter-spacing:-.02em}
+.about-copy h2 .wave{font-style:italic;color:var(--pine)}
+.about-copy p{font-size:1.08rem;color:var(--ink-2);line-height:1.78;max-width:52ch}
+.about-copy p+p{margin-top:1em}
+.about-actions{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.phone-link{font-family:"Fraunces";font-weight:500;font-size:1.35rem;color:var(--pine);display:inline-flex;align-items:center;gap:.4em}
+.phone-link:hover{color:var(--honey)}
+
+/* ============================================================
+   J6 — JOURNAL
+   ============================================================ */
+.journal{background:var(--paper-2)}
+.journal-head{text-align:center;margin-bottom:clamp(34px,4vw,56px)}
+.journal-head .eyebrow{display:block;margin-bottom:18px}
+.journal-head h2{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:400;letter-spacing:-.02em}
+.jgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,30px)}
+.jcard{display:block;overflow:hidden;background:var(--paper);box-shadow:var(--shadow-sm);
+  transition:transform .5s var(--ease),box-shadow .5s}
+.jcard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.jcard .jimg{aspect-ratio:3/2;overflow:hidden}
+.jcard .jimg img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.jcard:hover .jimg img{transform:scale(1.05)}
+.jcard .jbody{padding:24px 24px 26px}
+.jcard .jmeta{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-ink);font-weight:600;margin-bottom:12px}
+.jcard h3{font-size:1.34rem;font-weight:500;line-height:1.18;margin-bottom:14px}
+.jcard .jmore{font-weight:600;font-size:.9rem;color:var(--pine);display:inline-flex;gap:.45em;align-items:center}
+.journal-foot{text-align:center;margin-top:clamp(30px,4vw,48px)}
+
+/* ============================================================
+   J5 — TESTIMONIALS (dedicated)
+   ============================================================ */
+.kind{background:var(--paper)}
+.kind-head{text-align:center;margin-bottom:clamp(38px,4.5vw,60px)}
+.kind-head .eyebrow{display:block;margin-bottom:18px}
+.kind-head h2{font-size:clamp(2.1rem,4.8vw,3.5rem);font-weight:400;letter-spacing:-.02em}
+.kgrid{columns:2;column-gap:clamp(18px,2.4vw,28px)}
+.kcard{break-inside:avoid;margin-bottom:clamp(18px,2.4vw,28px);background:var(--paper);border:1px solid var(--line);
+  border-radius:0;padding:clamp(24px,3vw,34px);box-shadow:var(--shadow-sm)}
+.kcard.feat{background:var(--pine-deep);border-color:var(--pine-deep);color:#fff}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.stars svg{width:16px;height:16px;fill:var(--honey)}
+.kcard.feat .stars svg{fill:var(--honey-soft)}
+.kquote{font-family:"Fraunces";font-weight:400;font-size:clamp(1.12rem,1.7vw,1.32rem);line-height:1.5;
+  color:var(--ink);letter-spacing:-.005em}
+.kcard.feat .kquote{color:#fff}
+.kquote .lead{font-style:italic;color:var(--pine)}
+.kcard.feat .kquote .lead{color:var(--honey-soft)}
+.kfoot{margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.kwho{font-family:"Figtree"}
+.kwho b{display:block;font-weight:700;font-size:.98rem;letter-spacing:.02em}
+.kwho span{font-size:.82rem;color:var(--ink-soft)}
+.kcard.feat .kwho span{color:rgba(255,255,255,.7)}
+.kcard.feat .kwho b{color:#fff}
+.klink{font-weight:600;font-size:.85rem;color:var(--pine);display:inline-flex;gap:.4em;align-items:center;white-space:nowrap}
+.kcard.feat .klink{color:var(--honey-soft)}
+.kind-foot{text-align:center;margin-top:clamp(30px,4vw,48px)}
+
+/* ============================================================
+   J7 — EXPERIENCE
+   ============================================================ */
+.exp{background:var(--paper-2)}
+.exp-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(34px,5vw,80px);align-items:start}
+.exp-intro .eyebrow{display:block;margin-bottom:20px}
+.exp-intro h2{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:400;letter-spacing:-.02em;margin-bottom:.5em}
+.exp-intro p{color:var(--ink-2);max-width:40ch;line-height:1.78;font-size:1.06rem}
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:grid;grid-template-columns:auto 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}
+.step:first-child{border-top:0;padding-top:0}
+.step .n{font-family:"Fraunces";font-style:italic;font-size:1.5rem;color:var(--teal-ink);line-height:1;padding-top:3px}
+.step h3{font-size:1.3rem;font-weight:500;margin-bottom:.35em}
+.step p{color:var(--ink-soft);font-size:1rem;line-height:1.65}
+
+/* ============================================================
+   J8 — INVESTMENT
+   ============================================================ */
+.invest{background:var(--paper)}
+.invest-card{background:var(--paper-2);border:1px solid var(--line);border-radius:0;
+  padding:clamp(34px,5vw,64px);text-align:center;position:relative;overflow:hidden}
+.invest-card .eyebrow{display:block;margin-bottom:20px}
+.invest-card h2{font-size:clamp(2.2rem,5.4vw,4rem);font-weight:400;letter-spacing:-.02em;margin-bottom:.25em}
+.invest-card h2 em{font-style:italic;color:var(--pine)}
+.invest-incl{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:26px auto 4px;max-width:660px}
+.chip{display:inline-flex;align-items:center;gap:.5em;background:var(--paper);border:1px solid var(--line);
+  border-radius:0;padding:.6em 1.1em;font-size:.9rem;font-weight:500;color:var(--ink-2)}
+.chip .d{width:6px;height:6px;border-radius:50%;background:var(--pine)}
+.invest-actions{margin-top:34px;display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.invest-note{margin-top:20px;font-size:.85rem;color:var(--ink-soft)}
+
+/* ============================================================
+   J9 — CLOSE / INQUIRY
+   ============================================================ */
+.close{position:relative;overflow:hidden;background:var(--pine-deep)}
+.close-bg{position:absolute;inset:0}
+.close-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.5}
+.close-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(120deg,rgba(18,28,20,.92) 0%,rgba(18,28,20,.7) 46%,rgba(18,28,20,.5) 100%)}
+.close-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,72px);align-items:center}
+.close-copy{color:#fff}
+.close-copy .eyebrow{display:inline-flex;align-items:center;gap:.6em;margin-bottom:24px}
+.close-copy h2{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:400;line-height:.98;letter-spacing:-.03em;color:#fff}
+.close-copy h2 em{font-style:italic}
+.close-copy p{color:rgba(255,255,255,.86);font-size:1.1rem;line-height:1.7;max-width:40ch;margin-top:22px}
+.close-copy .mini{margin-top:26px;display:flex;gap:22px;flex-wrap:wrap;color:rgba(255,255,255,.9);font-size:.95rem}
+.close-copy .mini a{color:#fff;font-weight:600;border-bottom:1.5px solid var(--honey-soft);padding-bottom:1px}
+
+.form-card{background:var(--paper);border-radius:0;padding:clamp(26px,3.2vw,38px);box-shadow:var(--shadow)}
+.form-card h3{font-size:1.5rem;font-weight:500;margin-bottom:6px}
+.form-card .fsub{color:var(--ink-soft);font-size:.92rem;margin-bottom:22px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:.76rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink-soft);margin-bottom:6px}
+.field input,.field textarea{width:100%;font-family:"Figtree";font-size:1rem;color:var(--ink);
+  background:var(--paper-2);border:1.5px solid var(--line);border-radius:0;padding:.8em .95em;transition:border-color .25s,background .25s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--pine);background:#fff}
+.field textarea{resize:vertical;min-height:88px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.form-card .btn{width:100%;justify-content:center;margin-top:8px}
+.form-msg{display:none;text-align:center;padding:30px 10px}
+.form-msg.show{display:block}
+.form-msg .em{font-family:"Fraunces";font-style:italic;font-size:1.6rem;color:var(--pine);margin-bottom:10px}
+.form-msg p{color:var(--ink-soft)}
+
+/* ============================================================
+   J10 — FOOTER
+   ============================================================ */
+.foot{background:var(--paper-3);color:var(--ink-2);padding-top:clamp(56px,7vw,90px)}
+.foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:clamp(28px,4vw,56px);
+  padding-bottom:48px;border-bottom:1px solid var(--line)}
+.foot-brand b{font-family:"Fraunces";font-weight:600;font-size:1.7rem;display:block;color:var(--ink)}
+.foot-brand .foot-logo{height:40px;width:auto;display:block;margin-bottom:4px}
+.foot-brand .see{font-family:"Fraunces";font-style:italic;color:var(--pine);font-size:1.15rem;margin-top:6px;display:inline-block}
+.foot-brand p{margin-top:16px;font-size:.94rem;color:var(--ink-soft);max-width:34ch;line-height:1.6}
+.foot-col h4{font-family:"Figtree";font-weight:700;font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--honey-ink);margin-bottom:16px}
+.foot-col a,.foot-col p{display:block;font-size:.94rem;color:var(--ink-2);padding:5px 0;transition:color .25s}
+.foot-col a:hover{color:var(--pine)}
+.foot-col .sub{padding-left:12px;color:var(--ink-soft)}
+.foot-cta{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.foot-cta .phone{font-family:"Fraunces";font-weight:500;font-size:1.4rem;color:var(--pine)}
+.foot-social{display:flex;gap:14px;margin-top:4px}
+.foot-social a{padding:0}
+.foot-social svg{width:20px;height:20px;fill:var(--ink-soft);transition:fill .25s,transform .25s}
+.foot-social a:hover svg{fill:var(--pine);transform:translateY(-2px)}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;align-items:center;
+  padding-block:26px;font-size:.8rem;color:var(--ink-soft)}
+.foot-bottom .credit{opacity:.85}
+.foot-bottom .credit a{color:var(--pine);font-weight:600}
+
+/* ============================================================
+   Sticky mobile CTA
+   ============================================================ */
+.mcta{position:fixed;left:14px;right:14px;bottom:14px;z-index:50;display:none;
+  background:rgba(28,42,34,.96);backdrop-filter:blur(8px);border-radius:0;padding:8px 8px 8px 22px;
+  align-items:center;justify-content:space-between;box-shadow:0 14px 40px -12px rgba(0,0,0,.5);
+  transform:translateY(140%);transition:transform .5s var(--ease)}
+.mcta.show{transform:translateY(0)}
+.mcta .mt{color:#fff;font-family:"Fraunces";font-style:italic;font-size:1.02rem}
+.mcta .btn{background:#FCFAF6;color:var(--pine-deep);padding:.7em 1.3em;font-size:.85rem}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .nav,.hdr .socials,.hdr-cta .btn{display:none}
+  .burger{display:flex}
+  .mcta{display:flex}
+  .seeyou-grid,.about-grid,.exp-grid,.close-inner{grid-template-columns:1fr}
+  .seeyou-media{order:-1;max-width:520px}
+  .about-grid .portrait-ph,.about-grid .portrait-photo{max-width:380px}
+  .close-inner{gap:34px}
+}
+@media (max-width:819px){
+  .mosaic{grid-template-columns:repeat(2,1fr)}
+  .t-a{grid-column:span 2;aspect-ratio:3/2}
+  .t-b{grid-column:span 2;aspect-ratio:16/10}
+  .t-c,.t-d{grid-column:span 1;aspect-ratio:1/1}
+  .t-e{grid-column:span 2;aspect-ratio:3/2}
+  .t-f,.t-g{grid-column:span 2;aspect-ratio:3/2}
+  .beyond{grid-template-columns:repeat(3,1fr)}
+  .beyond-copy{grid-column:span 3}
+  .proof-grid{grid-template-columns:1fr 1fr;gap:30px 20px}
+  .jgrid{grid-template-columns:1fr}
+  .kgrid{columns:1}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:span 2}
+  .frow{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .hero-actions .btn{flex:1}
+  .beyond{grid-template-columns:repeat(3,1fr)}
+  .foot-top{grid-template-columns:1fr}
+  .foot-brand{grid-column:span 1}
+  .close-copy .mini{flex-direction:column;gap:10px}
+  .scrolldown{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hdr" id="hdr">
+  <div class="hdr-inner">
+    <a href="#top" class="brand" aria-label="Jenny GG Photography home">
+      <img class="logo-light" src="images/img01.png" alt="Jenny GG Photography">
+      <img class="logo-dark" src="images/img02.png" alt="" aria-hidden="true">
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li>
+          <button class="top" aria-haspopup="true">Portfolio <i class="caret"></i></button>
+          <ul class="submenu">
+            <li><a href="https://www.jennygg.com/wedding-photography/">Wedding Photography</a></li>
+            <li><a href="https://www.jennygg.com/portrait-photography/">Portrait Photography</a></li>
+          </ul>
+        </li>
+        <li><a href="#investment">Pricing</a></li>
+        <li>
+          <button class="top" aria-haspopup="true">About <i class="caret"></i></button>
+          <ul class="submenu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#kind-words">Kind Words</a></li>
+            <li><a href="#experience">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="#journal">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="http://jennygg.zenfolio.com">Client Login</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-cta">
+      <div class="socials" aria-label="Social links">
+        <a href="https://www.facebook.com/jennyggphotography" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5H17V4.6c-.3 0-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V14h2.74v8z"/></svg></a>
+        <a href="https://www.instagram.com/jennygg/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.9c2.95 0 3.3.01 4.47.06 1.08.05 1.66.23 2.05.38.51.2.88.44 1.27.82.38.39.63.76.82 1.27.15.39.33.97.38 2.05.05 1.17.06 1.52.06 4.47s-.01 3.3-.06 4.47c-.05 1.08-.23 1.66-.38 2.05-.2.51-.44.88-.82 1.27-.39.38-.76.63-1.27.82-.39.15-.97.33-2.05.38-1.17.05-1.52.06-4.47.06s-3.3-.01-4.47-.06c-1.08-.05-1.66-.23-2.05-.38a3.4 3.4 0 0 1-1.27-.82 3.4 3.4 0 0 1-.82-1.27c-.15-.39-.33-.97-.38-2.05C2.91 15.3 2.9 14.95 2.9 12s.01-3.3.06-4.47c.05-1.08.23-1.66.38-2.05.2-.51.44-.88.82-1.27.39-.38.76-.63 1.27-.82.39-.15.97-.33 2.05-.38C8.7 2.91 9.05 2.9 12 2.9m0-1.9C9 1 8.6 1.01 7.42 1.07c-1.18.05-1.99.24-2.69.52-.73.28-1.35.66-1.97 1.28-.62.62-1 1.24-1.28 1.97-.28.7-.47 1.51-.52 2.69C.99 8.6 1 9 1 12s-.01 3.4.05 4.58c.05 1.18.24 1.99.52 2.69.28.73.66 1.35 1.28 1.97.62.62 1.24 1 1.97 1.28.7.28 1.51.47 2.69.52C8.6 23.01 9 23 12 23s3.4.01 4.58-.05c1.18-.05 1.99-.24 2.69-.52a5.3 5.3 0 0 0 1.97-1.28 5.3 5.3 0 0 0 1.28-1.97c.28-.7.47-1.51.52-2.69.06-1.18.05-1.58.05-4.58s.01-3.4-.05-4.58c-.05-1.18-.24-1.99-.52-2.69a5.3 5.3 0 0 0-1.28-1.97 5.3 5.3 0 0 0-1.97-1.28c-.7-.28-1.51-.47-2.69-.52C15.4.99 15 1 12 1zm0 5.35A5.65 5.65 0 1 0 17.65 12 5.65 5.65 0 0 0 12 6.35zm0 9.32A3.67 3.67 0 1 1 15.67 12 3.67 3.67 0 0 1 12 15.67zm5.86-9.55a1.32 1.32 0 1 0 1.32 1.32 1.32 1.32 0 0 0-1.32-1.32z"/></svg></a>
+        <a href="https://www.pinterest.com/jennygg/" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.31-.09-.79-.17-2 .03-2.86.18-.78 1.17-4.97 1.17-4.97s-.3-.6-.3-1.48c0-1.39.8-2.42 1.8-2.42.85 0 1.26.64 1.26 1.4 0 .86-.54 2.14-.83 3.33-.24.99.5 1.8 1.48 1.8 1.77 0 3.14-1.87 3.14-4.57 0-2.39-1.72-4.06-4.17-4.06-2.84 0-4.51 2.13-4.51 4.33 0 .86.33 1.78.74 2.28.08.1.09.19.07.29-.08.32-.25 1-.28 1.14-.05.19-.15.23-.35.14-1.3-.6-2.11-2.5-2.11-4.02 0-3.28 2.38-6.28 6.86-6.28 3.6 0 6.4 2.57 6.4 6 0 3.58-2.26 6.46-5.39 6.46-1.05 0-2.04-.55-2.38-1.2l-.65 2.47c-.23.9-.86 2.03-1.29 2.72.97.3 2 .46 3.07.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+        <a href="mailto:jenny@jennygg.com" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 7.19L4.6 7h14.8zM4 8.24V17h16V8.24l-8 5.6z"/></svg></a>
+      </div>
+      <a href="#contact" class="btn btn--pink">Check your date</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- mobile nav -->
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <button class="macc" aria-expanded="false">Portfolio <span class="acc-ic" aria-hidden="true"></span></button>
+  <div class="sub">
+    <a href="https://www.jennygg.com/wedding-photography/">Wedding Photography</a>
+    <a href="https://www.jennygg.com/portrait-photography/">Portrait Photography</a>
+  </div>
+  <a href="#investment" data-close>Pricing</a>
+  <button class="macc" aria-expanded="false">About <span class="acc-ic" aria-hidden="true"></span></button>
+  <div class="sub">
+    <a href="#about" data-close>About</a>
+    <a href="#kind-words" data-close>Kind Words</a>
+    <a href="#experience" data-close>FAQ</a>
+  </div>
+  <a href="#journal" data-close>Blog</a>
+  <a href="#contact" data-close>Contact</a>
+  <a href="http://jennygg.zenfolio.com">Client Login</a>
+  <a href="#contact" class="btn btn--pink m-cta" data-close><svg class="cta-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9.5h18M8 3v4M16 3v4"/></svg>Check your date</a>
+  <div class="m-social">
+    <a href="https://www.facebook.com/jennyggphotography" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5H17V4.6c-.3 0-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V14h2.74v8z"/></svg></a>
+    <a href="https://www.instagram.com/jennygg/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.9c2.95 0 3.3.01 4.47.06 1.08.05 1.66.23 2.05.38.51.2.88.44 1.27.82.38.39.63.76.82 1.27.15.39.33.97.38 2.05.05 1.17.06 1.52.06 4.47s-.01 3.3-.06 4.47c-.05 1.08-.23 1.66-.38 2.05-.2.51-.44.88-.82 1.27-.39.38-.76.63-1.27.82-.39.15-.97.33-2.05.38-1.17.05-1.52.06-4.47.06s-3.3-.01-4.47-.06c-1.08-.05-1.66-.23-2.05-.38a3.4 3.4 0 0 1-1.27-.82 3.4 3.4 0 0 1-.82-1.27c-.15-.39-.33-.97-.38-2.05-.05-1.17-.06-1.52-.06-4.47s.01-3.3.06-4.47c.05-1.08.23-1.66.38-2.05.2-.51.44-.88.82-1.27.39-.38.76-.63 1.27-.82.39-.15.97-.33 2.05-.38 1.17-.05 1.52-.06 4.47-.06m0-1.9C9 1 8.6 1.01 7.42 1.07c-1.18.05-1.99.24-2.69.52-.73.28-1.35.66-1.97 1.28-.62.62-1 1.24-1.28 1.97-.28.7-.47 1.51-.52 2.69C.99 8.6 1 9 1 12s-.01 3.4.05 4.58c.05 1.18.24 1.99.52 2.69.28.73.66 1.35 1.28 1.97.62.62 1.24 1 1.97 1.28.7.28 1.51.47 2.69.52C8.6 23.01 9 23 12 23s3.4.01 4.58-.05c1.18-.05 1.99-.24 2.69-.52a5.3 5.3 0 0 0 1.97-1.28 5.3 5.3 0 0 0 1.28-1.97c.28-.7.47-1.51.52-2.69.06-1.18.05-1.58.05-4.58s.01-3.4-.05-4.58c-.05-1.18-.24-1.99-.52-2.69a5.3 5.3 0 0 0-1.28-1.97 5.3 5.3 0 0 0-1.97-1.28c-.7-.28-1.51-.47-2.69-.52C15.4.99 15 1 12 1zm0 5.35A5.65 5.65 0 1 0 17.65 12 5.65 5.65 0 0 0 12 6.35zm0 9.32A3.67 3.67 0 1 1 15.67 12 3.67 3.67 0 0 1 12 15.67zm5.86-9.55a1.32 1.32 0 1 0 1.32 1.32 1.32 1.32 0 0 0-1.32-1.32z"/></svg></a>
+    <a href="https://www.pinterest.com/jennygg/" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.31-.09-.79-.17-2 .03-2.86.18-.78 1.17-4.97 1.17-4.97s-.3-.6-.3-1.48c0-1.39.8-2.42 1.8-2.42.85 0 1.26.64 1.26 1.4 0 .86-.54 2.14-.83 3.33-.24.99.5 1.8 1.48 1.8 1.77 0 3.14-1.87 3.14-4.57 0-2.39-1.72-4.06-4.17-4.06-2.84 0-4.51 2.13-4.51 4.33 0 .86.33 1.78.74 2.28.08.1.09.19.07.29-.08.32-.25 1-.28 1.14-.05.19-.15.23-.35.14-1.3-.6-2.11-2.5-2.11-4.02 0-3.28 2.38-6.28 6.86-6.28 3.6 0 6.4 2.57 6.4 6 0 3.58-2.26 6.46-5.39 6.46-1.05 0-2.04-.55-2.38-1.2l-.65 2.47c-.23.9-.86 2.03-1.29 2.72.97.3 2 .46 3.07.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+  </div>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ J1 HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-center">
+    <span class="hero-kicker">Seattle Wedding Photography · since 2008</span>
+    <h1><span class="see">i</span> see you.</h1>
+    <div class="hero-tag"><span class="pre">for couples who want to</span><span class="scr">be exactly themselves</span></div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn--pink">Let&rsquo;s talk</a>
+      <a href="#experience" class="btn btn--ghost">See the experience</a>
+    </div>
+  </div>
+  <div class="hero-scatter">
+    <figure class="hp hp-1"><img src="images/img03.jpg" alt="A couple gazing at one another in warm golden light"></figure>
+    <figure class="hp hp-2"><img src="images/img04.jpg" alt="A joyful outdoor wedding ceremony beneath a draped pergola"></figure>
+    <figure class="hp hp-3"><img src="images/img05.jpg" alt="A couple sharing an intimate moment among tall trees"></figure>
+    <figure class="hp hp-4"><img src="images/img06.jpg" alt="A bride embracing her groom while holding a colourful bouquet"></figure>
+  </div>
+</section>
+
+<!-- ============ J2 PROMISE ============ -->
+<section class="section promise">
+  <div class="wrap reveal">
+    <span class="eyebrow">Hello &amp; welcome</span>
+    <h2>Weddings are groovy, and I <em>love</em> people.</h2>
+    <p class="lede">My approach is open, light, and gently prompted — so your photos feel genuine, never stiff or over-posed. The whole point is the fun and the feeling of your day, so you relive that joy every single time you look back.</p>
+    <p class="sig">Love is love, and I want to document every part of it.</p>
+  </div>
+</section>
+
+<!-- ============ J3 WORK ============ -->
+<section class="section work" id="work">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <h2>Real couples,<br>real joy.</h2>
+      <div class="r">
+        <a href="https://www.jennygg.com/wedding-photography/" class="arrow-link"><span class="al-t">See the weddings</span> <span class="a">→</span></a>
+        <a href="https://www.jennygg.com/portrait-photography/" class="arrow-link"><span class="al-t">Portraits &amp; families</span> <span class="a">→</span></a>
+      </div>
+    </div>
+    <div class="mosaic reveal">
+      <div class="tile t-a"><img src="images/img07.jpg" alt="Engaged couple laughing against a bright, colorful wall in Seattle" loading="lazy"></div>
+      <div class="tile t-b"><img src="images/img08.jpg" alt="Couple walking hand in hand through a golden autumn field" loading="lazy"></div>
+      <div class="tile t-c"><img src="images/img09.jpg" alt="Couple resting foreheads together, warm and intimate" loading="lazy"></div>
+      <div class="tile t-d"><img src="images/img10.jpg" alt="Engagement portrait at golden hour by the water" loading="lazy"></div>
+      <div class="tile t-e"><img src="images/img11.jpg" alt="Couple among autumn colors in the Pacific Northwest" loading="lazy"></div>
+      <div class="tile t-f"><img src="images/img12.jpg" alt="Couple laughing together outdoors in Seattle" loading="lazy"></div>
+      <div class="tile t-g"><img src="images/img13.jpg" alt="A candid, joyful moment between two people" loading="lazy"></div>
+    </div>
+
+    <div class="beyond reveal">
+      <div class="beyond-copy">
+        <h3>Beyond the wedding day.</h3>
+        <p>Engagements, families, seniors &amp; everything involving babies — fur babies too.</p>
+        <a href="https://www.jennygg.com/portrait-photography/" class="arrow-link"><span class="al-t">See portraits</span> <span class="a">→</span></a>
+      </div>
+      <div class="tile"><img src="images/img14.jpg" alt="Family laughing on a swing set among autumn leaves" loading="lazy"></div>
+      <div class="tile"><img src="images/img15.jpg" alt="Parents giving their kids piggyback rides outdoors" loading="lazy"></div>
+      <div class="tile"><img src="images/img16.jpg" alt="A toddler mid-step, reaching out, in golden light" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section class="section--tight proof">
+  <div class="wrap">
+    <div class="proof-in reveal">
+      <span class="eyebrow">Awarded &amp; featured</span>
+      <div class="awards"><img src="images/img17.jpg" alt="Recognition: World's Best Wedding Photos Artist, Junebug Best of the Best Engagement, Wedding Rule Editor's Choice, Giggster Best Portrait Photographer, and Best of Zola"></div>
+      <p class="proof-note">Seattle Bride &ldquo;Best Of&rdquo; Winner · Top 3 (2014&ndash;2022) · Featured in Seattle Bride &amp; Inspired Bride · Documenting Seattle &amp; the Pacific Northwest since 2008</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE — i see you ============ -->
+<section class="section seeyou">
+  <div class="wrap">
+    <div class="seeyou-grid">
+      <div class="seeyou-copy reveal">
+        <span class="eyebrow on-dark">Why inclusive matters to me 🌈</span>
+        <h2>Everyone deserves to feel <em>seen</em> on their day.</h2>
+        <p>I came out and came of age in the '80s, when it was hard to see myself represented at a wedding. That stayed with me.</p>
+        <p>So I photograph for every couple who's ever felt left out — gay, LGBTQ+, and anyone who just wants to be exactly themselves. On your day, that's what you'll be: yourselves, celebrated, and completely seen.</p>
+        <div class="seeyou-rule"></div>
+      </div>
+      <div class="seeyou-media reveal">
+        <img src="images/img18.jpg" alt="An officiant holds a single red rose to a groom's eyes during an outdoor wedding ceremony overlooking the water, photographed by Jenny GG" loading="lazy">
+        <span class="tag">love is love</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J4 ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="portrait-photo reveal"><img src="images/img19.jpg" alt="Jenny GG, Seattle wedding photographer, smiling in a colorful striped dress on a garden bridge"></div>
+      <div class="about-copy reveal">
+        <span class="eyebrow">The photographer</span>
+        <h2>Hi, I'm <span class="wave">Jenny.</span></h2>
+        <p>I've been photographing weddings around Seattle since 2008 — plus engagements, families, seniors, and everything involving babies (fur babies too). My whole job is to help you relax, keep you laughing, and quietly catch the moments you'll want to hold onto forever.</p>
+        <p>Check out the work, then give me a buzz. We'll make some exceptional imagery — and have a ton of fun while we're at it.</p>
+        <div class="about-actions">
+          <a href="#contact" class="btn btn--primary">Start your inquiry</a>
+          <a href="tel:+14258304421" class="phone-link">425.830.4421</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J6 JOURNAL ============ -->
+<section class="section journal" id="journal">
+  <div class="wrap">
+    <div class="journal-head reveal">
+      <span class="eyebrow">From the journal</span>
+      <h2>Recent weddings</h2>
+    </div>
+    <div class="jgrid">
+      <a class="jcard reveal" href="https://www.jennygg.com/2025-wedding-recap-joy-seattle-weddings-joy-planned/">
+        <div class="jimg"><img src="images/img20.jpg" alt="Highlights from a year of Seattle weddings" loading="lazy"></div>
+        <div class="jbody">
+          <div class="jmeta">2025 · Wedding recap</div>
+          <h3>A year of planned joy &amp; getting married</h3>
+          <span class="jmore">Read the story →</span>
+        </div>
+      </a>
+      <a class="jcard reveal" href="https://www.jennygg.com/married-at-the-georgetown-ballroom-sarah-and-alex/">
+        <div class="jimg"><img src="images/img21.jpg" alt="A bride in a lace veil embraces and kisses her groom on the cheek outside a brick venue, at their Georgetown Ballroom wedding" loading="lazy"></div>
+        <div class="jbody">
+          <div class="jmeta">The Georgetown Ballroom</div>
+          <h3>Sarah &amp; Alex got married!</h3>
+          <span class="jmore">Read the story →</span>
+        </div>
+      </a>
+      <a class="jcard reveal" href="https://www.jennygg.com/2024-weddings-recap-jenny-gg-photography/">
+        <div class="jimg"><img src="images/img22.jpg" alt="A collection of favorite wedding moments" loading="lazy"></div>
+        <div class="jbody">
+          <div class="jmeta">2024 · Wedding recap</div>
+          <h3>A favorite year of couples &amp; celebrations</h3>
+          <span class="jmore">Read the story →</span>
+        </div>
+      </a>
+    </div>
+    <div class="journal-foot reveal"><a href="https://www.jennygg.com/recent-posts/" class="btn btn--ghost">Read the blog</a></div>
+  </div>
+</section>
+
+<!-- ============ J5 TESTIMONIALS ============ -->
+<section class="section kind" id="kind-words">
+  <div class="wrap">
+    <div class="kind-head reveal">
+      <span class="eyebrow">Kind words</span>
+      <h2>Couples on working with Jenny</h2>
+    </div>
+    <div class="kgrid">
+      <div class="kcard feat reveal">
+        <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></div>
+        <p class="kquote"><span class="lead">"I would have moved my wedding date</span> to make sure Jenny was our photographer. Over 1,000 beautiful, honest photos — I'm obsessed with all of them. You'll fall in love with Jenny, and you'll have a photographer for life."</p>
+        <div class="kfoot">
+          <div class="kwho"><b>Beau &amp; Peter</b><span>Maroni Meadows</span></div>
+          <a class="klink" href="https://www.jennygg.com/two-dads-get-married-maroni-meadows-beau-and-peter/">See their wedding →</a>
+        </div>
+      </div>
+
+      <div class="kcard reveal">
+        <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></div>
+        <p class="kquote"><span class="lead">"When we saw our galleries we were speechless.</span> We cried more happy tears than we had all day — it was like being guests at our own wedding, seeing it for the first time. A true gift."</p>
+        <div class="kfoot">
+          <div class="kwho"><b>Joy &amp; Karen</b><span>Utopia Vineyards, Oregon</span></div>
+          <a class="klink" href="https://www.jennygg.com/love-wins-at-a-winery-utopia-vineyards-joy-and-karen/">See their wedding →</a>
+        </div>
+      </div>
+
+      <div class="kcard reveal">
+        <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></div>
+        <p class="kquote"><span class="lead">"One of Jenny's superpowers</span> is anticipating what you need before you say it. She's genuine, her humor keeps you laughing all day, and hiring her was one of the best decisions we made."</p>
+        <div class="kfoot">
+          <div class="kwho"><b>Nicole &amp; Bryce</b><span>Cedarbrook Lodge</span></div>
+          <a class="klink" href="https://www.jennygg.com/cedarbrook-lodge-wedding/">See their wedding →</a>
+        </div>
+      </div>
+
+      <div class="kcard reveal">
+        <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></div>
+        <p class="kquote"><span class="lead">"Bright and lively, colorful and fun.</span> She makes a photo come alive with energy and captures everyone's real personality. Her work is worth EVERY penny."</p>
+        <div class="kfoot">
+          <div class="kwho"><b>Kendehl &amp; Smitt</b><span>Fremont Foundry</span></div>
+          <a class="klink" href="https://www.jennygg.com/fremont-foundry-wedding/">See their wedding →</a>
+        </div>
+      </div>
+
+      <div class="kcard reveal">
+        <div class="stars" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01z"/></svg></div>
+        <p class="kquote"><span class="lead">"We just felt 'it' with Jenny.</span> She really got us and knew exactly what we wanted. Do yourself a favor and meet with her — you'll fall in love with her personality and her skills."</p>
+        <div class="kfoot">
+          <div class="kwho"><b>Julia &amp; Jorge</b><span>Laurel Creek Manor</span></div>
+          <a class="klink" href="https://www.jennygg.com/laurel-creek-manor-wedding-julia-jorge/">See their wedding →</a>
+        </div>
+      </div>
+    </div>
+    <div class="kind-foot reveal"><a href="https://www.jennygg.com/kind-words/" class="btn btn--ghost">Read more kind words</a></div>
+  </div>
+</section>
+
+<!-- ============ J7 EXPERIENCE ============ -->
+<section class="section exp" id="experience">
+  <div class="wrap">
+    <div class="exp-grid">
+      <div class="exp-intro reveal">
+        <span class="eyebrow">How it works</span>
+        <h2>Relaxed to be around, easy to book.</h2>
+        <p>No stiff shot lists or awkward posing. Just an open, gently guided day where you get to actually enjoy yourselves — and I catch the real thing.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="n">01</div>
+          <div><h3>Say hello</h3><p>Tell me your date and a little about your day. First step's easy — that's on purpose.</p></div>
+        </div>
+        <div class="step">
+          <div class="n">02</div>
+          <div><h3>Let's meet</h3><p>We'll make sure it's a match. This is the part couples describe as just "feeling it."</p></div>
+        </div>
+        <div class="step">
+          <div class="n">03</div>
+          <div><h3>Your day</h3><p>Up to twelve hours of open, unintrusive coverage — with a second shooter if you'd like one.</p></div>
+        </div>
+        <div class="step">
+          <div class="n">04</div>
+          <div><h3>A sneak peek that night</h3><p>A first look the same evening, then your full gallery of high-resolution images — printing rights included.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J8 INVESTMENT ============ -->
+<section class="section invest" id="investment">
+  <div class="wrap">
+    <div class="invest-card reveal">
+      <span class="eyebrow">Investment</span>
+      <h2>Wedding collections from <em>$3,000</em></h2>
+      <p class="lede" style="max-width:52ch;margin:0 auto">Real coverage, real files, no fine print — here's where full wedding coverage begins.</p>
+      <div class="invest-incl">
+        <span class="chip"><span class="d"></span>Up to 12 hours of coverage</span>
+        <span class="chip"><span class="d"></span>Hundreds of high-res images</span>
+        <span class="chip"><span class="d"></span>Full printing rights</span>
+        <span class="chip"><span class="d"></span>Optional second shooter</span>
+      </div>
+      <div class="invest-actions">
+        <a href="#contact" class="btn btn--primary">Request the full pricing guide</a>
+        <a href="https://www.jennygg.com/pricing/" class="btn btn--ghost">See pricing</a>
+      </div>
+      <p class="invest-note">Portrait sessions start at $385.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J9 CLOSE / CONTACT ============ -->
+<section class="section close" id="contact">
+  <div class="close-bg"><img src="images/img23.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap">
+    <div class="close-inner">
+      <div class="close-copy reveal">
+        <span class="eyebrow on-dark">Let's begin 🌈</span>
+        <h2>Let's tell<br>your <em>story.</em></h2>
+        <p>I take a limited number of weddings each year, so every couple gets my full attention. Let's see if your date is still open.</p>
+        <div class="mini">
+          <span>Call or text <a href="tel:+14258304421">425.830.4421</a></span>
+          <span><a href="mailto:jenny@jennygg.com">jenny@jennygg.com</a></span>
+        </div>
+      </div>
+      <div class="form-card reveal">
+        <div id="formInner">
+          <h3>Check your date</h3>
+          <p class="fsub">Tell me a little about your day — I reply to every couple personally.</p>
+          <div class="frow">
+            <div class="field"><label for="n">Your names</label><input id="n" type="text" placeholder="Alex &amp; Sam"></div>
+            <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+          </div>
+          <div class="frow">
+            <div class="field"><label for="d">Wedding date</label><input id="d" type="text" placeholder="Sept 2026 (or TBD)"></div>
+            <div class="field"><label for="v">Venue or location</label><input id="v" type="text" placeholder="Seattle / not sure yet"></div>
+          </div>
+          <div class="field"><label for="m">A little about your day</label><textarea id="m" placeholder="Tell me your vibe, your people, what you're dreaming up…"></textarea></div>
+          <button class="btn btn--primary" id="sendBtn" type="button">Check your date</button>
+        </div>
+        <div class="form-msg" id="formMsg">
+          <div class="em">Yay — got it! 🌈</div>
+          <p>Thanks for reaching out. I'll be in touch within a day or two.<br>Can't wait to hear about your day. — Jenny</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J10 FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img class="foot-logo" src="images/img02.png" alt="Jenny GG Photography">
+        <span class="see">i see you. 🌈</span>
+        <p>Fun, inclusive, joyful photography for weddings, engagements, families &amp; everyone in between. Proudly serving all couples in Seattle, Bellevue, Woodinville, Olympia, Tacoma, Bellingham &amp; beyond — available for travel across the US.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="https://www.jennygg.com/wedding-photography/">Wedding Photography</a>
+        <a href="https://www.jennygg.com/portrait-photography/">Portrait Photography</a>
+        <a href="#investment">Pricing</a>
+        <a href="#journal">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h4>Studio</h4>
+        <a href="#about">About</a>
+        <a href="#kind-words">Kind Words</a>
+        <a href="#experience">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="http://jennygg.zenfolio.com">Client Login</a>
+      </div>
+      <div class="foot-col foot-cta">
+        <h4>Say hello</h4>
+        <a class="phone" href="tel:+14258304421">425.830.4421</a>
+        <a href="mailto:jenny@jennygg.com">jenny@jennygg.com</a>
+        <span style="font-size:.86rem;color:var(--ink-soft)">4616 25th Ave NE #103<br>Seattle, WA 98105</span>
+        <div class="foot-social">
+          <a href="https://www.instagram.com/jennygg/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.9c2.95 0 3.3.01 4.47.06 1.08.05 1.66.23 2.05.38.51.2.88.44 1.27.82.38.39.63.76.82 1.27.15.39.33.97.38 2.05.05 1.17.06 1.52.06 4.47s-.01 3.3-.06 4.47c-.05 1.08-.23 1.66-.38 2.05-.2.51-.44.88-.82 1.27-.39.38-.76.63-1.27.82-.39.15-.97.33-2.05.38-1.17.05-1.52.06-4.47.06s-3.3-.01-4.47-.06c-1.08-.05-1.66-.23-2.05-.38a3.4 3.4 0 0 1-1.27-.82 3.4 3.4 0 0 1-.82-1.27c-.15-.39-.33-.97-.38-2.05-.05-1.17-.06-1.52-.06-4.47s.01-3.3.06-4.47c.05-1.08.23-1.66.38-2.05.2-.51.44-.88.82-1.27.39-.38.76-.63 1.27-.82.39-.15.97-.33 2.05-.38 1.17-.05 1.52-.06 4.47-.06m0-1.9C9 1 8.6 1.01 7.42 1.07c-1.18.05-1.99.24-2.69.52-.73.28-1.35.66-1.97 1.28-.62.62-1 1.24-1.28 1.97-.28.7-.47 1.51-.52 2.69C.99 8.6 1 9 1 12s-.01 3.4.05 4.58c.05 1.18.24 1.99.52 2.69.28.73.66 1.35 1.28 1.97.62.62 1.24 1 1.97 1.28.7.28 1.51.47 2.69.52C8.6 23.01 9 23 12 23s3.4.01 4.58-.05c1.18-.05 1.99-.24 2.69-.52a5.3 5.3 0 0 0 1.97-1.28 5.3 5.3 0 0 0 1.28-1.97c.28-.7.47-1.51.52-2.69.06-1.18.05-1.58.05-4.58s.01-3.4-.05-4.58c-.05-1.18-.24-1.99-.52-2.69a5.3 5.3 0 0 0-1.28-1.97 5.3 5.3 0 0 0-1.97-1.28c-.7-.28-1.51-.47-2.69-.52C15.4.99 15 1 12 1zm0 5.35A5.65 5.65 0 1 0 17.65 12 5.65 5.65 0 0 0 12 6.35zm0 9.32A3.67 3.67 0 1 1 15.67 12 3.67 3.67 0 0 1 12 15.67zm5.86-9.55a1.32 1.32 0 1 0 1.32 1.32 1.32 1.32 0 0 0-1.32-1.32z"/></svg></a>
+          <a href="https://www.facebook.com/jennyggphotography" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5H17V4.6c-.3 0-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V14h2.74v8z"/></svg></a>
+          <a href="https://www.pinterest.com/jennygg/" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.64 7.86 6.36 9.31-.09-.79-.17-2 .03-2.86.18-.78 1.17-4.97 1.17-4.97s-.3-.6-.3-1.48c0-1.39.8-2.42 1.8-2.42.85 0 1.26.64 1.26 1.4 0 .86-.54 2.14-.83 3.33-.24.99.5 1.8 1.48 1.8 1.77 0 3.14-1.87 3.14-4.57 0-2.39-1.72-4.06-4.17-4.06-2.84 0-4.51 2.13-4.51 4.33 0 .86.33 1.78.74 2.28.08.1.09.19.07.29-.08.32-.25 1-.28 1.14-.05.19-.15.23-.35.14-1.3-.6-2.11-2.5-2.11-4.02 0-3.28 2.38-6.28 6.86-6.28 3.6 0 6.4 2.57 6.4 6 0 3.58-2.26 6.46-5.39 6.46-1.05 0-2.04-.55-2.38-1.2l-.65 2.47c-.23.9-.86 2.03-1.29 2.72.97.3 2 .46 3.07.46 5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Jenny GG Photography · Seattle, WA</span>
+      <span class="credit">Concept redesign by <a href="https://bgdwebdesign.com">Bouan</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY MOBILE CTA ============ -->
+<div class="mcta" id="mcta">
+  <span class="mt">Free on your date?</span>
+  <a href="#contact" class="btn">Check your date</a>
+</div>
+
+<script>
+(function(){
+  var hdr=document.getElementById('hdr');
+  var mcta=document.getElementById('mcta');
+  function onScroll(){
+    var y=window.scrollY;
+    hdr.classList.toggle('solid', y>60);
+    mcta.classList.toggle('show', y>700);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // mobile menu
+  var burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
+  function toggleMenu(open){
+    mnav.classList.toggle('open',open);
+    document.body.classList.toggle('lock',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.querySelectorAll('span')[0].style.transform=open?'translateY(7px) rotate(45deg)':'';
+    burger.querySelectorAll('span')[1].style.opacity=open?'0':'1';
+    burger.querySelectorAll('span')[2].style.transform=open?'translateY(-7px) rotate(-45deg)':'';
+  }
+  burger.addEventListener('click',function(){toggleMenu(!mnav.classList.contains('open'));});
+  mnav.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){toggleMenu(false);});});
+  mnav.querySelectorAll('.macc').forEach(function(btn){btn.addEventListener('click',function(){var o=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',o?'false':'true');var s=btn.nextElementSibling;if(s&&s.classList.contains('sub'))s.classList.toggle('open',!o);});});
+
+  // reveal on scroll — with fail-safes so content can never stay hidden
+  var revEls=[].slice.call(document.querySelectorAll('.reveal'));
+  function revealAll(){ revEls.forEach(function(el){el.classList.add('in');}); }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:.08, rootMargin:'0px 0px -4% 0px'});
+    revEls.forEach(function(el){io.observe(el);});
+    window.addEventListener('load',function(){ setTimeout(revealAll,1800); });
+    setTimeout(revealAll,3000);
+  } else { revealAll(); }
+
+  // demo form
+  var btn=document.getElementById('sendBtn');
+  if(btn){btn.addEventListener('click',function(){
+    document.getElementById('formInner').style.display='none';
+    document.getElementById('formMsg').classList.add('show');
+  });}
+})();
+</script>
+</body>
+</html>
