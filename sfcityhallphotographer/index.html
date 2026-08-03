@@ -1,1 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Francisco City Hall Photographer · Weddings, Elopements &amp; Quinceañeras</title>
+<meta name="description" content="Professional San Francisco City Hall photography for weddings, elopements and quinceañeras. Photography, hair and makeup, florals, videography, officiant and limo, arranged for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SAN FRANCISCO CITY HALL PHOTOGRAPHER — homepage concept
+   Palette taken straight from their own brand: the blush
+   (#f4ddd5), the gold (#c3945b) and the navy (#222d44) already
+   on their site, but organised — blush as the page, navy as the
+   structure, gold deepened to a text-safe tone and reserved for
+   actions. Blush + navy is nobody's wedding default, and it
+   carries the quinceañera side of the business as naturally as
+   the wedding side.
+   Type: Cormorant Garamond (display) + Outfit (UI)
+   ============================================================ */
+:root{
+  --blush:#FAF0EC;
+  --blush-2:#F2DFD8;
+  --blush-3:#E6CBC1;
+  --white:#FEFAF8;
+  --navy:#222D44;
+  --navy-2:#161E2E;
+  --ink:#1D1A19;
+  --ink-2:#3E3835;
+  --ink-soft:#6B615C;
+  --gold:#805626;
+  --gold-hi:#C3945B;
+  --line:#E8D6CE;
+  --line-dark:rgba(250,240,236,.17);
+  --maxw:1220px;
+  --gutter:clamp(20px,5vw,64px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --shadow:0 26px 64px -32px rgba(34,45,68,.4);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--blush);color:var(--ink);
+  font-family:"Outfit",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  font-size:17px;line-height:1.7;font-weight:400;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;margin:0;line-height:1.1;letter-spacing:-.005em}
+p{margin:0}
+::selection{background:var(--navy);color:#fff}
 
+.eyebrow{font-family:"Outfit";font-weight:600;font-size:.69rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+.eyebrow.on-dark{color:var(--gold-hi)}
+.lede{font-size:clamp(1.03rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.8;font-weight:300}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(60px,8vw,120px)}
+.section--tight{padding-block:clamp(28px,3.6vw,54px)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;font-family:"Outfit";font-weight:600;
+  font-size:.79rem;letter-spacing:.17em;text-transform:uppercase;padding:1.08em 1.9em;border-radius:2px;cursor:pointer;
+  border:1.5px solid transparent;line-height:1;white-space:nowrap;
+  transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s}
+.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn--navy{background:var(--navy);color:#fff}
+.btn--navy:hover{background:var(--navy-2);transform:translateY(-2px)}
+.btn--gold{background:var(--gold);color:#fff}
+.btn--gold:hover{background:#6d4820;transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn--ghost:hover{background:var(--navy);color:var(--blush);transform:translateY(-2px)}
+.btn--ghost-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--ghost-dark:hover{background:rgba(255,255,255,.14);transform:translateY(-2px)}
+.btn--light{background:var(--white);color:var(--navy-2)}
+.btn--light:hover{background:var(--gold-hi);color:var(--navy-2);transform:translateY(-2px)}
+.alink{display:inline-flex;align-items:center;gap:.45em;font-family:"Outfit";font-weight:600;font-size:.75rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border-bottom:1.5px solid transparent;
+  padding-bottom:3px;transition:gap .3s,border-color .3s}
+.alink:hover{gap:.8em;border-color:var(--gold)}
+.alink.on-dark{color:var(--gold-hi)}
+.alink.on-dark:hover{border-color:var(--gold-hi)}
+
+/* ============ HEADER — nav replicates the live site 1:1 ============ */
+.hdr{position:sticky;top:0;z-index:60;padding-block:13px;background:rgba(250,240,236,.96);
+  backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.hdr-in{max-width:1360px;margin:0 auto;padding-inline:clamp(14px,3vw,30px);
+  display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;flex-direction:column;gap:3px;line-height:1;z-index:2}
+.brand b{font-family:"Cormorant Garamond";font-weight:500;font-size:1.22rem;color:var(--navy);letter-spacing:.02em}
+.brand span{font-family:"Outfit";font-weight:600;font-size:.51rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.nav{display:flex;align-items:center;gap:0;list-style:none;margin:0;padding:0}
+.nav a{display:inline-flex;font-family:"Outfit";font-weight:500;font-size:.73rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-2);padding:.7em .6em;transition:color .3s}
+.nav a:hover{color:var(--gold)}
+.hdr .btn{padding:.78em 1.15em;font-size:.68rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;z-index:2}
+.burger span{width:24px;height:2px;background:var(--navy);transition:transform .35s,opacity .3s}
+.mnav{position:fixed;inset:0;z-index:55;background:var(--blush);transform:translateX(100%);
+  transition:transform .5s var(--ease);display:flex;flex-direction:column;padding:86px 28px 40px;overflow-y:auto}
+.mnav.open{transform:translateX(0)}
+.mnav a:not(.m-cta){font-family:"Cormorant Garamond";font-size:1.6rem;color:var(--navy);padding:.36em 0;border-bottom:1px solid var(--line)}
+.mnav .m-cta{margin-top:24px;display:flex;justify-content:center;font-size:.8rem;padding:1.05em 1.7em}
+body.lock{overflow:hidden}
+
+/* ============ J1 HERO ============ */
+.hero{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy-2)}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 38%}
+.kb{animation:kb 28s ease-out both}
+@keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.11)}}
+@media (prefers-reduced-motion:reduce){.kb{animation:none}}
+.hero-scrim{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(20,26,40,.5) 0%,rgba(20,26,40,.06) 26%,rgba(20,26,40,.2) 50%,rgba(20,26,40,.9) 100%),
+  linear-gradient(96deg,rgba(20,26,40,.58) 0%,rgba(20,26,40,0) 62%)}
+.hero-c{position:relative;z-index:2;width:100%;max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter);
+  padding-bottom:clamp(40px,6.5vh,86px);color:#fff}
+.hero-eye{display:inline-flex;align-items:center;gap:.8em;font-family:"Outfit";font-weight:600;font-size:.66rem;
+  letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.92);margin-bottom:20px}
+.hero-eye .d{width:22px;height:1.5px;background:var(--gold-hi)}
+.hero h1{font-size:clamp(2.8rem,7.4vw,6rem);line-height:1.04;color:#fff;max-width:15ch;font-weight:300;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--gold-hi)}
+.hero-p{max-width:52ch;margin-top:22px;font-size:clamp(1rem,1.45vw,1.13rem);color:rgba(255,255,255,.92);
+  line-height:1.72;font-weight:300}
+.hero-anchor{margin-top:17px;font-family:"Outfit";font-weight:600;font-size:.69rem;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.74)}
+.hero-anchor b{color:#fff}
+.hero-act{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+/* ============ TRUST ============ */
+.trust{background:var(--navy);color:#fff}
+.trust-g{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,3vw,42px);text-align:center}
+.ti .k{font-family:"Cormorant Garamond";font-weight:400;font-size:clamp(1.35rem,2.4vw,2rem);line-height:1.08;color:#fff}
+.ti .k em{font-style:italic;color:var(--gold-hi)}
+.ti .l{font-family:"Outfit";font-weight:500;font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);margin-top:11px;line-height:1.55}
+
+/* ============ J2 PROMISE ============ */
+.prom-g{display:grid;grid-template-columns:.46fr .54fr;gap:clamp(28px,5vw,74px);align-items:start}
+.prom-g h2{font-size:clamp(2rem,4.4vw,3.3rem);max-width:15ch;line-height:1.12}
+.prom-g h2 em{font-style:italic;color:var(--gold)}
+.prom-body p+p{margin-top:1.05em}
+.prom-sig{margin-top:28px;padding-left:22px;border-left:2px solid var(--gold-hi);font-family:"Cormorant Garamond";
+  font-style:italic;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.46;color:var(--navy)}
+
+/* ============================================================
+   SIGNATURE — everything else, handled. Their real add-on list
+   is the business: nobody else at City Hall can hand you the
+   bouquet, do your hair, marry you and drive you there.
+   ============================================================ */
+.all{position:relative;overflow:hidden;background:var(--navy-2);color:#fff}
+.all-bg{position:absolute;inset:0}
+.all-bg img{width:100%;height:100%;object-fit:cover;opacity:.22}
+.all-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,25,38,.9),rgba(19,25,38,.94))}
+.all-in{position:relative;z-index:2}
+.all-head{max-width:56ch;margin-bottom:clamp(30px,4vw,50px)}
+.all-head .eyebrow{display:block;margin-bottom:18px}
+.all-head h2{font-size:clamp(2.1rem,5.2vw,4rem);color:#fff;line-height:1.08;margin-bottom:.5em;font-weight:300}
+.all-head h2 em{font-style:italic;color:var(--gold-hi)}
+.all-head p{color:rgba(255,255,255,.84);font-size:clamp(1rem,1.45vw,1.12rem);line-height:1.78;font-weight:300}
+.addons{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-dark);
+  border-left:1px solid var(--line-dark)}
+.ad{padding:clamp(20px,2.6vw,30px);border-right:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark)}
+.ad h3{font-family:"Cormorant Garamond";font-size:clamp(1.2rem,2vw,1.5rem);color:#fff;margin-bottom:8px;font-weight:400}
+.ad .p{font-family:"Outfit";font-weight:600;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-hi)}
+.ad p.d{font-size:.9rem;color:rgba(255,255,255,.72);line-height:1.62;font-weight:300;margin-top:9px}
+.all-foot{margin-top:clamp(28px,3.6vw,46px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.all-foot .line{font-family:"Cormorant Garamond";font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:#fff;max-width:40ch;line-height:1.44}
+
+/* ============ J3 WORK ============ */
+.work{background:var(--blush-2)}
+.work-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:22px;
+  margin-bottom:clamp(26px,3.4vw,46px)}
+.work-head h2{font-size:clamp(2rem,4.4vw,3.2rem);max-width:17ch;line-height:1.12}
+.work-head h2 em{font-style:italic;color:var(--gold)}
+.work-head .eyebrow{display:block;margin-bottom:16px}
+.mos{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(10px,1.3vw,18px)}
+.tile{position:relative;overflow:hidden;background:var(--blush-3)}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tile:hover img{transform:scale(1.04)}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:13px 14px;
+  background:linear-gradient(transparent,rgba(19,25,38,.85));font-family:"Outfit";font-weight:600;font-size:.61rem;
+  letter-spacing:.15em;text-transform:uppercase;color:#fff;opacity:0;transform:translateY(6px);
+  transition:opacity .4s,transform .4s}
+.tile:hover .cap{opacity:1;transform:none}
+.m-a{grid-column:span 7;aspect-ratio:3/2}
+.m-b{grid-column:span 5;aspect-ratio:17/16}
+.m-c{grid-column:span 4;aspect-ratio:1/1}
+.m-d{grid-column:span 4;aspect-ratio:1/1}
+.m-e{grid-column:span 4;aspect-ratio:1/1}
+.m-f{grid-column:span 12;aspect-ratio:3/1}
+.work-foot{margin-top:clamp(24px,3.2vw,42px);display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+
+/* ============ LOCATIONS ============ */
+.loc-g{display:grid;grid-template-columns:1fr .92fr;gap:clamp(28px,5vw,66px);align-items:center}
+.loc-copy .eyebrow{display:block;margin-bottom:17px}
+.loc-copy h2{font-size:clamp(2rem,4.4vw,3.2rem);margin-bottom:.45em;line-height:1.12}
+.loc-copy h2 em{font-style:italic;color:var(--gold)}
+.loc-copy p{color:var(--ink-2);line-height:1.8;max-width:46ch;font-weight:300}
+.loc-list{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:9px 22px}
+.loc-list span{font-size:.94rem;color:var(--ink-2);display:flex;gap:.6em;align-items:flex-start;line-height:1.55}
+.loc-list span::before{content:"";width:5px;height:5px;background:var(--gold-hi);margin-top:.6em;flex:none;border-radius:50%}
+.loc-act{margin-top:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.loc-media img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* ============ J8 PACKAGES ============ */
+.pk{background:var(--blush-2)}
+.pk-head{text-align:center;max-width:58ch;margin:0 auto clamp(30px,4vw,50px)}
+.pk-head .eyebrow{display:block;margin-bottom:16px}
+.pk-head h2{font-size:clamp(2rem,4.4vw,3.2rem);margin-bottom:.42em;line-height:1.12}
+.pk-head h2 em{font-style:italic;color:var(--gold)}
+.pk-head p{color:var(--ink-2);line-height:1.78;font-weight:300}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,24px)}
+.pc{background:var(--white);border:1px solid var(--line);padding:clamp(24px,2.9vw,36px);display:flex;flex-direction:column}
+.pc.feat{background:var(--navy);border-color:var(--navy);color:#fff}
+.pc .nm{font-family:"Outfit";font-weight:600;font-size:.63rem;letter-spacing:.19em;text-transform:uppercase;color:var(--gold)}
+.pc.feat .nm{color:var(--gold-hi)}
+.pc h3{font-family:"Cormorant Garamond";font-size:clamp(1.45rem,2.3vw,1.85rem);margin:12px 0 4px;font-weight:400}
+.pc.feat h3{color:#fff}
+.pc .pr{font-family:"Cormorant Garamond";font-size:clamp(1.9rem,3vw,2.5rem);line-height:1;margin-bottom:16px;color:var(--navy)}
+.pc.feat .pr{color:var(--gold-hi)}
+.pc ul{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:9px}
+.pc li{font-size:.9rem;color:var(--ink-2);line-height:1.55;display:flex;gap:.65em;align-items:flex-start}
+.pc.feat li{color:rgba(255,255,255,.86)}
+.pc li::before{content:"";width:5px;height:5px;background:var(--gold-hi);margin-top:.6em;flex:none;border-radius:50%}
+.pc .btn{margin-top:auto;width:100%}
+.pk-note{margin-top:22px;text-align:center;font-family:"Outfit";font-weight:500;font-size:.72rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft)}
+
+/* ============ QUINCE ============ */
+.qu{position:relative;overflow:hidden;background:var(--navy)}
+.qu-in{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center;color:#fff}
+.qu-c .eyebrow{display:block;margin-bottom:18px}
+.qu-c h2{font-size:clamp(2rem,4.4vw,3.2rem);color:#fff;line-height:1.12;margin-bottom:.45em;font-weight:300}
+.qu-c h2 em{font-style:italic;color:var(--gold-hi)}
+.qu-c p{color:rgba(255,255,255,.85);line-height:1.78;max-width:44ch;font-weight:300}
+.qu-c p+p{margin-top:.9em}
+.qu-cards{display:grid;gap:12px}
+.qc{background:rgba(250,240,236,.07);border:1px solid var(--line-dark);padding:20px 22px;display:flex;
+  justify-content:space-between;align-items:baseline;gap:14px}
+.qc .n{font-family:"Cormorant Garamond";font-size:1.22rem;color:#fff}
+.qc .n span{display:block;font-family:"Outfit";font-weight:500;font-size:.72rem;color:rgba(255,255,255,.66);margin-top:5px;letter-spacing:.03em}
+.qc .p{font-family:"Cormorant Garamond";font-size:1.55rem;color:var(--gold-hi);white-space:nowrap}
+.qu-act{margin-top:26px;display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+
+/* ============ J5 REVIEWS ============ */
+.rev-head{text-align:center;margin-bottom:clamp(30px,4vw,52px)}
+.rev-head .eyebrow{display:block;margin-bottom:16px}
+.rev-head h2{font-size:clamp(2rem,4.4vw,3.2rem)}
+.rev-head h2 em{font-style:italic;color:var(--gold)}
+.rgrid{columns:2;column-gap:clamp(16px,2.2vw,26px)}
+.rc{break-inside:avoid;margin-bottom:clamp(16px,2.2vw,26px);background:var(--white);border:1px solid var(--line);
+  padding:clamp(22px,2.8vw,32px)}
+.rc.feat{background:var(--navy);border-color:var(--navy);color:#fff}
+.rq{font-family:"Cormorant Garamond";font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.5;color:var(--ink)}
+.rc.feat .rq{color:#fff}
+.rq .lead{font-style:italic;color:var(--gold)}
+.rc.feat .rq .lead{color:var(--gold-hi)}
+.rwho{margin-top:17px;font-family:"Outfit";font-weight:600;font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink-soft)}
+.rc.feat .rwho{color:rgba(255,255,255,.6)}
+.rev-foot{text-align:center;margin-top:clamp(26px,3.4vw,44px)}
+
+/* ============ J9 CLOSE ============ */
+.close{position:relative;overflow:hidden;background:var(--navy-2)}
+.close-bg{position:absolute;inset:0}
+.close-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;opacity:.36}
+.close-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(110deg,rgba(19,25,38,.95) 0%,rgba(19,25,38,.78) 50%,rgba(19,25,38,.54) 100%)}
+.close-in{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,70px);align-items:center}
+.close-c{color:#fff}
+.close-c .eyebrow{display:block;margin-bottom:20px}
+.close-c h2{font-size:clamp(2.1rem,4.8vw,3.6rem);color:#fff;line-height:1.1;max-width:14ch;font-weight:300}
+.close-c h2 em{font-style:italic;color:var(--gold-hi)}
+.close-c p{color:rgba(255,255,255,.86);font-size:1.02rem;line-height:1.78;max-width:40ch;margin-top:20px;font-weight:300}
+.close-mini{margin-top:24px;display:flex;flex-direction:column;gap:9px;font-family:"Outfit";font-weight:600;
+  font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.close-mini a{color:#fff;border-bottom:1.5px solid var(--gold-hi);padding-bottom:1px}
+.fcard{background:var(--white);padding:clamp(24px,3vw,36px);box-shadow:var(--shadow)}
+.fcard h3{font-size:1.5rem;margin-bottom:7px}
+.fsub{color:var(--ink-soft);font-size:.9rem;margin-bottom:20px;font-weight:300}
+.field{margin-bottom:14px}
+.field label{display:block;font-family:"Outfit";font-weight:600;font-size:.6rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;font-family:"Outfit";font-size:.95rem;color:var(--ink);
+  background:var(--blush);border:1.5px solid var(--line);border-radius:2px;padding:.8em .9em;
+  transition:border-color .25s,background .25s}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--gold);background:#fff}
+.field textarea{resize:vertical;min-height:78px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fcard .btn{width:100%;margin-top:7px}
+.fmsg{display:none;text-align:center;padding:28px 8px}
+.fmsg.show{display:block}
+.fmsg .em{font-family:"Cormorant Garamond";font-style:italic;font-size:1.5rem;color:var(--gold);margin-bottom:11px}
+.fmsg p{color:var(--ink-soft);font-size:.94rem;font-weight:300}
+
+/* ============ J10 FOOTER ============ */
+.foot{background:var(--navy-2);color:rgba(255,255,255,.76);padding-top:clamp(52px,6.5vw,84px)}
+.foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.1fr;gap:clamp(26px,3.6vw,50px);
+  padding-bottom:42px;border-bottom:1px solid var(--line-dark)}
+.fb b{font-family:"Cormorant Garamond";font-weight:500;font-size:1.5rem;color:#fff;display:block}
+.fb .tag{font-family:"Outfit";font-weight:600;font-size:.57rem;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--gold-hi);margin-top:10px;display:block}
+.fb p{margin-top:15px;font-size:.88rem;line-height:1.7;max-width:34ch;color:rgba(255,255,255,.62);font-weight:300}
+.fcol h4{font-family:"Outfit";font-weight:600;font-size:.59rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold-hi);margin:0 0 14px}
+.fcol a,.fcol span{display:block;font-size:.87rem;color:rgba(255,255,255,.76);padding:4px 0;transition:color .25s;font-weight:300}
+.fcol a:hover{color:var(--gold-hi)}
+.fsoc{display:flex;gap:13px;margin-top:13px}
+.fsoc svg{width:18px;height:18px;fill:rgba(255,255,255,.7);transition:fill .25s,transform .25s}
+.fsoc a:hover svg{fill:var(--gold-hi);transform:translateY(-2px)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding-block:22px;
+  font-family:"Outfit";font-weight:500;font-size:.61rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.5)}
+.fbot a{color:var(--gold-hi)}
+
+.mcta{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:none;background:var(--navy-2);
+  padding:10px 10px 10px 19px;align-items:center;justify-content:space-between;gap:12px;border-radius:2px;
+  transform:translateY(150%);transition:transform .5s var(--ease);box-shadow:0 16px 44px -16px rgba(0,0,0,.5)}
+.mcta.show{transform:translateY(0)}
+.mcta .t{font-family:"Outfit";font-weight:600;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.mcta .btn{padding:.8em 1.05em;font-size:.65rem}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1200px){
+  .nav,.hdr-r .btn{display:none}
+  .burger{display:flex}
+  .mcta{display:flex}
+  .prom-g,.loc-g,.close-in,.qu-in{grid-template-columns:1fr}
+  .addons{grid-template-columns:1fr 1fr}
+  .pg{grid-template-columns:1fr}
+  .pc.feat{order:-1}
+  .trust-g{grid-template-columns:1fr 1fr;gap:26px 20px}
+}
+@media (max-width:819px){
+  .mos{grid-template-columns:repeat(2,1fr)}
+  .m-a{grid-column:span 2;aspect-ratio:3/2}
+  .m-b{grid-column:span 2;aspect-ratio:16/10}
+  .m-c,.m-d{grid-column:span 1;aspect-ratio:1/1}
+  .m-e{grid-column:span 2;aspect-ratio:3/2}
+  .m-f{grid-column:span 2;aspect-ratio:2/1}
+  .addons{grid-template-columns:1fr}
+  .loc-list{grid-template-columns:1fr}
+  .rgrid{columns:1}
+  .foot-top{grid-template-columns:1fr 1fr}
+  .fb{grid-column:span 2}
+  .frow{grid-template-columns:1fr}
+  .cap{opacity:1;transform:none}
+  .all-foot{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .hero-act .btn{flex:1}
+  .foot-top{grid-template-columns:1fr}
+  .fb{grid-column:span 1}
+}
+
+/* crest emblem in header + footer */
+.brand{flex-direction:row;align-items:center;gap:11px}
+.brand-txt{display:flex;flex-direction:column;gap:3px}
+.brand-logo{height:42px;width:auto;flex:none}
+.foot-logo{height:56px;width:auto;display:block;margin-bottom:14px}
+
+/* header: fit the nav on one line, more breathing room */
+.hdr-in{max-width:1460px;gap:18px}
+.brand b{font-size:1.02rem}
+.brand-logo{height:38px}
+.nav a{font-size:.66rem;letter-spacing:.06em;padding:.7em .4em;white-space:nowrap}
+.nav{flex-wrap:nowrap}
+
+/* mobile: stack the below-hero trust items with space + section padding */
+@media (max-width:600px){
+  .trust-g{grid-template-columns:1fr;gap:clamp(30px,7vw,44px)}
+  .trust{padding-block:clamp(48px,11vw,68px)}
+}
+
+/* more space between header nav items */
+.nav a{padding:.7em .62em}
+
+/* mobile: thin line dividers between the stacked trust items */
+@media (max-width:600px){
+  .trust-g{gap:0}
+  .ti{padding-block:clamp(26px,6.5vw,36px)}
+  .ti:first-child{padding-top:0}
+  .ti:last-child{padding-bottom:0}
+  .ti + .ti{border-top:1px solid var(--line-dark)}
+}
+
+/* text logo size */
+.brand b{font-size:1.28rem}
+
+/* more breathing room between nav items */
+.nav a{padding:.7em .85em}
+
+/* two-line logo, slightly smaller + more nav breathing room */
+.brand b{font-size:1.12rem;line-height:1.08}
+.nav a{padding:.7em 1.02em}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand" aria-label="SFCH Wedding Photographer home">
+      <img class="brand-logo" src="images/img01.png" alt="">
+      <b>SFCH Wedding<br>Photographer</b>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#top">Home</a></li>
+        <li><a href="#work">Portfolio</a></li>
+        <li><a href="#packages">Wedding Packages</a></li>
+        <li><a href="#quince">Quinceañera Packages</a></li>
+        <li><a href="#locations">Locations</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.sfcityhallphotographer.com/blog">Blog</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-r"><a href="#contact" class="btn btn--navy">Start planning</a></div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="#top" data-close>Home</a>
+  <a href="#work" data-close>Portfolio</a>
+  <a href="#packages" data-close>Wedding Packages</a>
+  <a href="#quince" data-close>Quinceañera Packages</a>
+  <a href="#locations" data-close>Locations</a>
+  <a href="#about" data-close>About</a>
+  <a href="#contact" data-close>Contact</a>
+  <a href="https://www.sfcityhallphotographer.com/blog">Blog</a>
+  <a href="#contact" class="btn btn--navy m-cta" data-close>Start planning</a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ J1 HERO ============ -->
+<section class="hero">
+  <div class="hero-img"><img class="kb" src="images/img02.jpg" alt="A bride and groom on the grand staircase of San Francisco City Hall"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-c">
+    <span class="hero-eye"><span class="d"></span>San Francisco City Hall · weddings, elopements &amp; quinceañeras</span>
+    <h1>Bring two people.<br>We'll bring <em>everything else.</em></h1>
+    <p class="hero-p">Photography at City Hall is where it starts. Hair and makeup, a fresh bouquet, a videographer, an officiant, even the car, all arranged by one team, so planning a San Francisco wedding from anywhere takes a single conversation.</p>
+    
+    <div class="hero-act">
+      <a href="#contact" class="btn btn--light">Start planning</a>
+      <a href="#packages" class="btn btn--ghost-dark">See packages</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="section--tight trust">
+  <div class="wrap trust-g reveal">
+    <div class="ti"><div class="k">One <em>booking</em></div><div class="l">Photo, hair, florals,<br>film and officiant</div></div>
+    <div class="ti"><div class="k"><em>350+</em></div><div class="l">Weddings documented<br>at City Hall</div></div>
+    <div class="ti"><div class="k">Team <em>coordinator</em></div><div class="l">Included in every<br>single package</div></div>
+    <div class="ti"><div class="k">Northern <em>California</em></div><div class="l">City Hall, the coast,<br>and destinations</div></div>
+  </div>
+</section>
+
+<!-- ============ J2 PROMISE ============ -->
+<section class="section">
+  <div class="wrap prom-g">
+    <div class="reveal">
+      <span class="eyebrow">Why this works</span>
+      <h2 style="margin-top:16px">Most couples book City Hall from <em>somewhere else.</em></h2>
+    </div>
+    <div class="prom-body reveal">
+      <p class="lede">Which means finding a hair stylist you've never met, a florist who'll deliver to a public building, someone to film it, and possibly an officiant, all from a different city and often a different country. That's four more searches, four more deposits and four sets of crossed fingers.</p>
+      <p class="lede">We do all of it. Every package includes a dedicated coordinator, so the planning is one thread rather than five, and you show up on the day to a team that already knows the schedule.</p>
+      <p class="prom-sig">You've decided San Francisco City Hall is your beautiful place. The rest is ours to sort out.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE — EVERYTHING ELSE ============ -->
+<section class="section all">
+  <div class="all-bg"><img src="images/img03.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap all-in">
+    <div class="all-head reveal">
+      <span class="eyebrow on-dark">Everything else, handled</span>
+      <h2>The parts nobody warns you <em>you'll need.</em></h2>
+      <p>Add any of these to any package, priced openly, arranged by the same team that's photographing you. No separate vendors, no separate deposits, no chasing anyone the week before.</p>
+    </div>
+    <div class="addons reveal">
+      <div class="ad"><div class="p">$375</div><h3>Hair &amp; makeup</h3><p class="d">Professional styling, booked and scheduled around your ceremony time.</p></div>
+      <div class="ad"><div class="p">$250</div><h3>Fresh floral bouquet</h3><p class="d">Delivered on the day, so you're not carrying flowers through an airport.</p></div>
+      <div class="ad"><div class="p">$400 / hour</div><h3>Videography</h3><p class="d">Professional film coverage alongside the photography, one timeline.</p></div>
+      <div class="ad"><div class="p">$450</div><h3>Spanish-speaking officiant</h3><p class="d">A private officiant so the ceremony is yours, in the language your family speaks.</p></div>
+      <div class="ad"><div class="p">$150 / hour</div><h3>Content creator</h3><p class="d">Vertical video and behind-the-scenes for the people who couldn't be there.</p></div>
+      <div class="ad"><div class="p">Included</div><h3>Limo service</h3><p class="d">On selected packages, because getting between locations in a gown is its own problem.</p></div>
+    </div>
+    <div class="all-foot reveal">
+      <p class="line">One team, one coordinator, one conversation from the first email to the gallery.</p>
+      <a href="#packages" class="alink on-dark">See what's in each package →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J3 WORK ============ -->
+<section class="section work" id="work">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <div>
+        <span class="eyebrow">Portfolio</span>
+        <h2>The staircase, the golden doors, and the <em>coast after.</em></h2>
+      </div>
+      <a href="https://www.sfcityhallphotographer.com/portfolio" class="alink">Full portfolio →</a>
+    </div>
+    <div class="mos reveal">
+      <div class="tile m-a"><img src="images/img04.jpg" alt="A wedding photographed at Crissy Field West Bluff Beach, San Francisco" loading="lazy"><div class="cap">Crissy Field · West Bluff</div></div>
+      <div class="tile m-b"><img src="images/img05.jpg" alt="A San Francisco City Hall wedding portrait" loading="lazy"><div class="cap">San Francisco City Hall</div></div>
+      <div class="tile m-c"><img src="images/img06.jpg" alt="A wedding on the fourth floor south of San Francisco City Hall" loading="lazy"><div class="cap">Fourth Floor South</div></div>
+      <div class="tile m-d"><img src="images/img07.jpg" alt="A private officiant ceremony at San Francisco City Hall" loading="lazy"><div class="cap">Private officiant ceremony</div></div>
+      <div class="tile m-e"><img src="images/img08.jpg" alt="A San Francisco City Hall wedding portrait" loading="lazy"><div class="cap">City Hall portraits</div></div>
+      <div class="tile m-f"><img src="images/img09.jpg" alt="A wedding photographed at Battery Spencer overlooking San Francisco" loading="lazy"><div class="cap">Battery Spencer · Golden Gate</div></div>
+    </div>
+    <div class="work-foot reveal">
+      <a href="https://www.sfcityhallphotographer.com/portfolio" class="btn btn--ghost">View the portfolio</a>
+      <span style="font-family:Outfit;font-weight:600;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft)">Civil ceremony · Fourth Floor North &amp; South · Private officiant</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATIONS ============ -->
+<section class="section" id="locations">
+  <div class="wrap loc-g">
+    <div class="loc-copy reveal">
+      <span class="eyebrow">Locations</span>
+      <h2>City Hall first. Then the <em>whole city.</em></h2>
+      <p>The ceremony takes twenty minutes. The rest of the afternoon is yours, and San Francisco is right there. We build the route into the package so you're not deciding on the day where to go next.</p>
+      <div class="loc-list">
+        <span>The Grand Staircase</span>
+        <span>The Golden Doors</span>
+        <span>Fourth Floor North</span>
+        <span>Fourth Floor South</span>
+        <span>Palace of Fine Arts</span>
+        <span>Crissy Field &amp; West Bluff</span>
+        <span>Battery Spencer</span>
+        <span>Battery East &amp; the bridge</span>
+      </div>
+      <div class="loc-act">
+        <a href="#contact" class="btn btn--gold">Plan your route</a>
+        <a href="https://www.sfcityhallphotographer.com/blog/golden-gate-bliss-scenic-spots-for-your-wedding-photos" class="alink">Scenic spots guide →</a>
+      </div>
+    </div>
+    <div class="loc-media reveal">
+      <img src="images/img10.jpg" alt="An elopement photographed at Battery East near the Golden Gate Bridge" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ J8 PACKAGES ============ -->
+<section class="section pk" id="packages">
+  <div class="wrap">
+    <div class="pk-head reveal">
+      <span class="eyebrow">Wedding packages</span>
+      <h2>Priced in the open, <em>start to finish.</em></h2>
+      <p>Every package includes posing guidance, a dedicated virtual team coordinator and a private online gallery where you view, download and order prints and albums.</p>
+    </div>
+    <div class="pg">
+      <div class="pc reveal">
+        <div class="nm">The short one</div>
+        <h3>Lovely Little Wedding</h3>
+        <div class="pr">$1,300</div>
+        <ul>
+          <li>City Hall coverage with limo service</li>
+          <li>Grand Staircase and the Golden Doors</li>
+          <li>Posing guidance throughout</li>
+          <li>Dedicated virtual coordinator</li>
+          <li>Private online gallery, high resolution</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost">Start planning</a>
+      </div>
+      <div class="pc feat reveal">
+        <div class="nm">Most booked</div>
+        <h3>The full day</h3>
+        <div class="pr">From $1,999</div>
+        <ul>
+          <li>Extended City Hall coverage</li>
+          <li>A second location after the ceremony</li>
+          <li>Add hair, makeup, florals or film</li>
+          <li>Officiant available, English or Spanish</li>
+          <li>Everything coordinated by one team</li>
+        </ul>
+        <a href="#contact" class="btn btn--light">Start planning</a>
+      </div>
+      <div class="pc reveal">
+        <div class="nm">Build your own</div>
+        <h3>Anything else</h3>
+        <div class="pr">Let's talk</div>
+        <ul>
+          <li>Destination weddings, here or abroad</li>
+          <li>Larger groups and family celebrations</li>
+          <li>Any combination of the add-on services</li>
+          <li>Tell us what the day should feel like</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost">Start planning</a>
+      </div>
+    </div>
+    <p class="pk-note">All packages include a private high-resolution gallery, prints and album ordering</p>
+  </div>
+</section>
+
+<!-- ============ QUINCEAÑERA ============ -->
+<section class="section qu" id="quince">
+  <div class="wrap qu-in">
+    <div class="qu-c reveal">
+      <span class="eyebrow on-dark">Quinceañera packages</span>
+      <h2>A quinceañera deserves the <em>same staircase.</em></h2>
+      <p>City Hall isn't only for weddings, and a fifteenth birthday photographed properly in that building is something a family keeps forever. Same locations, same coordinator, same gallery.</p>
+      <p>Hair and makeup, florals and a Spanish-speaking officiant can all be added, exactly as they can to a wedding.</p>
+      <div class="qu-cards">
+        <div class="qc">
+          <div class="n">Lovely Little Quinceañera Session<span>Two hours at City Hall · Grand Staircase &amp; Golden Doors</span></div>
+          <div class="p">$600</div>
+        </div>
+        <div class="qc">
+          <div class="n">Perfect Quinceañera Celebration<span>Two and a half hours · City Hall and the Palace of Fine Arts</span></div>
+          <div class="p">$750</div>
+        </div>
+      </div>
+      <div class="qu-act">
+        <a href="#contact" class="btn btn--light">Plan a quinceañera</a>
+        <a href="https://www.sfcityhallphotographer.com/quinceaera-packages" class="alink on-dark">All quinceañera packages →</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <img src="images/img11.jpg" alt="A woman in a white elegant gown photographed at San Francisco City Hall" loading="lazy" style="width:100%;aspect-ratio:4/5;object-fit:cover">
+    </div>
+  </div>
+</section>
+
+<!-- ============ J5 REVIEWS ============ -->
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="rev-head reveal">
+      <span class="eyebrow">Kind words</span>
+      <h2>What couples say <em>afterwards</em></h2>
+    </div>
+    <div class="rgrid">
+      <div class="rc feat reveal">
+        <p class="rq"><span class="lead">"A big thank you from both of us.</span> Your team is fantastic and made our wedding special for our families and friends. I'm looking forward to reliving the moment by flipping through the album you're working on."</p>
+        <p class="rwho">Anastasia &amp; Demetri</p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"We are in love with our photos.</span> We can't wait to share them with our family. Christian was amazing and captured our day so perfectly. You guys were a pleasure to work with."</p>
+        <p class="rwho">Regina &amp; Justin</p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"These are absolutely wonderful.</span> Thank you for helping us share our special day with family and friends through these beautiful images."</p>
+        <p class="rwho">Lisa Maria &amp; Andreas</p>
+      </div>
+      <div class="rc reveal">
+        <p class="rq"><span class="lead">"Your team."</span> It comes up again and again in the thank-you notes, and it's the accurate word. There is a coordinator, a photographer, and whoever else your day needs, and they already know each other.</p>
+        <p class="rwho">A note on how this works</p>
+      </div>
+    </div>
+    <div class="rev-foot reveal"><a href="https://www.sfcityhallphotographer.com/about" class="btn btn--ghost">About the team</a></div>
+  </div>
+</section>
+
+<!-- ============ J9 CLOSE ============ -->
+<section class="section close" id="contact">
+  <div class="close-bg"><img src="images/img12.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap close-in">
+    <div class="close-c reveal">
+      <span class="eyebrow on-dark">Start planning</span>
+      <h2>Tell us what the day should <em>feel like.</em></h2>
+      <p>Send your preferred date and a few words about the celebration you're imagining. We'll come back with availability and exactly what each package would include for it.</p>
+      <div class="close-mini">
+        <span><a href="mailto:1sfcityhallphotographer@gmail.com">1sfcityhallphotographer@gmail.com</a></span>
+        <span>San Francisco &amp; all over Northern California</span>
+        <span><a href="https://www.instagram.com/sfcityhallphotographer/">@sfcityhallphotographer</a></span>
+      </div>
+    </div>
+    <div class="fcard reveal">
+      <div id="fin">
+        <h3>Start planning</h3>
+        <p class="fsub">A few details is all we need to send you the right options.</p>
+        <div class="frow">
+          <div class="field"><label for="fn">First name</label><input id="fn" type="text" placeholder="First"></div>
+          <div class="field"><label for="ln">Last name</label><input id="ln" type="text" placeholder="Last"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+          <div class="field"><label for="p">Phone</label><input id="p" type="tel" placeholder="Optional"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="d">Preferred date</label><input id="d" type="text" placeholder="12 June 2027"></div>
+          <div class="field"><label for="k">Occasion</label>
+            <select id="k"><option>Wedding</option><option>Elopement</option><option>Quinceañera</option><option>Destination wedding</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="m">What would you like it to look and feel like?</label><textarea id="m" placeholder="The mood, the people, anything you already know you want…"></textarea></div>
+        <button class="btn btn--navy" id="send" type="button">Send it over</button>
+      </div>
+      <div class="fmsg" id="fmsg">
+        <div class="em">Thank you — received.</div>
+        <p>We'll check the date and come back with the package options that fit what you've described.<br>Talk soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J10 FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="fb">
+        <img class="foot-logo" src="images/img01.png" alt="">
+        <b>SFCH Wedding Photographer</b>
+        <span class="tag">Weddings · Elopements · Quinceañeras</span>
+        <p>Professional San Francisco City Hall photography, with hair and makeup, florals, videography, officiants and coordination arranged by one team.</p>
+      </div>
+      <div class="fcol">
+        <h4>Explore</h4>
+        <a href="#work">Portfolio</a>
+        <a href="#packages">Wedding Packages</a>
+        <a href="#quince">Quinceañera Packages</a>
+        <a href="#locations">Locations</a>
+        <a href="https://www.sfcityhallphotographer.com/blog">Blog</a>
+      </div>
+      <div class="fcol">
+        <h4>At City Hall</h4>
+        <a href="https://www.sfcityhallphotographer.com/portfolio/sf-city-hall-civil-ceremony">Civil ceremony</a>
+        <a href="https://www.sfcityhallphotographer.com/portfolio/fourth-floor-north-weddings">Fourth Floor North</a>
+        <a href="https://www.sfcityhallphotographer.com/portfolio/fourth-floor-south-weddings">Fourth Floor South</a>
+        <a href="https://www.sfcityhallphotographer.com/portfolio/private-officiant-at-city-hall">Private officiant</a>
+      </div>
+      <div class="fcol">
+        <h4>Get in touch</h4>
+        <a href="mailto:1sfcityhallphotographer@gmail.com">Email us</a>
+        <a href="#contact">Start planning</a>
+        <span>San Francisco, California</span>
+        <div class="fsoc">
+          <a href="https://www.instagram.com/sfcityhallphotographer/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.9c2.95 0 3.3.01 4.47.06 1.08.05 1.66.23 2.05.38.51.2.88.44 1.27.82.38.39.63.76.82 1.27.15.39.33.97.38 2.05.05 1.17.06 1.52.06 4.47s-.01 3.3-.06 4.47c-.05 1.08-.23 1.66-.38 2.05-.2.51-.44.88-.82 1.27-.39.38-.76.63-1.27.82-.39.15-.97.33-2.05.38-1.17.05-1.52.06-4.47.06s-3.3-.01-4.47-.06c-1.08-.05-1.66-.23-2.05-.38a3.4 3.4 0 0 1-1.27-.82 3.4 3.4 0 0 1-.82-1.27c-.15-.39-.33-.97-.38-2.05-.05-1.17-.06-1.52-.06-4.47s.01-3.3.06-4.47c.05-1.08.23-1.66.38-2.05.2-.51.44-.88.82-1.27.39-.38.76-.63 1.27-.82.39-.15.97-.33 2.05-.38 1.17-.05 1.52-.06 4.47-.06m0-1.9C9 1 8.6 1.01 7.42 1.07c-1.18.05-1.99.24-2.69.52-.73.28-1.35.66-1.97 1.28-.62.62-1 1.24-1.28 1.97-.28.7-.47 1.51-.52 2.69C.99 8.6 1 9 1 12s-.01 3.4.05 4.58c.05 1.18.24 1.99.52 2.69.28.73.66 1.35 1.28 1.97.62.62 1.24 1 1.97 1.28.7.28 1.51.47 2.69.52C8.6 23.01 9 23 12 23s3.4.01 4.58-.05c1.18-.05 1.99-.24 2.69-.52a5.3 5.3 0 0 0 1.97-1.28 5.3 5.3 0 0 0 1.28-1.97c.28-.7.47-1.51.52-2.69.06-1.18.05-1.58.05-4.58s.01-3.4-.05-4.58c-.05-1.18-.24-1.99-.52-2.69a5.3 5.3 0 0 0-1.28-1.97 5.3 5.3 0 0 0-1.97-1.28c-.7-.28-1.51-.47-2.69-.52C15.4.99 15 1 12 1zm0 5.35A5.65 5.65 0 1 0 17.65 12 5.65 5.65 0 0 0 12 6.35zm0 9.32A3.67 3.67 0 1 1 15.67 12 3.67 3.67 0 0 1 12 15.67zm5.86-9.55a1.32 1.32 0 1 0 1.32 1.32 1.32 1.32 0 0 0-1.32-1.32z"/></svg></a>
+          <a href="https://www.facebook.com/1sfcityhallphotographer/" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8h2.7l.4-3.1h-3.1V8.9c0-.9.25-1.5 1.55-1.5H17V4.6c-.3 0-1.3-.13-2.46-.13-2.43 0-4.1 1.48-4.1 4.2v2.34H7.7V14h2.74v8z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 San Francisco City Hall Photographer</span>
+      <span>Concept redesign by <a href="https://bgdwebdesign.com">Bouan</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta">
+  <span class="t">Getting married at City Hall?</span>
+  <a href="#contact" class="btn btn--light">Start planning</a>
+</div>
+
+<script>
+(function(){
+  var mcta=document.getElementById('mcta');
+  function onScroll(){mcta.classList.toggle('show',window.scrollY>720);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var burger=document.getElementById('burger'),mnav=document.getElementById('mnav');
+  function toggle(open){
+    mnav.classList.toggle('open',open);document.body.classList.toggle('lock',open);
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    var s=burger.querySelectorAll('span');
+    s[0].style.transform=open?'translateY(7px) rotate(45deg)':'';
+    s[1].style.opacity=open?'0':'1';
+    s[2].style.transform=open?'translateY(-7px) rotate(-45deg)':'';
+  }
+  burger.addEventListener('click',function(){toggle(!mnav.classList.contains('open'));});
+  mnav.querySelectorAll('[data-close]').forEach(function(a){a.addEventListener('click',function(){toggle(false);});});
+  var els=[].slice.call(document.querySelectorAll('.reveal'));
+  function all(){els.forEach(function(e){e.classList.add('in');});}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});
+    },{threshold:.08,rootMargin:'0px 0px -4% 0px'});
+    els.forEach(function(e){io.observe(e);});
+    window.addEventListener('load',function(){setTimeout(all,1800);});
+    setTimeout(all,3000);
+  } else { all(); }
+  var b=document.getElementById('send');
+  if(b){b.addEventListener('click',function(){
+    document.getElementById('fin').style.display='none';
+    document.getElementById('fmsg').classList.add('show');
+  });}
+})();
+</script>
+</body>
+</html>
