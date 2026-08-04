@@ -1,1 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Static base so the preload scanner, which reads ahead of any script,
+     resolves assets correctly on the production path. -->
+<base id="pathbase" href="/elevate/">
+<script>
+/* Relative URLs resolve against the DIRECTORY of the current URL. Served as
+   /elevate with no trailing slash a browser treats "elevate" as a FILE, so
+   images/x.jpg becomes /images/x.jpg and everything 404s. This rewrites the
+   base for a renamed folder, the domain root, or a local file://.
+   Rule: a final path segment with no dot in it is a directory. */
+(function () {
+  var p = location.pathname;
+  if (p.charAt(p.length - 1) !== '/') {
+    var last = p.slice(p.lastIndexOf('/') + 1);
+    p = last.indexOf('.') === -1 ? p + '/' : p.slice(0, p.lastIndexOf('/') + 1);
+  }
+  if (p !== '/elevate/') document.getElementById('pathbase').href = p;
+})();
+</script>
 
+<title>Elevate Photography · Denver Wedding Photographers</title>
+<meta name="description" content="Elevate Photography, a team of Denver wedding photographers. Over 1,500 weddings since 2001, across Denver, Boulder, Vail and all of Colorado.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://elevatephotography.com/">
+<meta name="theme-color" content="#F7F4EE">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elevate Photography — homepage concept">
+<meta property="og:description" content="A concept redesign of the Elevate Photography homepage. Built by Bouan, BGD Web Design.">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ELEVATE PHOTOGRAPHY — Denver wedding photographers
+   Concept redesign by Bouan · BGD Web Design
+
+   Palette sampled from colors.photography in the bundle: their
+   frames run warm olive (#787858), stone taupe (#61544a), soft
+   blush (#baaaab / #e5cec0) and deep charcoal (#181818). So the
+   page is bone and stone with a muted olive reserved for actions
+   — a Colorado palette that came out of their own light. What it
+   escapes is the current site's grey-on-black with a teal accent.
+   ============================================================ */
+@font-face{
+  font-family:'Royalty Free';
+  src:url('fonts/royalty-free.woff2') format('woff2');
+  font-weight:400;font-style:normal;font-display:swap;
+}
+
+:root{
+  /* Their actual brand, sampled from the live site: teal #25505B chrome, a
+     darker #163C46 footer, warm #FAF4F2 paper and the peach of the script
+     logo. The site palette is normally the thing to escape, but this one is a
+     designed identity with a bespoke wordmark, not a template default — so it
+     gets kept and given room instead. */
+  --paper:#FAF4F2;
+  --stone:#F2E9E4;
+  --stone-2:#E7DAD3;
+  --teal:#25505B;
+  --teal-dk:#163C46;
+  --teal-deep:#102C34;
+  --ink:#1E3138;
+  --ink-2:#3E5B64;
+  --soft:#6C7F86;
+  --faint:#9BA9AE;
+  --peach:#F2C7AE;
+  --peach-dk:#D9A183;
+  --olive:#25505B;
+  --olive-dk:#163C46;
+  --rule:#E2D5CE;
+  --rule-soft:#EFE5E0;
+  --maxw:1280px;
+  --gutter:clamp(20px,5vw,70px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Figtree",system-ui,sans-serif;font-weight:400;
+  font-size:17px;line-height:1.72;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* Modern, not editorial: a contemporary grotesque set large and tight,
+   generous radii, solid blocks. The serif register was reading as heritage
+   luxury; this reads as a studio operating now. */
+h1,h2,h3{font-family:"Bricolage Grotesque","Figtree",system-ui,sans-serif;
+  font-weight:500;letter-spacing:-.035em;line-height:1.02}
+h1{font-size:clamp(2.5rem,6.4vw,5rem)}
+h2{font-size:clamp(2rem,4.3vw,3.4rem)}
+h3{font-size:clamp(1.22rem,1.85vw,1.55rem);line-height:1.14;letter-spacing:-.02em}
+em{font-style:normal;font-weight:300;opacity:.72}
+.r{border-radius:8px}
+
+.hand{font-family:'Royalty Free',cursive;font-weight:400;font-size:1.28em;
+  line-height:.9;display:inline-block;transform:translateY(.05em)}
+.hand--olive{color:var(--peach-dk)}
+.sig .hand,.ct-l .hand{color:var(--peach)}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gutter)}
+.section{padding-block:clamp(74px,9.5vw,142px)}
+.eyebrow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  font-family:"Figtree";font-weight:700;font-size:.63rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--soft)}
+.eyebrow .d{width:30px;height:1px;background:var(--rule);flex:none}
+.eyebrow.dark{color:rgba(255,255,255,.72)}
+.eyebrow.dark .d{background:rgba(255,255,255,.32)}
+.lede{font-size:clamp(1rem,1.4vw,1.13rem);line-height:1.76;color:var(--ink-2)}
+.small{font-family:"Figtree";font-weight:600;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;
+  border-radius:5px;
+  font-family:"Figtree";font-weight:700;font-size:.71rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:1.15em 2.1em;border:1px solid var(--olive);
+  background:var(--olive);color:var(--paper);cursor:pointer;
+  transition:background .35s var(--ease),color .35s var(--ease)}
+.btn:hover{background:transparent;color:var(--teal-dk);border-color:var(--teal-dk)}
+.sig .btn,.card--feat .btn{background:var(--peach);border-color:var(--peach);color:var(--teal-dk)}
+.sig .btn:hover,.card--feat .btn:hover{background:transparent;color:var(--peach);border-color:var(--peach)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hero .btn--ghost{color:#fff;border-color:rgba(255,255,255,.6)}
+.hero .btn--ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
+.alink{font-family:"Figtree";font-weight:700;font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;border-bottom:1px solid var(--olive);padding-bottom:5px;
+  transition:opacity .3s}
+.alink:hover{opacity:.55}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+
+/* ================= HEADER ================= */
+.hdr{position:sticky;top:0;z-index:60;padding-block:14px;
+  background:rgba(247,244,238,.94);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--rule-soft)}
+.hdr-in{max-width:1380px;margin:0 auto;padding-inline:clamp(16px,3.4vw,34px);
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:block;line-height:0;z-index:2}
+.brand img{width:clamp(116px,12vw,152px);height:auto}
+.nav{display:none;gap:26px;list-style:none}
+.nav a{font-family:"Figtree";font-weight:600;font-size:.7rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink-2);position:relative;padding-bottom:3px}
+.nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;
+  background:var(--olive);transition:width .4s var(--ease)}
+.nav a:hover::after{width:100%}
+.hdr .btn{padding:.82em 1.2em;font-size:.66rem}
+.hdr-r .btn{display:none}
+.burger{width:34px;height:24px;background:none;border:0;position:relative;z-index:70}
+.burger span{position:absolute;left:0;height:1.5px;width:100%;background:var(--ink);transition:.4s var(--ease)}
+.burger span:nth-child(1){top:3px}.burger span:nth-child(2){top:11px}.burger span:nth-child(3){top:19px}
+.burger.x span:nth-child(1){top:11px;transform:rotate(45deg)}
+.burger.x span:nth-child(2){opacity:0}
+.burger.x span:nth-child(3){top:11px;transform:rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:55;background:var(--paper);transform:translateX(100%);
+  transition:transform .5s var(--ease);display:flex;flex-direction:column;
+  padding:102px 28px 40px;overflow-y:auto}
+.mnav.open{transform:translateX(0)}
+.mnav a{font-family:"Bricolage Grotesque";font-weight:500;letter-spacing:-.03em;font-size:1.75rem;color:var(--ink);
+  padding:.44em 0;border-bottom:1px solid var(--rule-soft)}
+.mnav a.m-cta{margin-top:28px;align-self:stretch;border-radius:5px;display:flex;align-items:center;
+  justify-content:center;font-family:"Figtree";font-weight:700;font-size:.72rem;
+  letter-spacing:.17em;text-transform:uppercase;line-height:1;padding:1.15em 2em;
+  border:1px solid var(--olive);border-bottom:1px solid var(--olive);
+  background:var(--olive);color:var(--paper)}
+.mnav a.m-cta:hover{background:transparent;color:var(--olive-dk)}
+@media(min-width:600px) and (max-width:1019px){
+  .mnav{padding:112px 44px 48px}
+  .mnav a{font-size:2rem}
+  .mnav a.m-cta{max-width:340px;font-size:.75rem}
+}
+
+/* ================= J1 HERO ================= */
+.hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;
+  min-height:calc(100vh - var(--hdr,68px));
+  min-height:calc(100dvh - var(--hdr,68px));
+  display:flex;align-items:flex-end;padding-block:clamp(44px,6vw,88px)}
+.hero .wrap{width:100%}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 48%}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(16,44,52,.88) 0%,rgba(16,44,52,.64) 26%,
+    rgba(16,44,52,.22) 54%,rgba(16,44,52,0) 82%)}
+.hero-in{max-width:45rem}
+.hero h1{margin-top:22px;color:#fff}
+.hero-p{margin-top:20px;max-width:44ch;color:rgba(255,255,255,.88);
+  font-size:clamp(.95rem,1.4vw,1.13rem)}
+.typer{margin-top:24px;font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(1.1rem,1.8vw,1.5rem);line-height:1.3;color:#fff;min-height:1.35em}
+.typer .out{color:var(--peach)}
+.typer .cur{display:inline-block;width:1.5px;height:.98em;margin-left:2px;
+  background:var(--peach);vertical-align:-.1em;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.hero-cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
+.scroll{position:absolute;right:var(--gutter);bottom:clamp(24px,3vw,40px);z-index:1;
+  display:none;align-items:center;gap:11px;font-family:"Figtree";font-weight:600;
+  font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.scroll i{display:block;width:1px;height:38px;background:rgba(255,255,255,.5)}
+@media(prefers-reduced-motion:reduce){.typer .cur{animation:none;opacity:0}}
+
+/* ================= PROOF BAR ================= */
+.proof{background:var(--stone);border-block:1px solid var(--rule);overflow:hidden}
+.proof-in{padding-block:clamp(32px,3.8vw,50px);display:flex;flex-wrap:wrap;
+  align-items:center;justify-content:center;gap:clamp(14px,2.4vw,32px);text-align:center}
+.stat{display:flex;flex-direction:column;align-items:center;gap:6px}
+.stat b{font-family:"Bricolage Grotesque";font-weight:500;font-size:clamp(1.9rem,3.2vw,2.8rem);
+  line-height:.9;letter-spacing:-.04em;font-variant-numeric:tabular-nums;
+  display:inline-block;text-align:center}
+.stat span{font-family:"Figtree";font-weight:600;font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft)}
+.proof .sep{width:1px;align-self:stretch;min-height:44px;background:var(--rule);display:none}
+@media(min-width:820px){.proof .sep{display:block}}
+.awards{border-top:1px solid var(--rule);background:var(--stone-2);padding-block:14px}
+.awards ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;
+  align-items:center;gap:8px clamp(16px,2.4vw,34px)}
+.awards li{font-family:"Figtree";font-weight:700;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft);position:relative}
+.awards li+li::before{content:"";position:absolute;left:clamp(-17px,-1.2vw,-8px);top:50%;
+  width:4px;height:4px;border-radius:50%;background:var(--olive);opacity:.65;
+  transform:translateY(-50%)}
+
+/* ================= J2 PROMISE ================= */
+.promise-grid{display:grid;gap:clamp(28px,4vw,66px)}
+.promise-l h2{margin-top:22px;max-width:13ch}
+.promise-r p+p{margin-top:18px}
+.pull{margin-top:32px;padding:22px 24px;background:var(--stone);border-radius:8px;
+  font-family:"Bricolage Grotesque";font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(1.1rem,1.7vw,1.34rem);line-height:1.3}
+
+/* ============ SIGNATURE — the team beat ============ */
+.sig{position:relative;isolation:isolate;color:#fff;overflow:hidden;
+  padding-block:clamp(86px,11vw,160px)}
+.sig-bg{position:absolute;inset:0;z-index:-2}
+.sig-bg img{width:100%;height:100%;object-fit:cover}
+.sig::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,rgba(16,44,52,.94) 0%,rgba(16,44,52,.86) 44%,
+    rgba(16,44,52,.5) 100%)}
+.sig-in{max-width:41rem}
+.sig h2{margin-top:24px;color:#fff}
+.sig h2 .hand{color:#fff}
+.sig p{margin-top:22px;color:rgba(255,255,255,.8)}
+.sig p+p{margin-top:15px}
+.sig-cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:15px 26px;align-items:center}
+.sig-cta .alink{color:#fff;border-color:rgba(255,255,255,.6)}
+
+/* ================= J3 WORK ================= */
+.work-head{display:flex;flex-wrap:wrap;gap:20px 40px;align-items:flex-end;justify-content:space-between}
+.work-head h2{margin-top:22px;max-width:16ch}
+.mos{margin-top:clamp(38px,4.6vw,66px);display:grid;gap:clamp(15px,1.9vw,24px)}
+.tile{overflow:hidden;position:relative}
+.tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.tile:hover img{transform:scale(1.045)}
+.m-a img,.m-d img{aspect-ratio:3/2}
+.m-b img,.m-c img{aspect-ratio:4/5}
+.tile .cap{margin-top:11px;display:flex;gap:10px;align-items:baseline;
+  font-family:"Figtree";font-weight:600;font-size:.59rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint)}
+.tile .cap i{font-style:normal;color:var(--olive)}
+.work-foot{margin-top:clamp(34px,4vw,52px);padding-top:24px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
+.locs{font-family:"Figtree";font-weight:600;font-size:.61rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--faint);max-width:62ch}
+
+/* ================= STRIP ================= */
+.strip{display:grid;grid-template-columns:repeat(2,1fr);gap:0;line-height:0}
+.strip figure{position:relative;overflow:hidden}
+.strip img{width:100%;height:100%;object-fit:cover;aspect-ratio:2/3;transition:transform 1.3s var(--ease)}
+.strip figure:hover img{transform:scale(1.045)}
+.strip figcaption{position:absolute;left:0;bottom:0;padding:13px 15px;
+  font-family:"Figtree";font-weight:700;font-size:.55rem;letter-spacing:.19em;
+  text-transform:uppercase;color:#fff;text-shadow:0 1px 14px rgba(18,19,16,.6)}
+
+/* ================= J7 EXPERIENCE ================= */
+.exp{background:var(--stone);border-block:1px solid var(--rule)}
+.exp-head{max-width:34ch}
+.exp-head h2{margin-top:22px}
+.steps{margin-top:clamp(44px,5vw,72px);display:grid;gap:clamp(38px,4vw,30px);position:relative}
+.steps::before{content:"";position:absolute;top:49px;left:16.7%;right:16.7%;
+  border-top:1px dashed var(--olive);opacity:.4;display:none}
+.step{position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
+.step-ico{position:relative;width:100px;height:100px;flex:none;display:grid;place-items:center}
+.step-ico::before{content:"";position:absolute;inset:9px;border-radius:50%;
+  background:var(--teal);z-index:0}
+.step-ico::after{content:"";position:absolute;inset:0;border-radius:50%;
+  border:1px solid var(--olive);z-index:0;opacity:.7}
+.step-ico svg{position:relative;z-index:1;width:46px;height:46px;stroke:var(--paper);
+  fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.step b{margin-top:22px;font-family:"Figtree";font-weight:700;font-size:.6rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--olive);display:block}
+.step h3{margin-top:12px}
+.step p{margin-top:12px;font-size:.94rem;color:var(--ink-2);max-width:34ch}
+
+/* ================= J4 TEAM ================= */
+.team-grid{display:grid;gap:clamp(32px,4.6vw,68px)}
+.team-l img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+.team-l figcaption{margin-top:12px}
+.team-r h2{margin-top:22px}
+.team-r p{margin-top:20px;color:var(--ink-2)}
+.team-cta{margin-top:32px;display:flex;flex-wrap:wrap;gap:15px 26px;align-items:center}
+.names{margin-top:26px;padding-top:20px;border-top:1px solid var(--rule);
+  display:flex;flex-wrap:wrap;gap:8px 22px;font-family:"Figtree";font-weight:600;
+  font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+
+/* ================= J5 PROOF / TESTIMONIALS ================= */
+.tst{background:var(--stone);border-block:1px solid var(--rule)}
+.tst-head{text-align:center}
+.tst-head .eyebrow{justify-content:center}
+.tst-head h2{margin-top:20px}
+.quotes{margin-top:clamp(40px,4.6vw,66px);display:grid;gap:clamp(16px,2vw,24px)}
+.qt{background:var(--paper);border:1px solid var(--rule);border-radius:8px;
+  padding:clamp(26px,3.2vw,38px);display:flex;flex-direction:column}
+.qt .qs{color:var(--peach-dk);letter-spacing:.2em;font-size:.78rem;line-height:1;margin-bottom:16px}
+.qt p{font-size:.95rem;line-height:1.66;flex:1;color:var(--ink-2)}
+.qt span{display:block;margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);
+  font-family:"Figtree";font-weight:600;font-size:.58rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint)}
+.tst-note{margin-top:clamp(28px,3.2vw,42px);text-align:center;max-width:62ch;
+  margin-inline:auto;font-size:.86rem;color:var(--soft)}
+
+/* ================= J8 INVESTMENT ================= */
+.inv-head{text-align:center;max-width:46rem;margin-inline:auto}
+.inv-head .eyebrow{justify-content:center}
+.inv-head h2{margin-top:20px}
+.inv-head p{margin-top:18px;color:var(--ink-2)}
+.cards{margin-top:clamp(40px,4.6vw,64px);display:grid;gap:clamp(18px,2.2vw,26px)}
+.card{background:var(--paper);border:1px solid var(--rule);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.card-body{padding:clamp(24px,2.8vw,34px);display:flex;flex-direction:column;flex:1}
+.card--feat{background:var(--teal);border-color:var(--teal);color:var(--paper)}
+.card .tag{font-family:"Figtree";font-weight:700;font-size:.57rem;letter-spacing:.21em;
+  text-transform:uppercase;color:var(--faint)}
+.card--feat .tag{color:rgba(255,255,255,.64)}
+.card h3{margin-top:13px}
+.card--feat h3{color:#fff}
+.card ul{margin-top:20px;list-style:none;display:flex;flex-direction:column;gap:10px;flex:1}
+.card li{position:relative;padding-left:18px;font-size:.9rem;color:var(--ink-2)}
+.card li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:1px;background:var(--olive)}
+.card--feat li{color:rgba(255,255,255,.8)}
+.card--feat li::before{background:rgba(255,255,255,.5)}
+.card .btn{margin-top:26px}
+.card--feat .btn{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.card--feat .btn:hover{background:transparent;color:#fff;border-color:#fff}
+.inv-note{margin-top:clamp(30px,3.4vw,44px);text-align:center;max-width:62ch;
+  margin-inline:auto;font-size:.86rem;color:var(--faint)}
+
+/* ================= INSTAGRAM ================= */
+.ig-head{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:flex-end;justify-content:space-between}
+.ig-head h2{margin-top:20px;max-width:18ch}
+.ig-h{font-family:"Figtree";font-weight:700;font-size:.67rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);display:flex;align-items:center;gap:9px}
+.ig-h svg{width:17px;height:17px;stroke:var(--olive);fill:none;stroke-width:1.4}
+.ig-grid{margin-top:clamp(32px,3.8vw,52px);display:grid;gap:clamp(9px,1.2vw,15px);
+  grid-template-columns:repeat(3,1fr)}
+.ig-grid a{position:relative;overflow:hidden;aspect-ratio:1/1;display:block}
+.ig-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),opacity .4s}
+.ig-grid a:hover img{transform:scale(1.06);opacity:.87}
+.ig-foot{margin-top:clamp(28px,3.2vw,42px);text-align:center}
+
+/* ================= J9 CLOSE ================= */
+.ct{position:relative;isolation:isolate;color:#fff;overflow:hidden;padding-block:clamp(82px,10vw,148px)}
+.ct-bg{position:absolute;inset:0;z-index:-2}
+.ct-bg img{width:100%;height:100%;object-fit:cover}
+.ct::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(96deg,rgba(16,44,52,.95) 0%,rgba(16,44,52,.88) 50%,rgba(16,44,52,.58) 100%)}
+.ct-grid{display:grid;gap:clamp(34px,4.6vw,64px)}
+.ct-l h2{margin-top:22px;color:#fff}
+.ct-l h2 .hand{color:#fff}
+.ct-l p{margin-top:20px;color:rgba(255,255,255,.78)}
+.ct-info{margin-top:30px;display:flex;flex-direction:column;gap:10px;
+  font-family:"Figtree";font-weight:600;font-size:.64rem;letter-spacing:.17em;
+  text-transform:uppercase;color:rgba(255,255,255,.62)}
+.ct-info a{border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px;color:#fff;width:fit-content}
+.form{background:var(--paper);color:var(--ink);padding:clamp(26px,3.2vw,40px);border-radius:8px}
+.form h3{font-size:1.3rem}
+.form>p{margin-top:9px;font-size:.87rem;color:var(--soft)}
+.frow{margin-top:22px;display:grid;gap:15px}
+.f label{display:block;font-family:"Figtree";font-weight:700;font-size:.57rem;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:7px}
+.f input,.f select,.f textarea{width:100%;background:var(--stone);border:1px solid var(--rule);border-radius:5px;
+  padding:.86em .9em;font-family:"Figtree";font-weight:400;font-size:.92rem;
+  color:var(--ink);border-radius:0;transition:border-color .3s}
+.f input:focus,.f select:focus,.f textarea:focus{outline:0;border-color:var(--olive)}
+.f textarea{min-height:100px;resize:vertical}
+.form .btn{margin-top:20px;width:100%}
+
+/* ================= FOOTER ================= */
+.foot{background:var(--teal-deep);color:rgba(255,255,255,.68);padding-top:clamp(58px,7vw,90px)}
+.foot-top{display:grid;gap:clamp(32px,4vw,46px);padding-bottom:clamp(42px,5vw,62px)}
+.fb img{width:clamp(150px,16vw,186px);height:auto;display:block;margin-bottom:6px}
+.fb b{display:none}
+.fb .tag{font-family:"Figtree";font-weight:700;font-size:.56rem;letter-spacing:.23em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:12px;display:block}
+.fb p{margin-top:14px;font-size:.88rem;line-height:1.7;max-width:34ch;color:rgba(255,255,255,.55)}
+.fcol h4{font-family:"Figtree";font-weight:700;font-size:.57rem;letter-spacing:.21em;
+  text-transform:uppercase;color:#fff;margin-bottom:15px}
+.fcol a,.fcol span{display:block;font-size:.89rem;padding-block:5px;color:rgba(255,255,255,.6);
+  transition:color .3s}
+.fcol a:hover{color:#fff}
+.fsoc{display:flex;gap:12px;margin-top:15px;flex-wrap:wrap}
+.fsoc a{width:34px;height:34px;border:1px solid rgba(255,255,255,.22);display:grid;place-items:center}
+.fsoc svg{width:15px;height:15px;fill:rgba(255,255,255,.72)}
+.fbot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;
+  padding-block:20px;border-top:1px solid rgba(255,255,255,.13);
+  font-family:"Figtree";font-weight:600;font-size:.59rem;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.42)}
+.fbot b{font-weight:700;color:rgba(255,255,255,.72)}
+
+.why-grid{margin-top:clamp(38px,4.4vw,60px);display:grid;gap:clamp(18px,2.2vw,26px)}
+.why{background:var(--stone);border-radius:8px;padding:clamp(26px,3vw,36px)}
+.why b{font-family:"Bricolage Grotesque";font-weight:500;font-size:.72rem;letter-spacing:.2em;
+  color:var(--teal);display:block}
+.why h3{margin-top:14px}
+.why p{margin-top:12px;font-size:.94rem;color:var(--ink-2)}
+.why-links{margin-top:16px;font-family:"Figtree";font-weight:700;font-size:.64rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.give{background:var(--stone);border-block:1px solid var(--rule)}
+.give-grid{display:grid;gap:clamp(30px,4vw,60px);align-items:center}
+.give-grid img{width:100%;height:auto}
+.jr-head{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:flex-end;justify-content:space-between}
+.jr-head h2{margin-top:20px;max-width:16ch}
+.jrs{margin-top:clamp(32px,3.6vw,50px);display:grid;gap:1px;background:var(--rule);
+  border-block:1px solid var(--rule)}
+.jr{background:var(--paper);padding:20px clamp(4px,1.4vw,18px);display:flex;flex-wrap:wrap;
+  gap:8px 22px;align-items:baseline;justify-content:space-between;transition:background .3s}
+.jr:hover{background:var(--stone)}
+.jr b{font-family:"Bricolage Grotesque";font-weight:500;letter-spacing:-.02em;
+  font-size:clamp(1rem,1.4vw,1.16rem);max-width:48ch;line-height:1.25}
+.jr span{font-family:"Figtree";font-weight:600;font-size:.59rem;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--faint)}
+.faqs{margin-top:clamp(36px,4vw,54px);max-width:52rem;margin-inline:auto;
+  display:grid;gap:12px}
+.faqs details{background:var(--paper);border:1px solid var(--rule);border-radius:8px;
+  padding:18px clamp(18px,2.2vw,26px)}
+.faqs summary{cursor:pointer;list-style:none;font-family:"Bricolage Grotesque";font-weight:500;
+  letter-spacing:-.02em;font-size:clamp(1rem,1.4vw,1.14rem);display:flex;
+  justify-content:space-between;gap:16px;align-items:center}
+.faqs summary::-webkit-details-marker{display:none}
+.faqs summary::after{content:"+";color:var(--teal);font-weight:400;font-size:1.3em;line-height:1}
+.faqs details[open] summary::after{content:"–"}
+.faqs p{margin-top:12px;font-size:.94rem;color:var(--ink-2)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}
+  .tile img,.strip img,.ig-grid img{transition:none}}
+
+@media(min-width:620px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .why-grid{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,34px)}
+  .steps::before{display:block}
+  .quotes{grid-template-columns:repeat(3,1fr)}
+}
+@media(min-width:900px){
+  .promise-grid{grid-template-columns:.74fr 1fr}
+  .mos{grid-template-columns:repeat(6,1fr)}
+  .m-a{grid-column:span 4}.m-b{grid-column:span 2}
+  .m-c{grid-column:span 2}.m-d{grid-column:span 4}
+  .team-grid{grid-template-columns:.72fr 1fr}
+  .give-grid{grid-template-columns:1fr .8fr}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .ct-grid{grid-template-columns:1fr .86fr;align-items:center}
+  .foot-top{grid-template-columns:1.5fr 1fr 1fr 1fr}
+  .strip{grid-template-columns:repeat(4,1fr)}
+  .scroll{display:flex}
+  .hero::after{background:
+    linear-gradient(100deg,rgba(16,44,52,.78) 0%,rgba(16,44,52,.5) 36%,
+      rgba(16,44,52,.12) 70%,rgba(16,44,52,0) 100%),
+    linear-gradient(to top,rgba(16,44,52,.36) 0%,rgba(16,44,52,0) 44%)}
+}
+@media(min-width:1020px){
+  .nav{display:flex}.burger{display:none}.hdr-r .btn{display:inline-flex}
+}
+@media(max-width:560px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
+/* On a phone the proof figures wrapped into a ragged 2x2. Stack them one per
+   row with a hairline between, so each figure gets its own line and room. */
+@media(max-width:659px){
+  .proof-in{flex-direction:column;align-items:stretch;gap:0;
+    padding-block:clamp(30px,7vw,42px)}
+  .proof-in .stat{width:100%;padding-block:22px;gap:9px;
+    border-top:1px solid var(--rule)}
+  .proof-in .stat:first-child{border-top:0;padding-top:4px}
+  .proof-in .stat:last-child{padding-bottom:4px}
+  .proof-in .stat b{font-size:2.5rem}
+  .proof-in .stat span{font-size:.63rem;letter-spacing:.18em}
+  .proof-in .sep{display:none}
+  .awards{padding-block:26px}
+  .awards ul{flex-direction:column;gap:14px}
+  .awards li{font-size:.62rem;line-height:1.55;text-align:center;max-width:30ch}
+  /* stacked, so the separator dot moves from beside each item to between them */
+  .awards li+li::before{position:static;display:block;width:4px;height:4px;
+    margin:0 auto 14px;transform:none;left:auto;top:auto}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <a href="#top" class="brand" aria-label="Elevate Photography home">
+      <img src="images/img01.png" alt="Elevate Photography">
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#work">Portfolios</a></li>
+        <li><a href="#team">Photographers</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#why">About</a></li>
+        <li><a href="https://elevatephotography.com/blog/">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-r"><a href="#contact" class="btn">Book Online &raquo;</a></div>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="#work" data-close>Portfolios</a>
+  <a href="#team" data-close>Photographers</a>
+  <a href="#pricing" data-close>Pricing</a>
+  <a href="#why" data-close>About</a>
+  <a href="https://elevatephotography.com/blog/">Blog</a>
+  <a href="#contact" data-close>Contact</a>
+  <a href="#contact" class="m-cta" data-close>Book Online &raquo;</a>
+</nav>
+
+<span id="top"></span>
+
+<!-- ============ J1 STRIKE ============ -->
+<section class="hero">
+  <div class="hero-bg">
+    <picture>
+      <source media="(max-width:759px)" srcset="images/img02.jpg">
+      <img src="images/img03.jpg" alt="A couple photographed on a Colorado street in autumn by Elevate Photography" fetchpriority="high">
+    </picture>
+  </div>
+  <div class="wrap">
+    <div class="hero-in reveal">
+      <div class="eyebrow dark"><span class="d"></span>Denver wedding photographers · Since 2001</div>
+      <h1>Over 1,500 weddings. Not one of them <span class="hand">the same.</span></h1>
+      <p class="lede hero-p">A team of Denver wedding photographers with a creative, photojournalistic eye, a studio full of people who answer the phone, and a backup for every single thing that could go wrong.</p>
+      <p class="typer" aria-hidden="true"><span class="pre">Getting married</span> <span class="out" id="typeOut"></span><span class="cur"></span><span class="post">?</span></p>
+      <p class="sr">Getting married in Denver, in the mountains, or somewhere further afield?</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn">Check availability</a>
+        <a href="#pricing" class="btn btn--ghost">See pricing</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll" aria-hidden="true"><span>Scroll</span><i></i></div>
+</section>
+
+<!-- ============ PROOF BAR ============ -->
+<section class="proof" aria-label="Experience and recognition">
+  <div class="wrap proof-in reveal">
+    <div class="stat"><b data-count="1500" data-suffix="+">1,500+</b><span>Weddings photographed</span></div>
+    <span class="sep" aria-hidden="true"></span>
+    <div class="stat"><b data-count="2001" data-plain="1">2001</b><span>Shooting since</span></div>
+    <span class="sep" aria-hidden="true"></span>
+    <div class="stat"><b data-count="25" data-suffix="+">25+</b><span>Years of experience</span></div>
+    <span class="sep" aria-hidden="true"></span>
+    <div class="stat"><b data-count="300" data-suffix="+">300+</b><span>Five-star reviews</span></div>
+  </div>
+  <div class="awards">
+    <ul>
+      <li>The Knot Best of Weddings — 13 years running</li>
+      <li>The Knot Best of Weddings Hall of Fame</li>
+      <li>WeddingWire Couples' Choice — 13 times</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ J2 PROMISE ============ -->
+<section class="section" id="promise">
+  <div class="wrap promise-grid">
+    <div class="promise-l reveal">
+      <div class="eyebrow"><span class="d"></span>The promise</div>
+      <h2>Unbelievably fun, <em>unbelievably easy.</em></h2>
+    </div>
+    <div class="promise-r reveal">
+      <p>Our unparalleled professionalism and talent means you get amazing photos that will last a great deal longer than your Instagram feed. Throughout the planning process you can expect clear communication, expert advice, technical and creative talent, and some serious fun.</p>
+      <p>Our blend of creative and photojournalistic approaches, coupled with a steadfast commitment to customer service, means images that immortalise the most significant day of your life. Home base is Denver, but we are happy to travel to beaches, mountain tops or ice castles.</p>
+      <blockquote class="pull">We know weddings come in all shapes and sizes. Micro weddings and elopements included, and we would love to bring that experience to something more intimate.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE — the team beat ============ -->
+<section class="sig">
+  <div class="sig-bg"><img src="images/img04.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap sig-in reveal">
+    <div class="eyebrow dark"><span class="d"></span>Why a team</div>
+    <h2>Someone always <span class="hand">has your back.</span></h2>
+    <p>A solo photographer cannot promise you this. If yours breaks an arm, gets food poisoning, or hits any of the other things a wedding day can throw at a person, there is no plan B. With a team, there always is.</p>
+    <p>Beyond the peace of mind, you get our combined creativity, a full-time customer service manager, and a studio manager whose whole job is making sure nothing about this is stressful for you.</p>
+    <div class="sig-cta">
+      <a href="#team" class="btn">Meet the photographers</a>
+      <a href="#contact" class="alink">Check your date →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J3 WORK ============ -->
+<section class="section" id="work">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <div>
+        <div class="eyebrow"><span class="d"></span>Selected work</div>
+        <h2>Mansions, mountain passes and <em>one very good street.</em></h2>
+      </div>
+      <a href="https://elevatephotography.com/portfolio-couple/" class="alink">Full portfolio →</a>
+    </div>
+    <div class="mos reveal">
+      <figure class="tile m-a"><img src="images/img05.jpg" alt="A couple photographed in greenery by Elevate Photography" loading="lazy"><figcaption class="cap"><i>01</i>The two of you</figcaption></figure>
+      <figure class="tile m-b"><img src="images/img06.jpg" alt="A couple holding hands on their wedding day, photographed by Elevate Photography" loading="lazy"><figcaption class="cap"><i>02</i>The details</figcaption></figure>
+      <figure class="tile m-c"><img src="images/img07.jpg" alt="A couple dancing outdoors, photographed by Elevate Photography" loading="lazy"><figcaption class="cap"><i>03</i>The celebration</figcaption></figure>
+      <figure class="tile m-d"><img src="images/img08.jpg" alt="A couple seated in front of a floral mural, photographed by Elevate Photography" loading="lazy"><figcaption class="cap"><i>04</i>Denver, properly</figcaption></figure>
+    </div>
+    <div class="work-foot reveal">
+      <a href="#pricing" class="btn btn--ghost">See pricing</a>
+      <span class="locs">Highlands Ranch Mansion · Grant Humphreys Mansion · The Brown Palace · The Oxford Hotel · Mile High Station · Blanc · Moss · Spruce Mountain Ranch · The Manor House · Denver Botanic Gardens · Four Seasons · RiNo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J7 EXPERIENCE ============ -->
+<section class="section exp">
+  <div class="wrap">
+    <div class="exp-head reveal">
+      <div class="eyebrow"><span class="d"></span>How it works</div>
+      <h2>Clear from the first email <em>to the last file.</em></h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="step-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M17 25V18h7M47 25V18h-7M17 39v7h7M47 39v7h-7"/><path d="M32 40c-6-5.4-9.6-8.2-9.6-12a5.4 5.4 0 0 1 9.6-3.3 5.4 5.4 0 0 1 9.6 3.3c0 3.8-3.6 6.6-9.6 12z"/></svg></span>
+        <b>Step 01</b>
+        <h3>Check your date</h3>
+        <p>Send us the date and the venue. We will tell you straight away who on the team is free, and what it would cost. No forms that disappear into a void.</p>
+      </div>
+      <div class="step">
+        <span class="step-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 49c11 0 10-17 21-17" stroke-dasharray="3 4"/><path d="M44 47s9-11.4 9-19a9 9 0 1 0-18 0c0 7.6 9 19 9 19z"/><circle cx="44" cy="27" r="3.3"/></svg></span>
+        <b>Step 02</b>
+        <h3>Plan it together</h3>
+        <p>An engagement shoot so you are used to the camera, then a meeting before the day to walk the timeline, the family photos and the light.</p>
+      </div>
+      <div class="step">
+        <span class="step-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="13" y="15" width="27" height="22" rx="2.5"/><rect x="24" y="27" width="27" height="22" rx="2.5" fill="#25505B"/><circle cx="32.5" cy="34.5" r="2.6"/><path d="M25 47l7.5-8 5 4.6 4-3.4 8.5 6.8"/></svg></span>
+        <b>Step 03</b>
+        <h3>Get your photographs</h3>
+        <p>We shoot the day, back it up twice, and deliver a gallery you can share, download and print from. Albums and wall art if you want them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ J4 TEAM ============ -->
+<section class="section" id="team">
+  <div class="wrap team-grid">
+    <figure class="team-l reveal">
+      <img src="images/img09.jpg" alt="McCory James, founder of Elevate Photography" loading="lazy">
+      <figcaption class="small">McCory James · Founder</figcaption>
+    </figure>
+    <div class="team-r reveal">
+      <div class="eyebrow"><span class="d"></span>The photographers</div>
+      <h2>I'm McCory James. <span class="hand hand--olive">Yes, really.</span></h2>
+      <p>I fell in love with wedding photography in 1999, capturing my first "I do" and never looking back. I started Elevate with a simple idea: get to know the couple properly, and the photographs take care of themselves. Share a beer at a brewery, ask the awkward questions over coffee, take them somewhere good for the engagement shoot.</p>
+      <p>Today Elevate is a team of artists doing exactly that across Colorado, and building a real relationship with the people we photograph is still the thing we care most about.</p>
+      <div class="names">
+        <span>McCory James</span><span>Bethany Naes</span><span>Emily Behnke</span><span>Janae Steinmark</span>
+      </div>
+      <div class="team-cta">
+        <a href="#contact" class="btn">Check availability</a>
+        <a href="https://elevatephotography.com/about/" class="alink">More about us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FULL-BLEED STRIP ============ -->
+<section class="strip reveal" aria-label="Selected frames">
+  <figure><img src="images/img10.jpg" alt="A couple photographed at Red Rocks by Elevate Photography" loading="lazy"><figcaption>The mountains</figcaption></figure>
+  <figure><img src="images/img11.jpg" alt="A wedding dress detail photographed by Elevate Photography" loading="lazy"><figcaption>The details</figcaption></figure>
+  <figure><img src="images/img12.jpg" alt="A wedding party photographed by Elevate Photography" loading="lazy"><figcaption>The people</figcaption></figure>
+  <figure><img src="images/img13.jpg" alt="A bride laughing on her wedding day, photographed by Elevate Photography" loading="lazy"><figcaption>The day itself</figcaption></figure>
+</section>
+
+<!-- ============ J5 TESTIMONIALS ============ -->
+<section class="section tst">
+  <div class="wrap">
+    <div class="tst-head reveal">
+      <div class="eyebrow" style="justify-content:center"><span class="d"></span>What couples say</div>
+      <h2>Don't take our word for it. <em>The stars speak for themselves.</em></h2>
+    </div>
+    <div class="quotes reveal">
+      <blockquote class="qt">
+        <span class="qs" aria-label="Five out of five stars">★★★★★</span>
+        <p>"We chose Nate to photograph our wedding day at Lionsgate and could not have been happier. He was very prompt and proactive in all the shoots. The photos capture not only the sentimental moments but the entire day's atmosphere, and everything surpassed our expectations."</p>
+        <span>Aaron Schroder · Google</span>
+      </blockquote>
+      <blockquote class="qt">
+        <span class="qs" aria-label="Five out of five stars">★★★★★</span>
+        <p>"Heather was amazing. We had unexpected rain on our wedding day but she got all the shots in before the monsoon hit. We had to change our package a few months before due to family health issues and the owner was very understanding and didn't give us any grief at all."</p>
+        <span>TL Rich · Google</span>
+      </blockquote>
+      <blockquote class="qt">
+        <span class="qs" aria-label="Five out of five stars">★★★★★</span>
+        <p>"Sam did an incredible job. She was so fun, easy to be around and brought an air of professionalism and calm to a busy day. We were thrilled with our photos. Can't recommend her enough."</p>
+        <span>Callie Maher · Google</span>
+      </blockquote>
+      <blockquote class="qt">
+        <span class="qs" aria-label="Five out of five stars">★★★★★</span>
+        <p>"Brittany was our main photographer and a perfect fit for us. Nate was our second and did an awesome job getting photos of all our friends and family during cocktail hour. They went above and beyond to keep on schedule without rushing or missing anything."</p>
+        <span>Chad Allmann · Google</span>
+      </blockquote>
+      <blockquote class="qt">
+        <span class="qs" aria-label="Five out of five stars">★★★★★</span>
+        <p>"We were definitely awkward about being in front of the camera, but Emily was awesome at making us feel comfortable and laugh. The pictures turned out amazing and we couldn't be happier."</p>
+        <span>Erica Sheline · Google</span>
+      </blockquote>
+      <blockquote class="qt">
+        <span class="qs" aria-label="Five out of five stars">★★★★★</span>
+        <p>"Sam was somehow everywhere, catching photos of all of our guests and us, and every picture was people laughing or smiling which is exactly what we had in mind. Not only a great photographer but such a sweet and kind person to have around."</p>
+        <span>Alexa Inchauspe · Google</span>
+      </blockquote>
+    </div>
+    <p class="tst-note reveal">More than three hundred five-star reviews. These six are real, and taken from the reviews already on your own homepage.</p>
+  </div>
+</section>
+
+<!-- ============ J8 INVESTMENT ============ -->
+<section class="section exp" id="pricing">
+  <div class="wrap">
+    <div class="inv-head reveal">
+      <div class="eyebrow" style="justify-content:center"><span class="d"></span>Pricing</div>
+      <h2>Tell us the date. <em>We'll tell you the number.</em></h2>
+      <p>Every wedding is quoted around what you are actually planning, so send us the date, the venue and roughly how many hours you need, and we will come straight back with the figures.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="card-body">
+          <span class="tag">Photography</span>
+          <h3>The wedding day</h3>
+          <ul>
+            <li>Coverage from getting ready to the last dance</li>
+            <li>Creative and photojournalistic, minimal direction</li>
+            <li>A second photographer available</li>
+            <li>Online gallery to share and download</li>
+            <li>Albums and wall art available</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost">Check availability</a>
+        </div>
+      </div>
+      <div class="card card--feat reveal">
+        <div class="card-body">
+          <span class="tag">Most booked</span>
+          <h3>Photo + Elevate in Motion</h3>
+          <ul>
+            <li>Everything in the photography collection</li>
+            <li>Wedding film by our own video team</li>
+            <li>One studio, one timeline, one point of contact</li>
+            <li>No coordinating two separate vendors</li>
+            <li>Backup crew on both sides</li>
+          </ul>
+          <a href="#contact" class="btn">Check availability</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-body">
+          <span class="tag">Smaller days</span>
+          <h3>Micro weddings &amp; elopements</h3>
+          <ul>
+            <li>Built for intimate days and small guest lists</li>
+            <li>Mountain, city or courthouse</li>
+            <li>Shorter coverage, same team</li>
+            <li>Engagement sessions available</li>
+            <li>Travel throughout Colorado and beyond</li>
+          </ul>
+          <a href="#contact" class="btn btn--ghost">Check availability</a>
+        </div>
+      </div>
+    </div>
+    <p class="inv-note reveal">Based in Denver. Photographing weddings throughout Colorado, and travelling to beaches, mountain tops and ice castles on request.</p>
+  </div>
+</section>
+
+<!-- ============ WHY ELEVATE ============ -->
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="work-head reveal">
+      <div>
+        <div class="eyebrow"><span class="d"></span>Why Elevate</div>
+        <h2>Three reasons couples <span class="hand hand--olive">pick us.</span></h2>
+      </div>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why"><b>01</b><h3>Experienced photographers</h3><p>Fun to work with, clear communicators, and they have seen it all. Calm under pressure when the weather or the timeline changes.</p></div>
+      <div class="why"><b>02</b><h3>Reputation</h3><p>More than three hundred five-star reviews from our couples. Thirteen years of The Knot Best of Weddings. They can't all be wrong.</p></div>
+      <div class="why"><b>03</b><h3>Quality services</h3><p>Albums, day-of show, reception display and photo booth. Everything that makes the day, and the years after it, memorable.</p>
+        <div class="why-links"><a href="https://elevatephotography.com/albums-services/">Albums &amp; services →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GIVING BACK ============ -->
+<section class="section give">
+  <div class="wrap give-grid">
+    <div class="reveal">
+      <div class="eyebrow"><span class="d"></span>Giving back</div>
+      <h2>Everyone should be able to <span class="hand hand--olive">live freely.</span></h2>
+      <p class="lede" style="margin-top:20px">We donate a portion of every session to Free The Girls, an organisation that aids women rescued from sex trafficking. Together we can help these women regain true freedom in every aspect of life.</p>
+      <div class="team-cta"><a href="https://freethegirls.org/" class="btn btn--ghost">About Free The Girls</a></div>
+    </div>
+    <figure class="reveal"><img src="images/img14.jpg" alt="Free The Girls, the organisation Elevate Photography supports" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM ============ -->
+<section class="section" id="instagram">
+  <div class="wrap">
+    <div class="ig-head reveal">
+      <div>
+        <div class="eyebrow"><span class="d"></span>Follow along</div>
+        <h2>Last weekend's weddings, <em>most weeks.</em></h2>
+      </div>
+      <a class="ig-h" href="https://instagram.com/elevatephotography/">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+        @elevatephotography
+      </a>
+    </div>
+    <div class="ig-grid reveal">
+      <a href="https://instagram.com/elevatephotography/" aria-label="View on Instagram"><img src="images/img15.jpg" alt="Photograph by Elevate Photography on Instagram" loading="lazy"></a>
+      <a href="https://instagram.com/elevatephotography/" aria-label="View on Instagram"><img src="images/img16.jpg" alt="Photograph by Elevate Photography on Instagram" loading="lazy"></a>
+      <a href="https://instagram.com/elevatephotography/" aria-label="View on Instagram"><img src="images/img17.jpg" alt="Photograph by Elevate Photography on Instagram" loading="lazy"></a>
+      <a href="https://instagram.com/elevatephotography/" aria-label="View on Instagram"><img src="images/img18.jpg" alt="Photograph by Elevate Photography on Instagram" loading="lazy"></a>
+      <a href="https://instagram.com/elevatephotography/" aria-label="View on Instagram"><img src="images/img19.jpg" alt="Photograph by Elevate Photography on Instagram" loading="lazy"></a>
+      <a href="https://instagram.com/elevatephotography/" aria-label="View on Instagram"><img src="images/img20.jpg" alt="Photograph by Elevate Photography on Instagram" loading="lazy"></a>
+    </div>
+    <div class="ig-foot reveal"><a href="https://instagram.com/elevatephotography/" class="btn btn--ghost">Follow along</a></div>
+  </div>
+</section>
+
+<!-- ============ JOURNAL ============ -->
+<section class="section" id="journal">
+  <div class="wrap">
+    <div class="jr-head reveal">
+      <div>
+        <div class="eyebrow"><span class="d"></span>Most recent posts</div>
+        <h2>From the <span class="hand hand--olive">journal.</span></h2>
+      </div>
+      <a href="https://elevatephotography.com/blog/" class="alink">All posts →</a>
+    </div>
+    <div class="jrs reveal">
+      <a class="jr" href="https://elevatephotography.com/blog/the-ultimate-venue-checklist-10-questions-your-photographer-wants-you-to-ask/"><b>The Ultimate Venue Checklist: 10 Questions Your Photographer Wants You to Ask</b><span>Inspiration &amp; ideas</span></a>
+      <a class="jr" href="https://elevatephotography.com/blog/kate-matt-an-unforgettable-mountain-ceremony-dazzling-reception/"><b>Kate + Matt · An Unforgettable Mountain Ceremony &amp; Dazzling Reception</b><span>Real wedding</span></a>
+      <a class="jr" href="https://elevatephotography.com/blog/seida-christobal-a-day-of-elegance-and-sparkle-at-cielo-at-castle-pines/"><b>Seida + Christobal · A Day of Elegance and Sparkle at Cielo at Castle Pines</b><span>Real wedding</span></a>
+      <a class="jr" href="https://elevatephotography.com/blog/kate-kevin-a-faith-filled-celebration-at-mountain-view-ranch/"><b>Kate + Kevin · A Faith-Filled Celebration at Mountain View Ranch</b><span>Real wedding</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section exp" id="faq">
+  <div class="wrap">
+    <div class="inv-head reveal">
+      <div class="eyebrow" style="justify-content:center"><span class="d"></span>FAQs</div>
+      <h2>The questions <span class="hand hand--olive">everyone asks.</span></h2>
+    </div>
+    <div class="faqs reveal">
+      <details><summary>How much does a Denver wedding photographer cost?</summary><p>Pricing varies depending on coverage, photographers and services included. Explore our pricing page to build a package that fits your wedding.</p></details>
+      <details><summary>Do you photograph weddings outside Denver?</summary><p>Yes. While we are based in Denver, we photograph weddings throughout Colorado and beyond — Boulder, Vail, Aspen, Breckenridge, Colorado Springs and Rocky Mountain National Park.</p></details>
+      <details><summary>Do you offer engagement sessions?</summary><p>Yes. Engagement sessions are a great way to get comfortable in front of the camera while creating beautiful images in Denver, the mountains, or another meaningful location.</p></details>
+      <details><summary>Have you photographed at our wedding venue?</summary><p>There is a good chance we have. We have photographed weddings at venues throughout Denver and Colorado, and we keep expanding our venue-specific guides.</p></details>
+    </div>
+    <p class="inv-note reveal">Denver · Boulder · Colorado Springs · Vail · Aspen · Breckenridge · South Denver · Rocky Mountain National Park</p>
+  </div>
+</section>
+
+<!-- ============ J9 CLOSE ============ -->
+<section class="ct" id="contact">
+  <div class="ct-bg"><img src="images/img21.jpg" alt="" aria-hidden="true" loading="lazy"></div>
+  <div class="wrap ct-grid">
+    <div class="ct-l reveal">
+      <div class="eyebrow dark"><span class="d"></span>Say hello</div>
+      <h2>Start with <span class="hand">a date.</span></h2>
+      <p>Send us when and where and we will tell you who is free and what it costs. If you would rather talk it through, the phone is answered by an actual person.</p>
+      <div class="ct-info">
+        <span>Call <a href="tel:+13037446700">303.744.6700</a></span>
+        <span><a href="mailto:info@elevatephotography.com">info@elevatephotography.com</a></span>
+        <span>5721 S Spotswood St</span>
+        <span>Littleton, CO 80120</span>
+      </div>
+    </div>
+    <div class="form reveal">
+      <h3>Check availability</h3>
+      <p>The date, the venue and how to reach you. That is all it takes to start.</p>
+      <div class="frow">
+        <div class="f"><label for="n">Name</label><input id="n" type="text" placeholder="First and last"></div>
+      </div>
+      <div class="frow">
+        <div class="f"><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+      </div>
+      <div class="frow">
+        <div class="f"><label for="ph">Phone</label><input id="ph" type="tel" placeholder="Optional"></div>
+      </div>
+      <div class="frow">
+        <div class="f"><label for="d">Wedding date</label><input id="d" type="text" placeholder="Sept 2027 (or still deciding)"></div>
+      </div>
+      <div class="frow">
+        <div class="f"><label for="m">Message</label><textarea id="m" placeholder="The venue, the guest count, whether you want film too…"></textarea></div>
+      </div>
+      <button class="btn" type="button">Send it over</button>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="fb">
+        <img src="images/img22.png" alt="Elevate Photography">
+        <span class="tag">5721 South Spotswood St · Littleton, CO 80120</span>
+        <p>A team of Denver wedding photographers capturing weddings, micro weddings and elopements throughout Colorado since 2001.</p>
+      </div>
+      <div class="fcol">
+        <h4>Explore</h4>
+        <a href="#work">Portfolios</a>
+        <a href="#team">Photographers</a>
+        <a href="#why">About</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://elevatephotography.com/blog/">Blog</a>
+      </div>
+      <div class="fcol">
+        <h4>Portfolio</h4>
+        <a href="https://elevatephotography.com/portfolio-engagement/">Engagement</a>
+        <a href="https://elevatephotography.com/portfolio-bride/">Bride</a>
+        <a href="https://elevatephotography.com/portfolio-ceremony/">Ceremony</a>
+        <a href="https://elevatephotography.com/portfolio-reception/">Reception</a>
+        <a href="https://elevatephotography.com/portfolio-details/">Details</a>
+      </div>
+      <div class="fcol">
+        <h4>Get in touch</h4>
+        <a href="tel:+13037446700">303.744.6700</a>
+        <a href="mailto:info@elevatephotography.com">info@elevatephotography.com</a>
+        <span>Denver, CO</span>
+        <div class="fsoc">
+          <a href="https://instagram.com/elevatephotography/" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.9c2.95 0 3.3.01 4.47.06 1.08.05 1.66.23 2.05.38.51.2.88.44 1.27.82.38.39.63.76.82 1.27.15.39.33.97.38 2.05.05 1.17.06 1.52.06 4.47s-.01 3.3-.06 4.47c-.05 1.08-.23 1.66-.38 2.05-.2.51-.44.88-.82 1.27-.39.38-.76.63-1.27.82-.39.15-.97.33-2.05.38-1.17.05-1.52.06-4.47.06s-3.3-.01-4.47-.06c-1.08-.05-1.66-.23-2.05-.38-.51-.2-.88-.44-1.27-.82-.38-.39-.63-.76-.82-1.27-.15-.39-.33-.97-.38-2.05C2.91 15.3 2.9 14.95 2.9 12s.01-3.3.06-4.47c.05-1.08.23-1.66.38-2.05.2-.51.44-.88.82-1.27.39-.38.76-.63 1.27-.82.39-.15.97-.33 2.05-.38C8.7 2.91 9.05 2.9 12 2.9zm0 1.98c-2.9 0-3.24.01-4.38.06-.83.04-1.28.18-1.58.29-.4.16-.68.34-.98.64-.3.3-.48.58-.64.98-.12.3-.25.75-.29 1.58-.05 1.14-.06 1.48-.06 4.38s.01 3.24.06 4.38c.04.83.18 1.28.29 1.58.16.4.34.68.64.98.3.3.58.48.98.64.3.12.75.25 1.58.29 1.14.05 1.48.06 4.38.06s3.24-.01 4.38-.06c.83-.04 1.28-.18 1.58-.29.4-.16.68-.34.98-.64.3-.3.48-.58.64-.98.12-.3.25-.75.29-1.58.05-1.14.06-1.48.06-4.38s-.01-3.24-.06-4.38c-.04-.83-.18-1.28-.29-1.58-.16-.4-.34-.68-.64-.98-.3-.3-.58-.48-.98-.64-.3-.12-.75-.25-1.58-.29-1.14-.05-1.48-.06-4.38-.06zm0 3.37a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.98a2.77 2.77 0 1 0 0 5.54 2.77 2.77 0 0 0 0-5.54zm6.04-2.2a1.11 1.11 0 1 1-2.22 0 1.11 1.11 0 0 1 2.22 0z"/></svg></a>
+          <a href="https://www.facebook.com/elevatephotography" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.25-1.5 1.55-1.5h1.65V3.6c-.29-.04-1.27-.12-2.41-.12-2.38 0-4.01 1.45-4.01 4.12v2.3H7.5V13h2.78v8h3.22z"/></svg></a>
+          <a href="https://www.pinterest.com/elevatephoto/" aria-label="Pinterest"><svg viewBox="0 0 24 24"><path d="M12 2.4a9.6 9.6 0 0 0-3.5 18.5c-.08-.77-.15-1.96.03-2.8.17-.77 1.1-4.9 1.1-4.9s-.28-.56-.28-1.4c0-1.3.76-2.28 1.7-2.28.8 0 1.19.6 1.19 1.33 0 .8-.52 2-.78 3.12-.23.93.47 1.7 1.39 1.7 1.66 0 2.94-1.76 2.94-4.29 0-2.24-1.61-3.81-3.92-3.81-2.67 0-4.24 2-4.24 4.07 0 .8.31 1.67.7 2.14.08.1.09.18.07.28l-.26 1.07c-.4.17-.14.21-.32.13-1.2-.56-1.95-2.3-1.95-3.7 0-3.02 2.19-5.79 6.32-5.79 3.32 0 5.9 2.36 5.9 5.52 0 3.3-2.08 5.95-4.96 5.95-.97 0-1.88-.5-2.19-1.1l-.6 2.28c-.21.83-.79 1.87-1.18 2.5A9.6 9.6 0 1 0 12 2.4z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 2026 Elevate Photography · Denver, Colorado</span>
+      <span>Concept redesign by <b>Bouan</b></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'), m=document.getElementById('mnav');
+  b.addEventListener('click',function(){
+    var o=m.classList.toggle('open');
+    b.classList.toggle('x',o);
+    b.setAttribute('aria-expanded',o?'true':'false');
+    b.setAttribute('aria-label',o?'Close menu':'Open menu');
+    document.body.style.overflow=o?'hidden':'';
+  });
+  m.querySelectorAll('[data-close]').forEach(function(a){
+    a.addEventListener('click',function(){
+      m.classList.remove('open');b.classList.remove('x');
+      b.setAttribute('aria-expanded','false');document.body.style.overflow='';
+    });
+  });
+
+  // sticky header is in flow, so the hero subtracts its measured height
+  (function(){
+    var hdr=document.querySelector('.hdr');
+    if(!hdr) return;
+    function set(){ document.documentElement.style.setProperty('--hdr', hdr.offsetHeight+'px'); }
+    set();
+    if(window.ResizeObserver) new ResizeObserver(set).observe(hdr);
+    window.addEventListener('resize',set);
+  })();
+
+  // count-up on the proof bar. Each figure's final width is measured and
+  // locked BEFORE the count starts, otherwise the row reflows on every digit.
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.stat b[data-count]'));
+    if(!els.length) return;
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;                      // leave the real figures in place
+    els.forEach(function(el){ el.style.minWidth=el.getBoundingClientRect().width+'px'; });
+    function fmt(el,v){
+      var s=el.hasAttribute('data-plain')?String(v):v.toLocaleString('en-US');
+      return s+(el.getAttribute('data-suffix')||'');
+    }
+    function run(el){
+      var target=parseInt(el.getAttribute('data-count'),10), start=null, dur=1500;
+      el.textContent=fmt(el,0);
+      function step(ts){
+        if(start===null) start=ts;
+        var p=Math.min((ts-start)/dur,1);
+        var eased=1-Math.pow(1-p,3);
+        el.textContent=fmt(el,Math.round(target*eased));
+        if(p<1) requestAnimationFrame(step); else el.textContent=fmt(el,target);
+      }
+      requestAnimationFrame(step);
+    }
+    var ob=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ run(e.target); ob.unobserve(e.target); } });
+    },{threshold:.5});
+    els.forEach(function(el){ ob.observe(el); });
+  })();
+
+  // typewriter
+  (function(){
+    var out=document.getElementById('typeOut');
+    if(!out) return;
+    var words=['in Denver','in the mountains','somewhere further afield'];
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ out.textContent=words[0]; return; }
+    var w=0,i=0,erasing=false;
+    function tick(){
+      var word=words[w];
+      if(!erasing){
+        i++; out.textContent=word.slice(0,i);
+        if(i===word.length){ erasing=true; return setTimeout(tick,1700); }
+        return setTimeout(tick,52);
+      }
+      i--; out.textContent=word.slice(0,i);
+      if(i===0){ erasing=false; w=(w+1)%words.length; return setTimeout(tick,320); }
+      setTimeout(tick,28);
+    }
+    setTimeout(tick,700);
+  })();
+
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{rootMargin:'0px 0px -9% 0px',threshold:.06});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
