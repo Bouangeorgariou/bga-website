@@ -9,11 +9,8 @@
 <script>
 /* Relative URLs resolve against the DIRECTORY of the current URL. Served as
    /stephanieip with no trailing slash a browser treats "stephanieip" as a
-   FILE, so images/x.jpg becomes /images/x.jpg and everything 404s.
-   This rewrites the base whenever the page is served from anywhere other than
-   /stephanieip/ — a renamed folder, the domain root, or a local file:// —
-   which a hardcoded path on its own could not survive.
-   Rule: a final path segment with no dot in it is a directory. */
+   FILE, so images/x.jpg becomes /images/x.jpg and everything 404s. This
+   rewrites the base for a renamed folder, the domain root, or a local file://. */
 (function () {
   var p = location.pathname;
   if (p.charAt(p.length - 1) !== '/') {
@@ -175,8 +172,9 @@ em{font-style:italic}
    The scrim is warm ink and weighted to the left, so copy clears AA while the
    right-hand side of the frame stays as bright as her work actually is. */
 .hero{position:relative;isolation:isolate;overflow:hidden;color:#fff;
-  min-height:clamp(560px,86vh,880px);display:flex;align-items:flex-end;
-  padding-block:clamp(56px,8vw,110px)}
+  min-height:calc(100vh - var(--hdr,68px));
+  min-height:calc(100dvh - var(--hdr,68px));
+  display:flex;align-items:flex-end;padding-block:clamp(44px,6vw,88px)}
 .hero-bg{position:absolute;inset:0;z-index:-2}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;
@@ -307,12 +305,31 @@ em{font-style:italic}
 .exp{background:var(--sand);border-block:1px solid var(--rule)}
 .exp-head{max-width:34ch}
 .exp-head h2{margin-top:22px}
-.steps{margin-top:clamp(40px,4.6vw,66px);display:grid;gap:1px;background:var(--rule);
-  border:1px solid var(--rule)}
-.step{background:var(--sand);padding:clamp(26px,3.2vw,38px)}
-.step b{font-family:"Fraunces";font-weight:400;font-size:2rem;line-height:1;color:var(--bronze);display:block}
-.step h3{margin-top:16px}
-.step p{margin-top:12px;font-size:.94rem;color:var(--ink-2)}
+.steps{margin-top:clamp(44px,5vw,72px);display:grid;gap:clamp(38px,4vw,30px);
+  position:relative}
+/* the dashed run threads the three discs together so the section reads as a
+   journey rather than three unrelated boxes */
+.steps::before{content:"";position:absolute;top:49px;left:16.7%;right:16.7%;
+  border-top:1px dashed var(--bronze);opacity:.42;display:none}
+.step{position:relative;z-index:1;text-align:center;display:flex;
+  flex-direction:column;align-items:center}
+/* The discs echo her own logo — a circular chop mark with an offset ring,
+   like a stamp printed slightly out of register. Solid ink so the icons read
+   crisply against the sand, with the bronze kept for the ring. */
+.step-ico{position:relative;width:100px;height:100px;flex:none;display:grid;place-items:center}
+/* solid disc inset inside the ring, both concentric, so the bronze reads as an
+   outline sitting off the edge of the circle */
+.step-ico::before{content:"";position:absolute;inset:9px;border-radius:50%;
+  background:var(--ink-2);z-index:0}
+.step-ico::after{content:"";position:absolute;inset:0;border-radius:50%;
+  border:1px solid var(--bronze);z-index:0;opacity:.7}
+.step-ico svg{position:relative;z-index:1;width:46px;height:46px;stroke:var(--paper);
+  fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.steps .step-ico svg rect[fill]{fill:var(--ink)}
+.step b{margin-top:22px;font-family:"Instrument Sans";font-weight:600;font-size:.6rem;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--bronze);display:block}
+.step h3{margin-top:12px}
+.step p{margin-top:12px;font-size:.94rem;color:var(--ink-2);max-width:34ch}
 
 /* ================= J4 ABOUT ================= */
 .about-grid{display:grid;gap:clamp(32px,4.6vw,68px)}
@@ -327,12 +344,16 @@ em{font-style:italic}
 .tst-head{text-align:center}
 .tst-head .eyebrow{justify-content:center}
 .tst-head h2{margin-top:20px}
-.quotes{margin-top:clamp(40px,4.6vw,66px);display:grid;gap:1px;background:var(--rule);
-  border:1px solid var(--rule)}
-.qt{background:var(--sand);padding:clamp(26px,3.2vw,40px)}
-.qt p{font-family:"Fraunces";font-weight:300;font-size:clamp(1rem,1.5vw,1.16rem);line-height:1.46}
-.qt span{display:block;margin-top:18px;font-family:"Instrument Sans";font-weight:600;
-  font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.quotes{margin-top:clamp(40px,4.6vw,66px);display:grid;gap:clamp(16px,2vw,24px)}
+.qt{background:var(--paper);border:1px solid var(--rule);
+  padding:clamp(26px,3.2vw,38px);display:flex;flex-direction:column}
+.qt .qs{color:var(--bronze);letter-spacing:.2em;font-size:.78rem;line-height:1;
+  margin-bottom:18px}
+.qt p{font-family:"Fraunces";font-weight:300;font-size:clamp(1rem,1.5vw,1.16rem);
+  line-height:1.46;flex:1}
+.qt span{display:block;margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);
+  font-family:"Instrument Sans";font-weight:600;font-size:.58rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint)}
 .tst-foot{margin-top:clamp(34px,4vw,50px);text-align:center}
 
 /* ================= J6 JOURNAL ================= */
@@ -448,7 +469,8 @@ em{font-style:italic}
 
 @media(min-width:620px){
   .cards{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(3,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.6vw,34px)}
+  .steps::before{display:block}
   .quotes{grid-template-columns:repeat(2,1fr)}
 }
 @media(min-width:900px){
@@ -631,14 +653,6 @@ em{font-style:italic}
   </div>
 </section>
 
-<!-- ============ FULL-BLEED STRIP ============ -->
-<section class="strip reveal" aria-label="Selected frames">
-  <figure><img src="images/img09.jpg" alt="A surprise proposal photographed by Stephanie Ip Photography" loading="lazy"><figcaption>The yes</figcaption></figure>
-  <figure><img src="images/img10.jpg" alt="A newborn session photographed by Stephanie Ip Photography" loading="lazy"><figcaption>First days</figcaption></figure>
-  <figure><img src="images/img11.jpg" alt="A couple with their dog photographed by Stephanie Ip Photography" loading="lazy"><figcaption>Everyone included</figcaption></figure>
-  <figure><img src="images/img12.jpg" alt="An outdoor session photographed by Stephanie Ip Photography" loading="lazy"><figcaption>Out in it</figcaption></figure>
-</section>
-
 <!-- ============ J7 EXPERIENCE ============ -->
 <section class="section exp">
   <div class="wrap">
@@ -648,17 +662,20 @@ em{font-style:italic}
     </div>
     <div class="steps reveal">
       <div class="step">
-        <b>01</b>
+        <span class="step-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M17 25V18h7M47 25V18h-7M17 39v7h7M47 39v7h-7"/><path d="M32 40c-6-5.4-9.6-8.2-9.6-12a5.4 5.4 0 0 1 9.6-3.3 5.4 5.4 0 0 1 9.6 3.3c0 3.8-3.6 6.6-9.6 12z"/></svg></span>
+        <b>Step 01</b>
         <h3>Share your vision</h3>
         <p>Tell us about the moment you want to capture: the feelings, the location, the people. We listen carefully and build a session plan around what matters most to you.</p>
       </div>
       <div class="step">
-        <b>02</b>
+        <span class="step-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><path d="M9 49c11 0 10-17 21-17" stroke-dasharray="3 4"/><path d="M44 47s9-11.4 9-19a9 9 0 1 0-18 0c0 7.6 9 19 9 19z"/><circle cx="44" cy="27" r="3.3"/></svg></span>
+        <b>Step 02</b>
         <h3>Plan together</h3>
         <p>Before your session we coordinate every detail: timing, location, logistics, and any surprises. You'll feel prepared and confident going into the day.</p>
       </div>
       <div class="step">
-        <b>03</b>
+        <span class="step-ico"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="13" y="15" width="27" height="22" rx="2.5"/><rect x="24" y="27" width="27" height="22" rx="2.5" fill="#333B33"/><circle cx="32.5" cy="34.5" r="2.6"/><path d="M25 47l7.5-8 5 4.6 4-3.4 8.5 6.8"/></svg></span>
+        <b>Step 03</b>
         <h3>Receive &amp; share your gallery</h3>
         <p>Your beautifully edited photos are delivered in a private online gallery, ready to download, share with loved ones, and turn into prints or wall art.</p>
       </div>
@@ -670,7 +687,7 @@ em{font-style:italic}
 <section class="section" id="about">
   <div class="wrap about-grid">
     <figure class="about-l reveal">
-      <img src="images/img13.jpg" alt="Stephanie Ip, Los Angeles wedding, proposal and family photographer" loading="lazy">
+      <img src="images/img09.jpg" alt="Stephanie Ip, Los Angeles wedding, proposal and family photographer" loading="lazy">
       <figcaption class="small">Stephanie Ip · Lead photographer</figcaption>
     </figure>
     <div class="about-r reveal">
@@ -686,6 +703,14 @@ em{font-style:italic}
   </div>
 </section>
 
+<!-- ============ FULL-BLEED STRIP ============ -->
+<section class="strip reveal" aria-label="Selected frames">
+  <figure><img src="images/img10.jpg" alt="A surprise proposal photographed by Stephanie Ip Photography" loading="lazy"><figcaption>The yes</figcaption></figure>
+  <figure><img src="images/img11.jpg" alt="A newborn session photographed by Stephanie Ip Photography" loading="lazy"><figcaption>First days</figcaption></figure>
+  <figure><img src="images/img12.jpg" alt="A couple with their dog photographed by Stephanie Ip Photography" loading="lazy"><figcaption>Everyone included</figcaption></figure>
+  <figure><img src="images/img13.jpg" alt="An outdoor session photographed by Stephanie Ip Photography" loading="lazy"><figcaption>Out in it</figcaption></figure>
+</section>
+
 <!-- ============ J5 PROOF ============ -->
 <section class="section tst">
   <div class="wrap">
@@ -694,10 +719,10 @@ em{font-style:italic}
       <h2>Reviewed, over and over, <em>five stars.</em></h2>
     </div>
     <div class="quotes reveal">
-      <blockquote class="qt"><p>"She scouted the area a week ahead, suggested the perfect spot, showed me her hiding spot and angles, and even ran out to purchase a bottle of champagne for me. Incredible service and A+ quality pictures."</p><span>Chris G. · Yelp</span></blockquote>
-      <blockquote class="qt"><p>"She and her husband managed to hide from my extremely-observant partner as I manoeuvred us into position for the proposal, and she didn't miss a beat. It's unfortunate that I'm limited to 5 stars."</p><span>Michael L. · Yelp</span></blockquote>
-      <blockquote class="qt"><p>"As two women in the LGBTQ+ community, my fiancé and I felt very comfortable throughout the entire shoot and process. The photos completely blew us away and turned out even better than I imagined."</p><span>Shani D. · Google</span></blockquote>
-      <blockquote class="qt"><p>"It's incomprehensible just how much work she does behind the scenes. She really wants you to have the best experience you can. I would, without a doubt, highly recommend her."</p><span>Marty E. · Google</span></blockquote>
+      <blockquote class="qt"><span class="qs" aria-label="Five out of five stars">★★★★★</span><p>"She scouted the area a week ahead, suggested the perfect spot, showed me her hiding spot and angles, and even ran out to purchase a bottle of champagne for me. Incredible service and A+ quality pictures."</p><span>Chris G. · Yelp</span></blockquote>
+      <blockquote class="qt"><span class="qs" aria-label="Five out of five stars">★★★★★</span><p>"She and her husband managed to hide from my extremely-observant partner as I manoeuvred us into position for the proposal, and she didn't miss a beat. It's unfortunate that I'm limited to 5 stars."</p><span>Michael L. · Yelp</span></blockquote>
+      <blockquote class="qt"><span class="qs" aria-label="Five out of five stars">★★★★★</span><p>"As two women in the LGBTQ+ community, my fiancé and I felt very comfortable throughout the entire shoot and process. The photos completely blew us away and turned out even better than I imagined."</p><span>Shani D. · Google</span></blockquote>
+      <blockquote class="qt"><span class="qs" aria-label="Five out of five stars">★★★★★</span><p>"It's incomprehensible just how much work she does behind the scenes. She really wants you to have the best experience you can. I would, without a doubt, highly recommend her."</p><span>Marty E. · Google</span></blockquote>
     </div>
     <div class="tst-foot reveal"><a href="https://www.yelp.com/biz/stephanie-ip-photography-torrance" class="btn btn--ghost">Read the reviews</a></div>
   </div>
@@ -903,6 +928,17 @@ em{font-style:italic}
       b.setAttribute('aria-expanded','false');document.body.style.overflow='';
     });
   });
+  // the sticky header is in flow, so the hero has to subtract its real height
+  // to make header + hero add up to exactly one screen
+  (function(){
+    var hdr=document.querySelector('.hdr');
+    if(!hdr) return;
+    function set(){ document.documentElement.style.setProperty('--hdr', hdr.offsetHeight+'px'); }
+    set();
+    if(window.ResizeObserver) new ResizeObserver(set).observe(hdr);
+    window.addEventListener('resize',set);
+  })();
+
   // typewriter
   (function(){
     var out=document.getElementById('typeOut');
